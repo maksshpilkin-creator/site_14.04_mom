@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты | Оценка Групп</title>
+    <meta name="description" content="Контакты Оценка Групп: телефон, адрес, форма заявки и карта офиса." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="/assets/js/site.js" defer></script>
+  </head>
+  <body data-page="contacts">
+    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+    <div data-site-header></div>
+    <main id="main-content">
+      <section class="page-hero hero-contacts">
+        <div class="container page-hero-grid">
+          <div class="reveal">
+            <div class="breadcrumbs"><a href="/">Главная</a><span>/</span><span>Контакты</span></div>
+            <h1>Свяжитесь с нами по телефону или оставьте заявку</h1>
+            <p>Если задача срочная, звонок будет быстрее. Если нужно описать несколько объектов или сценариев, используйте форму.</p>
+          </div>
+          <div class="intro-card reveal">
+            <h3>Контактные данные</h3>
+            <ul class="check-list">
+              <li><a data-phone-href data-phone-display></a></li>
+              <li>info@ocenka-group.ru</li>
+              <li>Санкт-Петербург, проспект Энгельса, 33к1, офис 502А</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="reveal">
+            <div class="section-head">
+              <span class="eyebrow">На связи</span>
+              <h2>Работаем с задачами по всей стране</h2>
+              <p>Офис в Санкт-Петербурге, заявки ведем по всей России. На первичном контакте определяем формат работы и реальный срок.</p>
+            </div>
+            <div class="contact-grid">
+              <article class="contact-card"><h3>Телефон</h3><p><a data-phone-href data-phone-display></a></p></article>
+              <article class="contact-card"><h3>Почта</h3><p><a href="mailto:info@ocenka-group.ru">info@ocenka-group.ru</a></p></article>
+              <article class="contact-card"><h3>Режим</h3><p>Пн-Пт, 09:00-19:00</p></article>
+              <article class="contact-card"><h3>География</h3><p>Санкт-Петербург и регионы России</p></article>
+            </div>
+          </div>
+          <div class="contact-form reveal" id="lead-form">
+            <h3>Форма заявки</h3>
+            <form class="field-stack" data-lead-form data-webhook="YOUR_N8N_WEBHOOK_URL">
+              <div class="field">
+                <label for="lead-name">Имя</label>
+                <input id="lead-name" name="name" type="text" autocomplete="name" required />
+                <p class="error-message"></p>
+              </div>
+              <div class="field">
+                <label for="lead-phone">Телефон</label>
+                <input id="lead-phone" name="phone" type="tel" autocomplete="tel" required />
+                <p class="error-message"></p>
+              </div>
+              <div class="field">
+                <label for="lead-object">Что нужно оценить</label>
+                <select id="lead-object" name="object_type" required>
+                  <option value="">Выберите вариант</option>
+                  <option value="Квартира, дом, участок">Квартира, дом, участок</option>
+                  <option value="Коммерческий объект">Коммерческий объект</option>
+                  <option value="Бизнес или доля">Бизнес или доля</option>
+                  <option value="Ущерб">Ущерб</option>
+                  <option value="Транспорт или оборудование">Транспорт или оборудование</option>
+                </select>
+                <p class="error-message"></p>
+              </div>
+              <div class="field">
+                <label for="lead-valuation-purpose">Цель оценки</label>
+                <select id="lead-valuation-purpose" name="valuation_purpose" required>
+                  <option value="">Выберите цель</option>
+                  <option value="Банк или ипотека">Банк или ипотека</option>
+                  <option value="Суд или спор">Суд или спор</option>
+                  <option value="Нотариус или наследство">Нотариус или наследство</option>
+                  <option value="Сделка или продажа">Сделка или продажа</option>
+                  <option value="Бизнес-задача или бухгалтерия">Бизнес-задача или бухгалтерия</option>
+                </select>
+                <p class="error-message"></p>
+              </div>
+              <div class="field">
+                <label for="lead-message">Комментарий</label>
+                <textarea id="lead-message" name="message" placeholder="Укажите город и желаемый срок"></textarea>
+                <p class="error-message"></p>
+              </div>
+              <div class="field field--privacy">
+                <div class="field-checkbox">
+                  <input
+                    id="lead-privacy"
+                    name="privacy_consent"
+                    type="checkbox"
+                    value="yes"
+                    required
+                  />
+                  <label for="lead-privacy"
+                    >Согласен на обработку персональных данных в соответствии с
+                    <a href="/privacy/">политикой конфиденциальности</a></label
+                  >
+                </div>
+                <p class="error-message"></p>
+              </div>
+              <button class="btn" type="submit" data-default-label="Отправить заявку">Отправить заявку</button>
+              <p class="form-submit-hint">Перезвоним за 15 минут</p>
+              <p class="success-message" data-success-message></p>
+              <p class="error-message" data-form-error></p>
+            </form>
+          </div>
+        </div>
+        <div class="container section-tight">
+          <iframe
+            class="map-frame reveal"
+            src="https://yandex.ru/map-widget/v1/?ll=30.326111%2C60.010278&amp;z=17&amp;pt=30.326111%2C60.010278%2Cpm2rdm"
+            loading="lazy"
+            title="Офис на Яндекс.Картах"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <p>
+            <a class="btn-text" href="https://yandex.com/maps/-/CPrLM-L~" target="_blank" rel="noopener noreferrer">Открыть в Яндекс.Картах</a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <div data-site-footer></div>
+    <a class="floating-call" data-phone-href data-phone-display></a>
+  </body>
+</html>

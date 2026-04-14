@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оценка Групп | Оценка имущества по всей России</title>
+    <meta
+      name="description"
+      content="Оценка недвижимости, бизнеса, ущерба, оборудования и транспорта. Отчеты для банка, суда, нотариуса и бизнеса по всей России."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="/assets/js/site.js" defer></script>
+    <style id="design-system">
+      :root {
+        /* Color System extracted from @design-refs */
+        --primary: #36453B;
+        --secondary: #4D69BE;
+        --tertiary: #D65C5C;
+        --neutral-900: #222222;
+        --neutral-100: #F5F6F8;
+        --white: #FFFFFF;
+        --accent-gold: rgba(212, 175, 55, 0.9);
+        
+        /* Applying via existing CSS variables */
+        --bg: var(--neutral-100);
+        --surface: var(--white);
+        --surface-soft: #EAECEF;
+        --text: var(--neutral-900);
+        --muted: #6B7280;
+        --accent: var(--primary);
+        --accent-dark: #2A362E;
+        --border: #EAEAEA;
+        --border-strong: #D1D5DB;
+        --text-primary: var(--neutral-900);
+        --text-muted: var(--muted);
+        --footer-bg: var(--primary);
+        --danger: var(--tertiary);
+        
+        /* Typography overrides */
+        --font-heading: 'Noto Serif', serif;
+        --font-body: 'Inter', sans-serif;
+        
+        /* Spacing & Border Radius (from docs) */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        
+        /* Shadows based on design_requirements.md */
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.03);
+        --shadow-card-strong: 0 12px 24px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Global Reset for Typographic Elements */
+      body {
+        font-family: var(--font-body);
+        color: var(--text);
+        background: var(--bg);
+      }
+      h1, h2, h3, h4, h5, h6,
+      .brand-mark, .display-serif,
+      .quiz-question, .quiz-result-title {
+        font-family: var(--font-heading) !important;
+        letter-spacing: -0.02em;
+      }
+
+      /* Interactive element transitions */
+      a, button, .btn, .quiz-option, .step-card, .process-step {
+        transition: all 0.2s ease-in-out !important;
+      }
+
+      /* Button Styles */
+      .btn {
+        background-color: var(--primary) !important;
+        color: var(--accent-gold) !important;
+        border-radius: var(--radius-sm) !important;
+        height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn:hover {
+        background-color: var(--accent-dark) !important;
+        transform: scale(1.02);
+      }
+      .btn-secondary {
+        background-color: var(--surface) !important;
+        color: var(--text) !important;
+        border: 1px solid var(--border) !important;
+      }
+      .btn-secondary:hover {
+        border-color: var(--primary) !important;
+      }
+      .btn-text {
+        color: var(--primary) !important;
+      }
+
+      /* Generic Card Structure */
+      .card, .quiz-card, .review-card, .document-card, .audience-card, .trust-card {
+        border-radius: var(--radius-md) !important;
+        background: var(--surface);
+        box-shadow: var(--shadow-card) !important;
+        border: 1px solid var(--border) !important;
+      }
+      .card:hover, .quiz-card:hover, .review-card:hover, .document-card:hover, .audience-card:hover, .trust-card:hover {
+        box-shadow: var(--shadow-card-strong) !important;
+        transform: translateY(-4px);
+        border-color: var(--border) !important;
+      }
+
+      /* Service Grid Highlight */
+      .service-grid .card {
+        border-left: none !important;
+        background: #ffffff !important;
+        color: var(--text) !important;
+        transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease !important;
+      }
+      .service-grid .card h3,
+      .service-grid .card p,
+      .service-grid .card .btn-text {
+        transition: color 0.5s ease !important;
+      }
+      .service-grid .card:hover {
+        background: #1c2b1e !important;
+        color: #ffffff !important;
+        border-color: #1c2b1e !important;
+      }
+      .service-grid .card:hover h3,
+      .service-grid .card:hover .btn-text {
+        color: #ffffff !important;
+      }
+      .service-grid .card:hover p {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
+      .service-grid .card:hover a {
+        color: #ffffff !important;
+      }
+      .service-grid .card .icon-box {
+        background: #f0f0f0 !important;
+        color: #2d2d2d !important;
+        transition: background 0.4s ease !important;
+      }
+      .service-grid .card .icon-box svg {
+        color: #2d2d2d !important;
+        stroke: currentColor !important;
+        transition: color 0.4s ease !important;
+      }
+      .service-grid .card:hover .icon-box {
+        background: var(--accent) !important;
+      }
+      .service-grid .card:hover .icon-box svg {
+        color: #ffffff !important;
+        stroke: currentColor !important;
+      }
+
+      /* Process section — timeline cards */
+      .section-process {
+        background: var(--surface-soft);
+      }
+      .section-process .section-head {
+        max-width: 52ch;
+      }
+      .process-track {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 24px;
+      }
+      .process-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: flex-start;
+        margin: 0;
+        padding: 24px !important;
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        border-left: 3px solid var(--primary) !important;
+        border-radius: var(--radius-md) !important;
+        box-shadow: var(--shadow-card) !important;
+      }
+      .process-step:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card-strong) !important;
+        border-color: var(--border-strong) !important;
+        border-left-color: var(--primary) !important;
+      }
+      .process-step__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+        color: var(--white);
+        background: var(--primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .process-step__body h3 {
+        margin: 0 0 8px;
+        color: var(--text) !important;
+        font-size: 1.125rem;
+      }
+      .process-step__time {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 0 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(54, 69, 59, 0.1);
+        color: var(--accent-dark);
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      .process-step__body p {
+        margin: 0;
+        color: var(--muted) !important;
+        line-height: 1.6;
+      }
+
+      /* Focus states and Forms */
+      input, select, textarea {
+        border-color: var(--border) !important;
+        border-radius: var(--radius-sm) !important;
+      }
+      input, select {
+        height: 56px !important;
+        padding: 0 16px !important;
+      }
+      input:focus, select:focus, textarea:focus {
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 0 2px var(--accent-gold) !important;
+        outline: none;
+      }
+
+      /* Scroll Animation Refinement */
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Sticky Header Glassmorphism Overlay */
+      .site-header {
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.85) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+      }
+
+      /* Mobile First Responsive Breakpoints */
+      @media (min-width: 375px) {
+        .section { padding: 48px 0; }
+      }
+      @media (min-width: 768px) {
+        .section { padding: 64px 0; }
+        .process-track {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .section { padding: 96px 0; }
+        .process-track {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 24px;
+        }
+      }
+
+      /* Contacts section */
+      .section-contacts {
+        background: var(--surface);
+      }
+      .contacts-shell {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .contacts-shell .section-head {
+        max-width: 56ch;
+      }
+      .contacts-layout {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 768px) {
+        .contacts-layout {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: start;
+          gap: 40px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .contacts-layout {
+          gap: 48px;
+        }
+      }
+      .contacts-aside {
+        display: grid;
+        gap: 24px;
+      }
+      .contacts-meta {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+      }
+      .contacts-meta__item {
+        display: grid;
+        gap: 6px;
+        padding: 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+      }
+      .contacts-meta__label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .contacts-meta__value {
+        font-size: 1rem;
+        line-height: 1.55;
+        color: var(--text);
+      }
+      .contacts-meta__value a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .contacts-meta__value a:hover {
+        text-decoration: underline;
+      }
+      .contacts-minimap {
+        display: grid;
+        gap: 12px;
+      }
+      .contacts-minimap__title {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: 1.125rem;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .contacts-minimap__frame {
+        position: relative;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+        aspect-ratio: 16 / 10;
+        min-height: 200px;
+        background: var(--surface-soft);
+      }
+      .contacts-minimap__iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .contacts-minimap__link.btn-text {
+        align-self: start;
+      }
+      #contacts .contact-form {
+        height: fit-content;
+      }
+
+      /* Fixes: #2 Navbar Button Pulse */
+      .site-header .btn {
+        animation: pulseNavbarBtn 3s infinite;
+      }
+      @keyframes pulseNavbarBtn {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.04); }
+        100% { transform: scale(1); }
+      }
+
+      /* Fixes: #3 Trust Badges */
+      .stat-value {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: var(--accent) !important;
+      }
+
+      /* Fixes: Hero Centering & Quiz Extracted */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 800px !important;
+        margin: 0 auto;
+      }
+      .hero-actions, .hero-trust {
+        justify-content: center;
+      }
+      .section-quiz {
+        background: #F8F7F4;
+        padding: 80px 0;
+      }
+      .quiz-container {
+        max-width: 680px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 16px;
+      }
+
+      /* —— Hero quiz visual system (scoped) —— */
+      #hero-quiz[data-quiz] {
+        --accent: rgb(182, 138, 69);
+        --quiz-border: var(--border);
+        position: relative;
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 24px;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+        border: none !important;
+        transition: box-shadow 0.3s ease;
+      }
+      #hero-quiz[data-quiz]:hover {
+        transform: none !important;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08) !important;
+      }
+      @media (min-width: 768px) {
+        #hero-quiz[data-quiz] {
+          padding: 40px;
+        }
+      }
+      #hero-quiz[data-quiz] .quiz-intro {
+        margin-bottom: 24px;
+      }
+      #hero-quiz[data-quiz] .quiz-form {
+        position: relative;
+        min-height: 120px;
+      }
+      #hero-quiz[data-quiz] [data-quiz-progress-header] {
+        margin-bottom: 20px;
+      }
+      #hero-quiz[data-quiz] [data-quiz-progress-header].is-result .quiz-progress {
+        opacity: 0.85;
+      }
+      #hero-quiz[data-quiz] .quiz-progress-label {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-muted);
+        letter-spacing: 0.02em;
+      }
+      #hero-quiz[data-quiz] .quiz-progress {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 6px;
+        margin: 0;
+        height: 6px;
+      }
+      #hero-quiz[data-quiz] .quiz-progress-step {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 6px;
+        border-radius: 3px;
+        background: #e7e1d6;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+      #hero-quiz[data-quiz] .quiz-progress-step.is-active {
+        background: var(--accent);
+      }
+      #hero-quiz[data-quiz] .quiz-step {
+        display: none;
+        opacity: 0;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      #hero-quiz[data-quiz] .quiz-step.is-active {
+        display: grid;
+        opacity: 1;
+      }
+      @keyframes quizExitFwd {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+      }
+      @keyframes quizExitBack {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+      }
+      @keyframes quizEnterFwd {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes quizEnterBack {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-fwd {
+        animation: quizExitFwd 200ms ease forwards;
+      }
+      #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-back {
+        animation: quizExitBack 200ms ease forwards;
+      }
+      #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-fwd {
+        animation: quizEnterFwd 200ms ease forwards;
+      }
+      #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-back {
+        animation: quizEnterBack 200ms ease forwards;
+      }
+      #hero-quiz[data-quiz] .quiz-question {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 24px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      #hero-quiz[data-quiz] .quiz-options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      @media (min-width: 768px) {
+        #hero-quiz[data-quiz] .quiz-options {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+      }
+      #hero-quiz[data-quiz] .quiz-option {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        margin: 0;
+        padding: 20px 44px 20px 20px;
+        text-align: left;
+        border: 1px solid var(--quiz-border);
+        border-radius: 12px;
+        background: #fff;
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: none;
+        transform: none !important;
+      }
+      #hero-quiz[data-quiz] .quiz-option:hover,
+      #hero-quiz[data-quiz] .quiz-option:focus-visible {
+        border-color: var(--accent);
+        background: rgba(182, 138, 69, 0.04);
+        box-shadow: none;
+        transform: none !important;
+      }
+      #hero-quiz[data-quiz] .quiz-option:hover .quiz-option-icon,
+      #hero-quiz[data-quiz] .quiz-option:focus-visible .quiz-option-icon {
+        background: var(--accent);
+        color: #fff;
+      }
+      #hero-quiz[data-quiz] .quiz-option:hover .quiz-option-icon svg,
+      #hero-quiz[data-quiz] .quiz-option:focus-visible .quiz-option-icon svg {
+        stroke: #fff;
+      }
+      #hero-quiz[data-quiz] .quiz-option.is-selected {
+        border: 2px solid var(--accent);
+        padding: 19px 43px 19px 19px;
+        background: rgba(182, 138, 69, 0.06);
+        box-shadow: none;
+      }
+      #hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-icon {
+        background: var(--accent);
+        color: #fff;
+      }
+      #hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-icon svg {
+        stroke: #fff;
+      }
+      #hero-quiz[data-quiz] .quiz-option-check {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 22px;
+        text-align: center;
+        opacity: 0;
+        transform: scale(0.85);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        pointer-events: none;
+      }
+      #hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-check {
+        opacity: 1;
+        transform: scale(1);
+      }
+      #hero-quiz[data-quiz] .quiz-option-icon {
+        flex: 0 0 48px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0ede6;
+        border-radius: 10px;
+        color: var(--text-primary);
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      #hero-quiz[data-quiz] .quiz-option-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #hero-quiz[data-quiz] .quiz-option-body {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+      }
+      #hero-quiz[data-quiz] .quiz-option-title {
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+      #hero-quiz[data-quiz] .quiz-option-note {
+        font-size: 14px;
+        line-height: 1.45;
+        color: var(--text-muted);
+      }
+      #hero-quiz[data-quiz] .quiz-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 24px;
+      }
+      #hero-quiz[data-quiz] .quiz-nav .btn-text[data-quiz-back] {
+        align-self: flex-start;
+        margin: 0 0 8px;
+        padding: 0;
+        height: auto;
+        min-height: 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-muted) !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        text-decoration: none;
+      }
+      #hero-quiz[data-quiz] .quiz-nav .btn-text[data-quiz-back]:hover {
+        color: var(--text-primary) !important;
+        transform: none !important;
+      }
+      #hero-quiz[data-quiz] .quiz-step-result .quiz-result-panel {
+        padding: 0;
+        background: transparent;
+        border: none;
+        text-align: center;
+      }
+      #hero-quiz[data-quiz] .quiz-result-hero {
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      #hero-quiz[data-quiz] .quiz-result-check-icon {
+        width: 48px;
+        height: 48px;
+        color: var(--accent);
+      }
+      #hero-quiz[data-quiz] .quiz-result-check-icon svg {
+        width: 48px;
+        height: 48px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.6;
+      }
+      #hero-quiz[data-quiz] .quiz-result-heading {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif !important;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+      #hero-quiz[data-quiz] .quiz-result-title[data-quiz-result-title] {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif !important;
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+      #hero-quiz[data-quiz] .quiz-result-fit[data-quiz-result-fit] {
+        margin: 0;
+        max-width: 42ch;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      #hero-quiz[data-quiz] .quiz-result-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 0;
+      }
+      @media (min-width: 480px) {
+        #hero-quiz[data-quiz] .quiz-result-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+      }
+      #hero-quiz[data-quiz] .quiz-result-card {
+        margin: 0;
+        padding: 12px 20px;
+        background: #f0ede6;
+        border: none;
+        border-radius: 8px;
+        text-align: center;
+      }
+      #hero-quiz[data-quiz] .quiz-result-card .small-label {
+        font-size: 11px;
+        margin-bottom: 6px;
+        color: var(--text-muted);
+      }
+      #hero-quiz[data-quiz] .quiz-result-value {
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.35;
+      }
+      #hero-quiz[data-quiz] .quiz-result-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 24px 0;
+      }
+      #hero-quiz[data-quiz] .partial-email-form {
+        margin-top: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        text-align: left;
+      }
+      #hero-quiz[data-quiz] .partial-email-form > p {
+        margin: 0 0 16px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        line-height: 1.45;
+      }
+      #hero-quiz[data-quiz] #partial-email-error {
+        display: none;
+        margin-top: 4px;
+        font-size: 14px;
+        color: var(--danger);
+      }
+      #hero-quiz[data-quiz] .quiz-nav-result {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      #hero-quiz[data-quiz] .quiz-nav-result .btn-text {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: var(--text-muted) !important;
+      }
+      #hero-quiz[data-quiz] .quiz-nav-result .btn-text:hover {
+        color: var(--text-primary) !important;
+      }
+      #hero-quiz[data-quiz] .quiz-result-card-docs {
+        grid-column: 1 / -1;
+        text-align: left;
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+      #hero-quiz[data-quiz] .quiz-email-success[hidden] {
+        display: none !important;
+      }
+      #hero-quiz[data-quiz] #partial-email-input {
+        width: 100%;
+        height: 48px !important;
+        padding: 0 14px !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 8px !important;
+        font-size: 1rem;
+      }
+      #hero-quiz[data-quiz] #btn-get-full-result {
+        width: 100%;
+        height: 52px;
+        margin-top: 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        background: var(--accent) !important;
+        color: #fff !important;
+        border: none !important;
+        transition: opacity 0.3s ease;
+      }
+      #hero-quiz[data-quiz] #btn-get-full-result:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      #hero-quiz[data-quiz] .quiz-email-success {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+        padding: 16px;
+        text-align: center;
+        animation: quizEmailSuccessIn 0.3s ease forwards;
+      }
+      #hero-quiz[data-quiz] .quiz-email-success.is-visible {
+        display: flex;
+      }
+      @keyframes quizEmailSuccessIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      #hero-quiz[data-quiz] .quiz-email-success__icon {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #22c55e;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: center;
+      }
+      #hero-quiz[data-quiz] .quiz-email-success__text {
+        margin: 0;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+      #hero-quiz[data-quiz] .quiz-contact .btn[type="submit"] {
+        width: 100%;
+        height: 52px;
+        margin-top: 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        background: var(--accent) !important;
+        color: #fff !important;
+        transition: opacity 0.3s ease;
+      }
+      #hero-quiz[data-quiz] .quiz-contact .btn[type="submit"]:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      /* Fixes: Audience Section Layout & Animation */
+      .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      @media (min-width: 768px) {
+        .audience-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      #audience .reveal {
+        transform: translateY(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
+      }
+      #audience .reveal.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .audience-card {
+        border-left: 3px solid transparent !important;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease, border-left-color 0.2s ease, box-shadow 0.2s ease !important;
+      }
+      .audience-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .audience-card:hover {
+        border-left-color: var(--accent) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06) !important;
+      }
+      
+      #audience .section-head h2, #audience .section-head p {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
+      }
+      #audience .section-head h2.visible, #audience .section-head p.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-fwd,
+        #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-back,
+        #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-fwd,
+        #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-back,
+        #hero-quiz[data-quiz] .quiz-email-success {
+          animation: none !important;
+        }
+
+        #hero-quiz[data-quiz] .quiz-step,
+        #hero-quiz[data-quiz] .quiz-option,
+        #hero-quiz[data-quiz] .quiz-option-check,
+        #hero-quiz[data-quiz] .quiz-progress-step,
+        #hero-quiz[data-quiz] .quiz-option-icon,
+        #full-result-content,
+        #full-result-contact,
+        .audience-card,
+        #audience .reveal,
+        #audience .section-head h2,
+        #audience .section-head p {
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+    <div data-site-header></div>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Федеральная оценочная практика</span>
+            <h1>Оценка имущества по всей России для банка, суда, нотариуса и бизнеса</h1>
+            <p>
+              Квартиры, дома, коммерческая недвижимость, бизнес, ущерб, оборудование и транспорт. Сразу называем стоимость, срок подготовки отчета и список документов.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#hero-quiz">Рассчитать стоимость</a>
+              <a class="btn-secondary" href="/contacts/#lead-form">Получить консультацию</a>
+            </div>
+            <div class="hero-trust">
+              <span class="chip">СРО</span>
+              <span class="chip">Страхование ответственности</span>
+              <span class="chip">Отчеты принимают банк, суд и нотариус</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-quiz">
+        <div class="quiz-container">
+          <div class="quiz-card reveal" id="hero-quiz" data-quiz>
+            <div class="quiz-intro">
+              <span class="eyebrow">Экспресс-квиз</span>
+              <h3>Подскажем стоимость, срок и документы за 1 минуту</h3>
+              <p class="lead">Ответьте на 3 вопроса и сразу увидите ориентир по вашей задаче.</p>
+            </div>
+
+            <div class="quiz-progress-header" data-quiz-progress-header>
+              <p class="quiz-progress-label" id="quiz-progress-label">Вопрос 1 из 3</p>
+              <div class="quiz-progress" aria-hidden="true">
+                <span class="quiz-progress-step is-active" data-quiz-progress-step></span>
+                <span class="quiz-progress-step" data-quiz-progress-step></span>
+                <span class="quiz-progress-step" data-quiz-progress-step></span>
+                <span class="quiz-progress-step" data-quiz-progress-step></span>
+              </div>
+            </div>
+
+            <form
+              class="field-stack quiz-form"
+              data-lead-form
+              data-quiz-form
+              data-reset-on-success="false"
+              data-success-message-text="Спасибо. Мы получили запрос и вернемся с подробностями в рабочее время."
+              data-webhook="YOUR_N8N_WEBHOOK_URL"
+            >
+              <input type="hidden" name="object_type" required />
+              <input type="hidden" name="valuation_purpose" required />
+              <input type="hidden" name="region_scope" required />
+              <input type="hidden" name="estimated_price" />
+              <input type="hidden" name="estimated_timeline" />
+              <input type="hidden" name="recommended_documents" />
+              <input type="hidden" name="report_fit" />
+              <input type="hidden" name="message" />
+              <input type="hidden" name="source_page" value="hero-quiz-home" />
+
+              <section class="quiz-step is-active" data-quiz-step="0">
+                <p class="quiz-question">Что нужно оценить?</p>
+                <div class="quiz-options">
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="object_type" data-value="Квартира или дом">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 10.5 12 4l9 6.5" /><path d="M5 10v10h14V10" /><path d="M10 20v-6h4v6" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Квартира или дом</span>
+                      <span class="quiz-option-note">Ипотека, наследство, раздел имущества, сделка</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="object_type" data-value="Коммерческая недвижимость">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="2" width="16" height="20" rx="2" /><path d="M4 10h16" /><path d="M9 6h1" /><path d="M15 6h1" /><path d="M9 14h1" /><path d="M15 14h1" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Коммерческая недвижимость</span>
+                      <span class="quiz-option-note">Офисы, склады, торговые и производственные площади</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="object_type" data-value="Бизнес или доля">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="18" height="12" rx="2" /><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><path d="M12 13v2" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Бизнес или доля</span>
+                      <span class="quiz-option-note">Корпоративные процедуры, продажа, бухгалтерия</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="object_type" data-value="Ущерб">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Ущерб</span>
+                      <span class="quiz-option-note">Залив, пожар, ДТП, спор со страховой или в суде</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="object_type" data-value="Оборудование или транспорт">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 11l1.5-3h11L19 11" /><path d="M5 11v5a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-5" /><circle cx="7.5" cy="16.5" r="1.5" /><circle cx="16.5" cy="16.5" r="1.5" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Оборудование или транспорт</span>
+                      <span class="quiz-option-note">Авто, спецтехника, станки, производственные активы</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                </div>
+              </section>
+
+              <section class="quiz-step" data-quiz-step="1">
+                <p class="quiz-question">Для какой цели нужна оценка?</p>
+                <div class="quiz-options">
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="valuation_purpose" data-value="Банк или ипотека">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-6h6v6" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Банк или ипотека</span>
+                      <span class="quiz-option-note">Отчет для банка, кредита или рефинансирования</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="valuation_purpose" data-value="Суд или спор">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18" /><path d="M5 10h14" /><path d="M8 7h8" /><circle cx="12" cy="14" r="2" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Суд или спор</span>
+                      <span class="quiz-option-note">Раздел имущества, взыскание, процессуальная позиция</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="valuation_purpose" data-value="Нотариус или наследство">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M8 13h8" /><path d="M8 17h5" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Нотариус или наследство</span>
+                      <span class="quiz-option-note">Оформление наследства, долей и нотариальных действий</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="valuation_purpose" data-value="Сделка или продажа">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 3h5v5" /><path d="M8 3H3v5" /><path d="M12 22v-8" /><path d="M8 12 4 8l8-8 8 8-4 4" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Сделка или продажа</span>
+                      <span class="quiz-option-note">Понять рыночный ориентир перед продажей или покупкой</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="valuation_purpose" data-value="Бизнес-задача или бухгалтерия">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v18h18" /><path d="M7 16l4-4 4 4 5-5" /><path d="M7 12h.01" /><path d="M17 8h.01" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Бизнес-задача или бухгалтерия</span>
+                      <span class="quiz-option-note">Корпоративные процедуры, учет, кредитование, аудит</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                </div>
+                <div class="quiz-nav">
+                  <button class="btn-text" type="button" data-quiz-back>Назад</button>
+                </div>
+              </section>
+
+              <section class="quiz-step" data-quiz-step="2">
+                <p class="quiz-question">Где находится объект?</p>
+                <div class="quiz-options">
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="region_scope" data-value="Москва и Московская область">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Москва и Московская область</span>
+                      <span class="quiz-option-note">Стандартный ориентир по сроку и стоимости</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="region_scope" data-value="Санкт-Петербург и Ленинградская область">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Санкт-Петербург и Ленинградская область</span>
+                      <span class="quiz-option-note">Работаем дистанционно и с локальным выездом при необходимости</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="region_scope" data-value="Другой регион России">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3a15 15 0 0 1 0 18" /><path d="M12 3a15 15 0 0 0 0 18" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Другой регион России</span>
+                      <span class="quiz-option-note">Подключаем региональные задачи по всей стране</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                  <button class="quiz-option" type="button" data-quiz-answer data-quiz-field="region_scope" data-value="Нужен выезд на объект">
+                    <span class="quiz-option-icon" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 17h4" /><path d="M5 17H3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h2" /><path d="M19 8h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2" /><circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" /><path d="M14 17V6l-3-3-3 3v11" /></svg
+                    ></span>
+                    <span class="quiz-option-body">
+                      <span class="quiz-option-title">Нужен выезд на объект</span>
+                      <span class="quiz-option-note">Если нужен осмотр, срок и бюджет будут выше</span>
+                    </span>
+                    <span class="quiz-option-check" aria-hidden="true">✓</span>
+                  </button>
+                </div>
+                <div class="quiz-nav">
+                  <button class="btn-text" type="button" data-quiz-back>Назад</button>
+                </div>
+              </section>
+
+              <section class="quiz-step quiz-step-result" data-quiz-step="3">
+                <div class="quiz-result-panel">
+                  <div class="quiz-result-hero">
+                    <div class="quiz-result-check-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="12" cy="12" r="9" /><path d="m9 12 2 2 4-4" /></svg>
+                    </div>
+                    <h2 class="quiz-result-heading">Ваш ориентир готов</h2>
+                    <p class="quiz-result-title" data-quiz-result-title></p>
+                    <p class="quiz-result-fit" data-quiz-result-fit></p>
+                  </div>
+
+                  <div class="quiz-result-grid">
+                    <article class="quiz-result-card">
+                      <span class="small-label">Ориентир по стоимости</span>
+                      <strong class="quiz-result-value" data-quiz-price></strong>
+                    </article>
+                    <article class="quiz-result-card">
+                      <span class="small-label">Срок подготовки</span>
+                      <strong class="quiz-result-value" data-quiz-timeline></strong>
+                    </article>
+                  </div>
+
+                  <hr class="quiz-result-divider" />
+
+                  <!-- STATE 1/2: email exchange for full result -->
+                  <div class="partial-email-form" id="partial-email-form">
+                    <p>Полный расчёт с перечнем документов — на вашу почту</p>
+                    <div class="field">
+                      <input id="partial-email-input" type="email" placeholder="Ваш email" required />
+                      <p class="error-message" id="partial-email-error">Введите корректный email</p>
+                    </div>
+                    <button class="btn" type="button" id="btn-get-full-result">Получить полный расчёт</button>
+                  </div>
+
+                  <div id="full-result-success" class="quiz-email-success" hidden>
+                    <span class="quiz-email-success__icon" aria-hidden="true">✓</span>
+                    <p class="quiz-email-success__text"></p>
+                  </div>
+
+                  <!-- STATE 2: Full result hidden initially -->
+                  <div id="full-result-content" style="display: none; opacity: 0; transform: translateY(10px);">
+                    <div class="quiz-result-grid" style="margin-top: 24px;">
+                      <article class="quiz-result-card quiz-result-card-docs" style="grid-column: 1 / -1;">
+                        <span class="small-label">Что подготовить</span>
+                        <ul class="quiz-doc-list" data-quiz-doc-list></ul>
+                      </article>
+                    </div>
+
+                    <ul class="quiz-answer-summary" data-quiz-summary></ul>
+                  </div>
+                </div>
+
+                <div class="quiz-contact" id="full-result-contact" style="display: none; opacity: 0; transform: translateY(10px);">
+                  <div class="field">
+                    <label for="hero-quiz-phone">Телефон для консультации (опционально)</label>
+                    <input id="hero-quiz-phone" name="phone" type="tel" autocomplete="tel" />
+                    <p class="error-message"></p>
+                  </div>
+                  <!-- Email hidden because we already collected it -->
+                  <input type="hidden" id="hero-quiz-email" name="email" />
+
+                  <div class="field field--privacy">
+                    <div class="field-checkbox">
+                      <input
+                        id="hero-quiz-privacy"
+                        name="privacy_consent"
+                        type="checkbox"
+                        value="yes"
+                        required
+                      />
+                      <label for="hero-quiz-privacy"
+                        >Согласен на обработку персональных данных в соответствии с
+                        <a href="/privacy/">политикой конфиденциальности</a></label
+                      >
+                    </div>
+                    <p class="error-message"></p>
+                  </div>
+
+                  <button class="btn" type="submit" data-default-label="Связаться со специалистом">Связаться со специалистом</button>
+                  <p class="form-submit-hint">Перезвоним за 15 минут</p>
+                  <p class="success-message" data-success-message></p>
+                  <p class="error-message" data-form-error></p>
+                  <div class="quiz-nav quiz-nav-result">
+                    <button class="btn-text" type="button" data-quiz-back>Изменить ответы</button>
+                    <button class="btn-text" type="button" data-quiz-restart>Пройти заново</button>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container stats-grid">
+          <article class="stat-card reveal">
+            <div class="stat-value">12+</div>
+            <p class="stat-label">лет практики в оценке имущества и активов</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-value">1500+</div>
+            <p class="stat-label">отчетов для частных клиентов и бизнеса</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-value">30 мин</div>
+            <p class="stat-label">на первичный ответ в рабочее время</p>
+          </article>
+          <article class="stat-card reveal">
+            <div class="stat-value">Россия</div>
+            <p class="stat-label">работаем по всей стране с региональными задачами</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="audience">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Маршрут клиента</span>
+            <h2>Сразу ведем по понятному сценарию</h2>
+            <p>На первом экране посетитель видит свой путь: частная задача или задача бизнеса. Дальше переводим в нужную услугу без общего шума.</p>
+          </div>
+          <div class="audience-grid">
+            <article class="audience-card reveal">
+              <h3>Мне нужна оценка для личной задачи</h3>
+              <p>Ипотека, наследство, раздел имущества, нотариус, суд, ущерб после залива или ДТП.</p>
+              <a class="btn-text" href="/services/real-estate/">Перейти к частным задачам</a>
+            </article>
+            <article class="audience-card reveal">
+              <h3>Мне нужна оценка для бизнеса</h3>
+              <p>Коммерческие объекты, доли и бизнес, оборудование, кредитование, сделки, корпоративные процедуры.</p>
+              <a class="btn-text" href="/services/business-valuation/">Перейти к бизнес-задачам</a>
+            </article>
+            <article class="audience-card reveal">
+              <h3>Мне нужна срочная оценка</h3>
+              <p>Жёсткий дедлайн, суд завтра или банк ждёт документы сегодня. Работаем в ускоренном режиме.</p>
+              <a class="btn-text" href="#urgent">Перейти к срочным задачам</a>
+            </article>
+            <article class="audience-card audience-card-help reveal">
+              <h3>Не знаю с чего начать</h3>
+              <p>Объясните ситуацию — сами определим тип оценки, нужные документы и реальный срок.</p>
+              <a class="btn-text" href="#contacts">Получить бесплатную консультацию</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Основные направления</span>
+            <h2>Ключевые услуги без универсальных обещаний</h2>
+            <p>Каждое направление оформлено как отдельная посадочная страница, чтобы клиент видел только нужный ему сценарий и доверительные аргументы.</p>
+          </div>
+          <div class="service-grid">
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13V10.5"/><path d="M10 20v-5h4v5"/></svg></div>
+              <h3>Оценка недвижимости</h3>
+              <p>Квартиры, дома, земельные участки и нежилые помещения для банка, суда, нотариуса и сделки.</p>
+              <a class="btn-text" href="/services/real-estate/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16"/><path d="M6 16V9"/><path d="M12 16V5"/><path d="M18 16v-3"/></svg></div>
+              <h3>Оценка бизнеса и долей</h3>
+              <p>Для купли-продажи, кредитования, корпоративных процедур, налоговых и судебных задач.</p>
+              <a class="btn-text" href="/services/business-valuation/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></div>
+              <h3>Коммерческая недвижимость</h3>
+              <p>Офисы, склады, торговые помещения, производственные площадки и имущественные комплексы.</p>
+              <a class="btn-text" href="/services/commercial-property/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18"/><path d="M4 7h16"/><path d="M6 7 4 21"/><path d="M18 7l2 14"/></svg></div>
+              <h3>Оценка для суда</h3>
+              <p>Отчеты и экспертная поддержка по имущественным спорам, разделу имущества и взысканию убытков.</p>
+              <a class="btn-text" href="/services/court-valuation/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 5h14v14H5z"/><path d="M8 9h8"/><path d="M8 13h8"/><path d="M8 17h5"/></svg></div>
+              <h3>Наследство и нотариат</h3>
+              <p>Подготовка отчетов для нотариусов, наследственных дел, раздела долей и оформления прав.</p>
+              <a class="btn-text" href="/services/notary-inheritance/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 16h18"/><path d="M6 16l2-6h8l2 6"/><path d="M6 10 4 7"/><path d="M18 10l2-3"/></svg></div>
+              <h3>Оценка ущерба</h3>
+              <p>Отчеты по заливам, пожарам, ДТП и иным повреждениям имущества для переговоров, претензий и суда.</p>
+              <a class="btn-text" href="/services/damage-valuation/">Открыть страницу</a>
+            </article>
+            <article class="card reveal">
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 15h18"/><path d="M6 15V9h12v6"/><path d="M7 18h.01"/><path d="M17 18h.01"/></svg></div>
+              <h3>Транспорт и оборудование</h3>
+              <p>Оценка техники, спецтранспорта, станков и производственных активов для бизнеса и спорных ситуаций.</p>
+              <a class="btn-text" href="/services/equipment-transport/">Открыть страницу</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container story-grid">
+          <div class="media-card reveal">
+            <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80" alt="Совещание в офисе оценочной компании" />
+          </div>
+          <div class="reveal">
+            <div class="section-head">
+              <span class="eyebrow">О компании</span>
+              <h2>Независимая оценка с понятным процессом и юридической опорой</h2>
+              <p>Мы ведем частные и корпоративные задачи так, чтобы клиент не тратил время на расшифровку требований банка, суда или нотариуса. Сначала уточняем цель отчета, затем собираем документы и выдаем результат в согласованный срок.</p>
+            </div>
+            <ul class="detail-list">
+              <li>Практика по жилой, коммерческой и промышленной недвижимости</li>
+              <li>Отдельный поток для корпоративных задач и оценки бизнеса</li>
+              <li>Отчеты и образцы документов доступны для предварительного просмотра</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Почему доверяют</span>
+            <h2>Доверие строится на понятных доказательствах</h2>
+            <p>Сначала показываем документы и факты, затем говорим о подходе. Это снимает главный страх клиента: что отчет не примут по месту назначения.</p>
+          </div>
+          <div class="trust-grid">
+            <article class="trust-card reveal">
+              <h3>Работа по всей России</h3>
+              <p>Подключаем региональные задачи без привязки к одному городу. Учитываем локальные требования и сроки.</p>
+            </article>
+            <article class="trust-card reveal">
+              <h3>Документы и СРО</h3>
+              <p>Показываем подтверждающие документы, квалификацию и образцы отчетов до старта проекта.</p>
+            </article>
+            <article class="trust-card reveal">
+              <h3>Форматы для практики</h3>
+              <p>Сразу уточняем, для кого нужен отчет: банк, суд, нотариус, страховая компания или корпоративная процедура.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-process" id="process">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Процесс</span>
+            <h2>Четыре шага без лишних итераций</h2>
+            <p>От заявки до передачи отчета — одна цепочка: вы знаете, что происходит на каждом этапе.</p>
+          </div>
+          <ol class="process-track" aria-label="Этапы работы">
+            <li class="process-step step-card reveal">
+              <span class="process-step__badge" aria-hidden="true">1</span>
+              <div class="process-step__body">
+                <h3>Заявка</h3>
+                <p class="process-step__time">~15 мин</p>
+                <p>Получаем краткое описание задачи и контакт. При необходимости сразу созваниваемся.</p>
+              </div>
+            </li>
+            <li class="process-step step-card reveal">
+              <span class="process-step__badge" aria-hidden="true">2</span>
+              <div class="process-step__body">
+                <h3>Проверка сценария</h3>
+                <p class="process-step__time">1 день</p>
+                <p>Фиксируем цель оценки, адресата отчета, комплект документов и реалистичный срок.</p>
+              </div>
+            </li>
+            <li class="process-step step-card reveal">
+              <span class="process-step__badge" aria-hidden="true">3</span>
+              <div class="process-step__body">
+                <h3>Документы и осмотр</h3>
+                <p class="process-step__time">1-3 дня</p>
+                <p>Собираем документы, организуем выезд специалиста или удаленную часть работ, если это уместно.</p>
+              </div>
+            </li>
+            <li class="process-step step-card reveal">
+              <span class="process-step__badge" aria-hidden="true">4</span>
+              <div class="process-step__body">
+                <h3>Отчет и передача</h3>
+                <p class="process-step__time">1-2 дня</p>
+                <p>Готовим отчет и передаем в формате, который ожидают вы и принимающая сторона.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="documents">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Документы</span>
+            <h2>Сначала показываем подтверждение квалификации</h2>
+            <p>На главной странице выносены ключевые документы. Полный комплект и образцы отчетов находятся в отдельном разделе.</p>
+          </div>
+          <div class="documents-grid">
+            <article class="document-card reveal">
+              <figure><img src="/files/sro_membershipwebp.webp" alt="Свидетельство о членстве в СРО" /></figure>
+              <h3>Членство в СРО</h3>
+              <p>Подтверждение профессионального статуса и права на ведение оценочной деятельности.</p>
+              <a class="btn-text" href="/documents/">Смотреть раздел документов</a>
+            </article>
+            <article class="document-card reveal">
+              <figure><img src="/files/Business%20Assessment%20Qualification%20Certificate.webp" alt="Квалификационный документ по оценке бизнеса" /></figure>
+              <h3>Квалификация по бизнесу</h3>
+              <p>Для задач, где нужен отдельный уровень аргументации: доли, активы, сделки и корпоративные процедуры.</p>
+              <a class="btn-text" href="/files/example_project.pdf">Открыть образец отчета</a>
+            </article>
+            <article class="document-card reveal">
+              <figure><img src="/files/diploma.webp" alt="Диплом специалиста по оценке" /></figure>
+              <h3>Образование и специализация</h3>
+              <p>Комплект подтверждающих документов для банков, судов и корпоративных клиентов.</p>
+              <a class="btn-text" href="/files/price.pdf">Скачать прайс</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reviews">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Отзывы и кейсы</span>
+            <h2>Показываем реальные отзывы и короткие рабочие кейсы</h2>
+            <p>Вместо обезличенных цитат используем реальные скриншоты отзывов и краткие описания задач, в которых важны сроки и приемка отчета.</p>
+          </div>
+          <div class="review-grid">
+            <article class="review-card reveal">
+              <figure><img src="/files/feedbacks/9122780_250_q60.webp" alt="Отзыв клиента о работе компании" /></figure>
+              <h3>Ипотечная оценка квартиры</h3>
+              <p>Клиенту нужно было уложиться в срок банка без повторной отправки документов.</p>
+            </article>
+            <article class="review-card reveal">
+              <figure><img src="/files/feedbacks/9667779_250_q60.webp" alt="Отзыв клиента о подготовке отчета" /></figure>
+              <h3>Наследственное дело</h3>
+              <p>Подготовили отчет для нотариуса и заранее проверили комплект документов до выезда.</p>
+            </article>
+            <article class="review-card reveal">
+              <figure><img src="/files/feedbacks/10068560_250_q60.webp" alt="Отзыв о бизнес-оценке" /></figure>
+              <h3>Корпоративная задача</h3>
+              <p>Оценка бизнеса для переговоров и внутренних процедур без публичного раскрытия деталей проекта.</p>
+            </article>
+          </div>
+          <div class="section-tight">
+            <a class="btn" href="/reviews/">Посмотреть все отзывы и кейсы</a>
+          </div>
+          <div class="partners-strip reveal" aria-label="Банки и партнеры">
+            <p class="partners-strip__title">Отчеты обычно принимают</p>
+            <div class="partners-strip__grid">
+              <span class="partners-strip__item">СберБанк</span>
+              <span class="partners-strip__item">ВТБ</span>
+              <span class="partners-strip__item">Альфа-Банк</span>
+              <span class="partners-strip__item">Газпромбанк</span>
+              <span class="partners-strip__item">Россельхозбанк</span>
+              <span class="partners-strip__item">Нотариальные конторы и суды РФ</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cases">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Кейсы и примеры отчетов</span>
+            <h2>Структурированные примеры задач</h2>
+            <p>Показываем, с какими вводными приходят клиенты, какую цель ставят и в какой срок получают рабочий отчет.</p>
+          </div>
+          <div class="case-grid">
+            <article class="case-card reveal">
+              <h3>Квартира для ипотечной сделки</h3>
+              <p>Клиенту нужно было подтвердить рыночную стоимость объекта под требования банка без повторной подачи документов.</p>
+              <div class="case-card__meta">
+                <span class="case-card__badge">Объект: квартира</span>
+                <span class="case-card__badge">Цель: ипотека</span>
+                <span class="case-card__badge">Срок: 2 рабочих дня</span>
+              </div>
+              <span class="case-card__status">Принято банком</span>
+            </article>
+            <article class="case-card reveal">
+              <h3>Коммерческое помещение для суда</h3>
+              <p>Собственнику требовался отчет для имущественного спора с учетом даты оценки и процессуального дедлайна.</p>
+              <div class="case-card__meta">
+                <span class="case-card__badge">Объект: коммерческая недвижимость</span>
+                <span class="case-card__badge">Цель: судебный спор</span>
+                <span class="case-card__badge">Срок: 4 рабочих дня</span>
+              </div>
+              <span class="case-card__status">Использовано в суде</span>
+            </article>
+            <article class="case-card reveal">
+              <h3>Доля в бизнесе для переговоров</h3>
+              <p>Подготовили оценку доли для корпоративных переговоров и внутреннего согласования справедливого диапазона цены.</p>
+              <div class="case-card__meta">
+                <span class="case-card__badge">Объект: доля в бизнесе</span>
+                <span class="case-card__badge">Цель: корпоративная процедура</span>
+                <span class="case-card__badge">Срок: 8 рабочих дней</span>
+              </div>
+              <span class="case-card__status">Принято сторонами сделки</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container cta-grid">
+          <div class="cta-banner reveal">
+            <span class="eyebrow">Федеральный охват</span>
+            <h2>Работаем по всей России</h2>
+            <p>Оставьте заявку, и специалист скажет стоимость, срок подготовки отчета и что потребуется именно под вашу задачу.</p>
+          </div>
+          <div class="cta-banner reveal">
+            <h3>Что получите после первого контакта</h3>
+            <ul class="check-list">
+              <li>Понимание, подходит ли наша оценка под вашу цель</li>
+              <li>Ориентир по сроку и цене без длинного брифа</li>
+              <li>Список документов без юридического перегруза</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-faq" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">Вопросы и ответы</span>
+            <h2 id="faq-heading">Частые вопросы об оценке</h2>
+            <p>
+              Кратко по цене, документам, срокам и формату отчёта. Если вашей ситуации нет в списке — напишите или позвоните: подскажем по конкретной задаче.
+            </p>
+          </div>
+          <div class="faq-list" data-faq-accordion>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">Сколько стоит оценка и от чего зависит цена?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Стоимость зависит от типа объекта, цели отчёта (банк, суд, нотариус, сделка), региона и необходимости выезда. На главной странице экспресс-квиз даёт ориентир по диапазону; окончательную сумму и срок фиксируем после краткого уточнения задачи — без навязанных доплат «по факту».
+                </p>
+              </div>
+            </div>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">Какие документы нужны для отчёта?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Обычно нужны правоустанавливающие документы на объект, паспортные данные заказчика и краткое описание цели оценки. Для бизнеса, ущерба или суда список шире: заранее скажем, что запросить у банка, в реестре или у страховой, чтобы не собирать лишнего.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">За какой срок готовится отчёт?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Типичный срок для стандартных задач — от нескольких рабочих дней; сложные объекты, бизнес или суд могут потребовать больше времени. Срок озвучиваем до старта работ и согласуем с вашим дедлайном (банк, суд, сделка).
+                </p>
+              </div>
+            </div>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">Примут ли отчёт в банке или в суде?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Отчёт готовится с учётом целевого адресата: требований кредитной организации, процессуального законодательства или нотариата. Мы уточняем формат до начала работ; при необходимости подскажем, как согласовать детали с принимающей стороной.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">Можно ли ускорить подготовку отчёта?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Да, при сжатых сроках обсуждаем ускоренный режим: что реально успеть с учётом осмотра, документов и согласований. Срочность влияет на стоимость — проговариваем это до старта, чтобы не было сюрпризов.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item reveal" data-faq-item>
+              <button type="button" class="faq-trigger" data-faq-trigger aria-expanded="false">
+                <span class="faq-trigger__text">Можно ли оформить заказ удалённо?</span>
+                <span class="faq-trigger__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-panel" data-faq-panel hidden>
+                <p>
+                  Да. Заявку и документы можно передать онлайн; по многим задачам работаем дистанционно по всей России. Выезд специалиста организуем, когда без осмотра нельзя обойтись — заранее согласуем время и зону.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-contacts" id="contacts">
+        <div class="container contacts-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Контакты</span>
+            <h2>Свяжитесь удобным способом</h2>
+            <p>
+              Срочный вопрос — звоните. Несколько объектов или детальный сценарий — оставьте заявку: ответим в рабочее время и согласуем следующий шаг.
+            </p>
+          </div>
+          <div class="contacts-layout">
+            <aside class="contacts-aside">
+              <ul class="contacts-meta" role="list">
+                <li class="contacts-meta__item reveal">
+                  <span class="contacts-meta__label">Телефон</span>
+                  <a class="contacts-meta__value" data-phone-href data-phone-display href="tel:+78126404446">+7 (812) 640-44-46</a>
+                </li>
+                <li class="contacts-meta__item reveal">
+                  <span class="contacts-meta__label">Email</span>
+                  <a class="contacts-meta__value" href="mailto:info@ocenka-group.ru">info@ocenka-group.ru</a>
+                </li>
+                <li class="contacts-meta__item reveal">
+                  <span class="contacts-meta__label">Адрес офиса</span>
+                  <span class="contacts-meta__value">Санкт-Петербург, проспект Энгельса, 33к1, офис 502А</span>
+                </li>
+                <li class="contacts-meta__item reveal">
+                  <span class="contacts-meta__label">Режим</span>
+                  <span class="contacts-meta__value">Пн–Пт с 09:00 до 19:00. Срочные обращения — по телефону вне графика при возможности.</span>
+                </li>
+                <li class="contacts-meta__item reveal">
+                  <span class="contacts-meta__label">Мессенджер</span>
+                  <a class="contacts-meta__value" data-whatsapp-href>Написать в WhatsApp</a>
+                </li>
+              </ul>
+              <div class="contacts-minimap reveal">
+                <h3 class="contacts-minimap__title">Офис на карте</h3>
+                <div class="contacts-minimap__frame">
+                  <iframe
+                    class="contacts-minimap__iframe"
+                    src="https://yandex.ru/map-widget/v1/?ll=30.326111%2C60.010278&amp;z=17&amp;pt=30.326111%2C60.010278%2Cpm2rdm"
+                    loading="lazy"
+                    title="Офис на Яндекс.Картах"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+                <a
+                  class="btn-text contacts-minimap__link"
+                  href="https://yandex.com/maps/-/CPrLM-L~"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Открыть в Яндекс.Картах</a>
+              </div>
+            </aside>
+            <div class="contact-form reveal" id="lead-form">
+              <h3>Короткая заявка</h3>
+              <form class="field-stack" data-lead-form data-webhook="YOUR_N8N_WEBHOOK_URL">
+                <div class="field">
+                  <label for="contact-name">Имя</label>
+                  <input id="contact-name" name="name" type="text" autocomplete="name" required />
+                  <p class="error-message"></p>
+                </div>
+                <div class="field">
+                  <label for="contact-phone">Телефон</label>
+                  <input id="contact-phone" name="phone" type="tel" autocomplete="tel" required />
+                  <p class="error-message"></p>
+                </div>
+                <div class="field">
+                  <label for="contact-object">Тип объекта</label>
+                  <select id="contact-object" name="object_type" required>
+                    <option value="">Выберите вариант</option>
+                    <option value="Жилая недвижимость">Жилая недвижимость</option>
+                    <option value="Коммерческая недвижимость">Коммерческая недвижимость</option>
+                    <option value="Бизнес">Бизнес</option>
+                    <option value="Ущерб">Ущерб</option>
+                    <option value="Оборудование или транспорт">Оборудование или транспорт</option>
+                  </select>
+                  <p class="error-message"></p>
+                </div>
+                <div class="field">
+                  <label for="contact-valuation-purpose">Цель оценки</label>
+                  <select id="contact-valuation-purpose" name="valuation_purpose" required>
+                    <option value="">Выберите цель</option>
+                    <option value="Банк или ипотека">Банк или ипотека</option>
+                    <option value="Суд или спор">Суд или спор</option>
+                    <option value="Нотариус или наследство">Нотариус или наследство</option>
+                    <option value="Сделка или продажа">Сделка или продажа</option>
+                    <option value="Бизнес-задача или бухгалтерия">Бизнес-задача или бухгалтерия</option>
+                  </select>
+                  <p class="error-message"></p>
+                </div>
+                <div class="field">
+                  <label for="contact-message">Комментарий</label>
+                  <textarea id="contact-message" name="message" placeholder="Опишите задачу, цель оценки и город"></textarea>
+                  <p class="error-message"></p>
+                </div>
+                <div class="field field--privacy">
+                  <div class="field-checkbox">
+                    <input
+                      id="contact-privacy"
+                      name="privacy_consent"
+                      type="checkbox"
+                      value="yes"
+                      required
+                    />
+                    <label for="contact-privacy"
+                      >Согласен на обработку персональных данных в соответствии с
+                      <a href="/privacy/">политикой конфиденциальности</a></label
+                    >
+                  </div>
+                  <p class="error-message"></p>
+                </div>
+                <button class="btn" type="submit" data-default-label="Оставить заявку">Оставить заявку</button>
+                <p class="form-submit-hint">Перезвоним за 15 минут</p>
+                <p class="success-message" data-success-message></p>
+                <p class="error-message" data-form-error></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <a class="floating-call" data-phone-href data-phone-display></a>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Fix #5: Stagger delay for cards and fade-in
+        const generalObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        const grids = document.querySelectorAll('[class$="-grid"], .form-row, .process-track');
+        grids.forEach(grid => {
+          const cards = Array.from(grid.querySelectorAll('.card, .stat-card, .trust-card, .step-card, .document-card, .review-card, .contact-card'));
+          cards.forEach((card, index) => {
+            if(!card.classList.contains('reveal')) {
+              card.classList.add('reveal');
+            }
+            card.style.transitionDelay = `${index * 80}ms`;
+            generalObserver.observe(card);
+          });
+        });
+
+        // Ensure other reveal blocks hit the observer
+        document.querySelectorAll('.reveal').forEach(el => generalObserver.observe(el));
+
+        // Partial/Full Result email workflow
+        const partialForm = document.getElementById('partial-email-form');
+        const partialInput = document.getElementById('partial-email-input');
+        const partialBtn = document.getElementById('btn-get-full-result');
+        const partialError = document.getElementById('partial-email-error');
+        const successMsg = document.getElementById('full-result-success');
+        const fullContent = document.getElementById('full-result-content');
+        const fullContact = document.getElementById('full-result-contact');
+        const hiddenEmailInput = document.getElementById('hero-quiz-email');
+        
+        if (partialBtn) {
+          partialBtn.addEventListener('click', () => {
+            const email = partialInput.value.trim();
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email || !emailRe.test(email)) {
+              partialError.style.display = 'block';
+              return;
+            }
+            partialError.style.display = 'none';
+            
+            // Gather quiz answers
+            const q1 = document.querySelector('input[name="object_type"]')?.value || '';
+            const q2 = document.querySelector('input[name="valuation_purpose"]')?.value || '';
+            const q3 = document.querySelector('input[name="region_scope"]')?.value || '';
+            
+            // Button loading
+            const originalBtnText = partialBtn.textContent;
+            partialBtn.textContent = 'Отправляем...';
+            partialBtn.disabled = true;
+            
+            fetch('https://primary-production-f7ad.up.railway.app/webhook/764e3ba2-d92d-4b23-a7de-aa8f9ed1b696', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                email: email,
+                object_type: q1,
+                purpose: q2,
+                region: q3,
+                timestamp: new Date().toISOString()
+              })
+            }).then(() => {
+              // Success Path
+              if (hiddenEmailInput) hiddenEmailInput.value = email;
+              
+              partialForm.style.display = 'none';
+              successMsg.hidden = false;
+              successMsg.classList.add('is-visible');
+              const successTextEl = successMsg.querySelector('.quiz-email-success__text');
+              if (successTextEl) {
+                successTextEl.textContent = `Отправлено на ${email}`;
+              }
+              
+              fullContent.style.display = 'block';
+              fullContact.style.display = 'block';
+              
+              void fullContent.offsetWidth; 
+              
+              fullContent.style.transition = 'opacity 400ms ease, transform 400ms ease';
+              fullContent.style.opacity = '1';
+              fullContent.style.transform = 'translateY(0)';
+              
+              fullContact.style.transition = 'opacity 400ms ease, transform 400ms ease';
+              fullContact.style.opacity = '1';
+              fullContact.style.transform = 'translateY(0)';
+            }).catch(e => {
+              partialBtn.textContent = originalBtnText;
+              partialBtn.disabled = false;
+              partialError.textContent = 'Произошла ошибка. Попробуйте еще раз.';
+              partialError.style.display = 'block';
+            });
+          });
+        }
+
+        // Specific fix for route/audience cards
+        const audienceObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              audienceObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.audience-card').forEach((card, i) => {
+          card.style.transitionDelay = `${i * 80}ms`;
+          audienceObserver.observe(card);
+        });
+
+        const headH2 = document.querySelector('#audience .section-head h2');
+        if (headH2) { headH2.style.transitionDelay = '0ms'; audienceObserver.observe(headH2); }
+        const headP = document.querySelector('#audience .section-head p');
+        if (headP) { headP.style.transitionDelay = '40ms'; audienceObserver.observe(headP); }
+      });
+    </script>
+  </body>
+</html>
