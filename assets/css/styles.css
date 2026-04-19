@@ -421,7 +421,7 @@ ul {
 }
 
 .hero-real-estate {
-  background-image: url("https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80");
+  background-image: url("https://images.unsplash.com/photo-1556912170-3b8776d804b7?auto=format&fit=crop&w=1920&q=85");
 }
 
 .hero-business {
@@ -440,11 +440,23 @@ ul {
   background-image: url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80");
 }
 
+.hero-notary-inheritance {
+  background-image: url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1920&q=85");
+}
+
 .hero-damage {
   background-image: url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1600&q=80");
 }
 
+.hero-damage-valuation {
+  background-image: url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1920&q=85");
+}
+
 .hero-equipment {
+  background-image: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80");
+}
+
+.hero-equipment-transport {
   background-image: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80");
 }
 
@@ -997,6 +1009,12 @@ ul {
   gap: 16px;
 }
 
+.process-step {
+  outline: 1px solid transparent;
+  outline-offset: 0;
+  transition: outline-color var(--motion-micro) ease, outline-offset var(--motion-micro) ease;
+}
+
 .step-number {
   display: inline-flex;
   align-items: center;
@@ -1007,6 +1025,21 @@ ul {
   color: var(--accent-dark);
   border-radius: 50%;
   font-weight: 800;
+}
+
+.process-step__badge {
+  transition: transform var(--motion-micro) ease, background-color var(--motion-micro) ease, box-shadow var(--motion-micro) ease;
+}
+
+.process-step.is-sequence-active {
+  outline-color: var(--accent);
+  outline-offset: 3px;
+}
+
+.process-step.is-sequence-active .process-step__badge {
+  transform: scale(1.06);
+  background: var(--accent-dark);
+  box-shadow: 0 8px 18px rgba(31, 42, 55, 0.16);
 }
 
 .breadcrumbs {
@@ -1060,6 +1093,38 @@ ul {
 .document-card img,
 .review-card img {
   aspect-ratio: 4 / 3;
+}
+
+body[data-page="reviews"] .review-card figure {
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-page="reviews"] .review-card figure img {
+  height: auto;
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+body[data-page="reviews"] .review-photo-download {
+  flex-shrink: 0;
+  margin-top: -1px;
+  padding: 10px 14px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+}
+
+body[data-page="reviews"] .review-photo-download:hover {
+  color: var(--accent);
+}
+
+body[data-page="reviews"] .review-photo-download:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
 }
 
 .cta-banner {
@@ -1566,6 +1631,8 @@ ul {
 
   .reveal,
   .reveal.is-visible,
+  .process-step,
+  .process-step__badge,
   .card,
   .document-card,
   .review-card,
@@ -1581,6 +1648,10 @@ ul {
   .quiz-progress-step {
     animation: none !important;
     transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
   }
 }
 
@@ -1665,4 +1736,2675 @@ ul {
   margin-top: auto;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Homepage consolidated design system (moved from index.html) */
+:root {
+  /* Color System extracted from @design-refs */
+  --primary: #36453b;
+  --secondary: #4d69be;
+  --tertiary: #d65c5c;
+  --neutral-900: #222222;
+  --neutral-100: #f5f6f8;
+  --white: #ffffff;
+  --accent-gold: rgba(212, 175, 55, 0.9);
+
+  /* Applying via existing CSS variables */
+  --bg: var(--neutral-100);
+  --surface: var(--white);
+  --surface-soft: #eaecef;
+  --text: var(--neutral-900);
+  --muted: #6b7280;
+  --accent: var(--primary);
+  --accent-dark: #2a362e;
+  --border: #eaeaea;
+  --border-strong: #d1d5db;
+  --text-primary: var(--neutral-900);
+  --text-muted: var(--muted);
+  --footer-bg: var(--primary);
+  --danger: var(--tertiary);
+
+  /* Typography overrides */
+  --font-heading: "Noto Serif", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Spacing & Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-card-strong: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Global Reset for Typographic Elements */
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-mark,
+.display-serif,
+.quiz-question,
+.quiz-result-title {
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.02em;
+}
+
+/* Interactive element transitions */
+a,
+button,
+.btn,
+.quiz-option,
+.step-card,
+.process-step {
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Button Styles */
+.btn {
+  background-color: var(--primary) !important;
+  color: var(--accent-gold) !important;
+  border-radius: var(--radius-sm) !important;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  background-color: var(--accent-dark) !important;
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary) !important;
+}
+
+.btn-text {
+  color: var(--primary) !important;
+}
+
+/* Generic Card Structure */
+.card,
+.quiz-card,
+.review-card,
+.document-card,
+.audience-card,
+.trust-card {
+  border-radius: var(--radius-md) !important;
+  background: var(--surface);
+  box-shadow: var(--shadow-card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.card:hover,
+.quiz-card:hover,
+.review-card:hover,
+.document-card:hover,
+.audience-card:hover,
+.trust-card:hover {
+  box-shadow: var(--shadow-card-strong) !important;
+  transform: translateY(-4px);
+  border-color: var(--border) !important;
+}
+
+/* Service Grid Highlight */
+.service-grid .card {
+  border-left: none !important;
+  background: #ffffff !important;
+  color: var(--text) !important;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.service-grid .card h3,
+.service-grid .card p,
+.service-grid .card .btn-text {
+  transition: color 0.5s ease !important;
+}
+
+.service-grid .card:hover {
+  background: #1c2b1e !important;
+  color: #ffffff !important;
+  border-color: #1c2b1e !important;
+}
+
+.service-grid .card:hover h3,
+.service-grid .card:hover .btn-text {
+  color: #ffffff !important;
+}
+
+.service-grid .card:hover p {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.service-grid .card:hover a {
+  color: #ffffff !important;
+}
+
+.service-grid .card .icon-box {
+  background: #f0f0f0 !important;
+  color: #2d2d2d !important;
+  transition: background 0.4s ease !important;
+}
+
+.service-grid .card .icon-box svg {
+  color: #2d2d2d !important;
+  stroke: currentColor !important;
+  transition: color 0.4s ease !important;
+}
+
+.service-grid .card:hover .icon-box {
+  background: var(--accent) !important;
+}
+
+.service-grid .card:hover .icon-box svg {
+  color: #ffffff !important;
+  stroke: currentColor !important;
+}
+
+/* Process section — timeline cards */
+.section-process {
+  background: var(--surface-soft);
+}
+
+.section-process .section-head {
+  max-width: 52ch;
+}
+
+.process-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 24px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--primary) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.process-step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-strong) !important;
+  border-color: var(--border-strong) !important;
+  border-left-color: var(--primary) !important;
+}
+
+.process-step__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  background: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.process-step__body h3 {
+  margin: 0 0 8px;
+  color: var(--text) !important;
+  font-size: 1.125rem;
+}
+
+.process-step__time {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(54, 69, 59, 0.1);
+  color: var(--accent-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.process-step__body p {
+  margin: 0;
+  color: var(--muted) !important;
+  line-height: 1.6;
+}
+
+/* Focus states and Forms */
+input,
+select,
+textarea {
+  border-color: var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+input,
+select {
+  height: 56px !important;
+  padding: 0 16px !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--accent-gold) !important;
+  outline: none;
+}
+
+/* Scroll Animation Refinement */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sticky Header Glassmorphism Overlay */
+.site-header {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Mobile First Responsive Breakpoints */
+@media (min-width: 375px) {
+  .section {
+    padding: 48px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .process-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: 96px 0;
+  }
+
+  .process-track {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* Contacts section */
+.section-contacts {
+  background: var(--surface);
+}
+
+.contacts-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contacts-shell .section-head {
+  max-width: 56ch;
+}
+
+.contacts-layout {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .contacts-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .contacts-layout {
+    gap: 48px;
+  }
+}
+
+.contacts-aside {
+  display: grid;
+  gap: 24px;
+}
+
+.contacts-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.contacts-meta__item {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.contacts-meta__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contacts-meta__value {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.contacts-meta__value a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contacts-meta__value a:hover {
+  text-decoration: underline;
+}
+
+.contacts-minimap {
+  display: grid;
+  gap: 12px;
+}
+
+.contacts-minimap__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.contacts-minimap__frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 16 / 10;
+  min-height: 200px;
+  background: var(--surface-soft);
+}
+
+.contacts-minimap__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.contacts-minimap__link.btn-text {
+  align-self: start;
+}
+
+#contacts .contact-form {
+  height: fit-content;
+}
+
+/* Fixes: #3 Trust Badges */
+.stat-value {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--accent) !important;
+}
+
+/* Fixes: Hero Centering & Quiz Extracted */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-grid {
+  grid-template-columns: 1fr !important;
+  max-width: 800px !important;
+  margin: 0 auto;
+}
+
+.hero-actions,
+.hero-trust {
+  justify-content: center;
+}
+
+.section-quiz {
+  background: #f8f7f4;
+  padding: 80px 0;
+}
+
+.quiz-container {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px;
+}
+
+/* Hero quiz visual system (scoped) */
+#hero-quiz[data-quiz] {
+  --accent: rgb(182, 138, 69);
+  --quiz-border: var(--border);
+  position: relative;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+  border: none !important;
+  transition: box-shadow 0.3s ease;
+}
+
+#hero-quiz[data-quiz]:hover {
+  transform: none !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08) !important;
+}
+
+@media (min-width: 768px) {
+  #hero-quiz[data-quiz] {
+    padding: 40px;
+  }
+}
+
+#hero-quiz[data-quiz] .quiz-intro {
+  margin-bottom: 24px;
+}
+
+#hero-quiz[data-quiz] .quiz-form {
+  position: relative;
+  min-height: 120px;
+}
+
+#hero-quiz[data-quiz] [data-quiz-progress-header] {
+  margin-bottom: 20px;
+}
+
+#hero-quiz[data-quiz] [data-quiz-progress-header].is-result .quiz-progress {
+  opacity: 0.85;
+}
+
+#hero-quiz[data-quiz] .quiz-progress-label {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+#hero-quiz[data-quiz] .quiz-progress {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 6px;
+  margin: 0;
+  height: 6px;
+}
+
+#hero-quiz[data-quiz] .quiz-progress-step {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 6px;
+  border-radius: 3px;
+  background: #e7e1d6;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#hero-quiz[data-quiz] .quiz-progress-step.is-active {
+  background: var(--accent);
+}
+
+#hero-quiz[data-quiz] .quiz-step {
+  display: none;
+  opacity: 0;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+#hero-quiz[data-quiz] .quiz-step.is-active {
+  display: grid;
+  opacity: 1;
+}
+
+@keyframes quizExitFwd {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes quizExitBack {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes quizEnterFwd {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes quizEnterBack {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-fwd {
+  animation: quizExitFwd 200ms ease forwards;
+}
+
+#hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-back {
+  animation: quizExitBack 200ms ease forwards;
+}
+
+#hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-fwd {
+  animation: quizEnterFwd 200ms ease forwards;
+}
+
+#hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-back {
+  animation: quizEnterBack 200ms ease forwards;
+}
+
+#hero-quiz[data-quiz] .quiz-question {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 24px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+#hero-quiz[data-quiz] .quiz-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  #hero-quiz[data-quiz] .quiz-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+#hero-quiz[data-quiz] .quiz-option {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 20px 44px 20px 20px;
+  text-align: left;
+  border: 1px solid var(--quiz-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+  transform: none !important;
+}
+
+#hero-quiz[data-quiz] .quiz-option:hover,
+#hero-quiz[data-quiz] .quiz-option:focus-visible {
+  border-color: var(--accent);
+  background: rgba(182, 138, 69, 0.04);
+  box-shadow: none;
+  transform: none !important;
+}
+
+#hero-quiz[data-quiz] .quiz-option:hover .quiz-option-icon,
+#hero-quiz[data-quiz] .quiz-option:focus-visible .quiz-option-icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+#hero-quiz[data-quiz] .quiz-option:hover .quiz-option-icon svg,
+#hero-quiz[data-quiz] .quiz-option:focus-visible .quiz-option-icon svg {
+  stroke: #fff;
+}
+
+#hero-quiz[data-quiz] .quiz-option.is-selected {
+  border: 2px solid var(--accent);
+  padding: 19px 43px 19px 19px;
+  background: rgba(182, 138, 69, 0.06);
+  box-shadow: none;
+}
+
+#hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+#hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-icon svg {
+  stroke: #fff;
+}
+
+#hero-quiz[data-quiz] .quiz-option-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+#hero-quiz[data-quiz] .quiz-option.is-selected .quiz-option-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#hero-quiz[data-quiz] .quiz-option-icon {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0ede6;
+  border-radius: 10px;
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#hero-quiz[data-quiz] .quiz-option-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#hero-quiz[data-quiz] .quiz-option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+#hero-quiz[data-quiz] .quiz-option-title {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+#hero-quiz[data-quiz] .quiz-option-note {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+#hero-quiz[data-quiz] .quiz-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 24px;
+}
+
+#hero-quiz[data-quiz] .quiz-nav .btn-text[data-quiz-back] {
+  align-self: flex-start;
+  margin: 0 0 8px;
+  padding: 0;
+  height: auto;
+  min-height: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none;
+}
+
+#hero-quiz[data-quiz] .quiz-nav .btn-text[data-quiz-back]:hover {
+  color: var(--text-primary) !important;
+  transform: none !important;
+}
+
+#hero-quiz[data-quiz] .quiz-step-result .quiz-result-panel {
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+
+#hero-quiz[data-quiz] .quiz-result-hero {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+#hero-quiz[data-quiz] .quiz-result-check-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+}
+
+#hero-quiz[data-quiz] .quiz-result-check-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+#hero-quiz[data-quiz] .quiz-result-heading {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+#hero-quiz[data-quiz] .quiz-result-title[data-quiz-result-title] {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+#hero-quiz[data-quiz] .quiz-result-fit[data-quiz-result-fit] {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+#hero-quiz[data-quiz] .quiz-result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+@media (min-width: 480px) {
+  #hero-quiz[data-quiz] .quiz-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+#hero-quiz[data-quiz] .quiz-result-card {
+  margin: 0;
+  padding: 12px 20px;
+  background: #f0ede6;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#hero-quiz[data-quiz] .quiz-result-card .small-label {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+#hero-quiz[data-quiz] .quiz-result-value {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+#hero-quiz[data-quiz] .quiz-result-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+#hero-quiz[data-quiz] .partial-email-form {
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+#hero-quiz[data-quiz] .partial-email-form > p {
+  margin: 0 0 16px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+#hero-quiz[data-quiz] #partial-email-error {
+  display: none;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--danger);
+}
+
+#hero-quiz[data-quiz] .quiz-nav-result {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#hero-quiz[data-quiz] .quiz-nav-result .btn-text {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+}
+
+#hero-quiz[data-quiz] .quiz-nav-result .btn-text:hover {
+  color: var(--text-primary) !important;
+}
+
+#hero-quiz[data-quiz] .quiz-result-card-docs {
+  grid-column: 1 / -1;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+#hero-quiz[data-quiz] .quiz-email-success[hidden] {
+  display: none !important;
+}
+
+#hero-quiz[data-quiz] #partial-email-input {
+  width: 100%;
+  height: 48px !important;
+  padding: 0 14px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  font-size: 1rem;
+}
+
+#hero-quiz[data-quiz] #btn-get-full-result {
+  width: 100%;
+  height: 52px;
+  margin-top: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  transition: opacity 0.3s ease;
+}
+
+#hero-quiz[data-quiz] #btn-get-full-result:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#hero-quiz[data-quiz] .quiz-email-success {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 16px;
+  text-align: center;
+  animation: quizEmailSuccessIn 0.3s ease forwards;
+}
+
+#hero-quiz[data-quiz] .quiz-email-success.is-visible {
+  display: flex;
+}
+
+@keyframes quizEmailSuccessIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#hero-quiz[data-quiz] .quiz-email-success__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+}
+
+#hero-quiz[data-quiz] .quiz-email-success__text {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+#hero-quiz[data-quiz] .quiz-contact .btn[type="submit"] {
+  width: 100%;
+  height: 52px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(--accent) !important;
+  color: #fff !important;
+  transition: opacity 0.3s ease;
+}
+
+#hero-quiz[data-quiz] .quiz-contact .btn[type="submit"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Audience Section Layout & Animation */
+.audience-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#audience .reveal {
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+
+#audience .reveal.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.audience-card {
+  border-left: 3px solid transparent !important;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-left-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.audience-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.audience-card:hover {
+  border-left-color: var(--accent) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+#audience .section-head h2,
+#audience .section-head p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+
+#audience .section-head h2.visible,
+#audience .section-head p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-fwd,
+  #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--exit-back,
+  #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-fwd,
+  #hero-quiz[data-quiz] .quiz-step.is-active.quiz-step--enter-back,
+  #hero-quiz[data-quiz] .quiz-email-success {
+    animation: none !important;
+  }
+
+  #hero-quiz[data-quiz] .quiz-step,
+  #hero-quiz[data-quiz] .quiz-option,
+  #hero-quiz[data-quiz] .quiz-option-check,
+  #hero-quiz[data-quiz] .quiz-progress-step,
+  #hero-quiz[data-quiz] .quiz-option-icon,
+  #full-result-content,
+  #full-result-contact,
+  .audience-card,
+  #audience .reveal,
+  #audience .section-head h2,
+  #audience .section-head p {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Real estate service page: hero layout, card, scenarios block */
+body[data-page="service-real-estate"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-real-estate"] .page-hero-grid--real-estate {
+  align-items: stretch;
+}
+
+body[data-page="service-real-estate"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-real-estate"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-real-estate"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-real-estate"] .section--real-estate-scenarios {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-real-estate"] .section-head--real-estate .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+/* Real estate service: conversion typography (Inter, tight headings) */
+body[data-page="service-real-estate"] .page-hero h1,
+body[data-page="service-real-estate"] .section-head--real-estate h2,
+body[data-page="service-real-estate"] .section-head--real-estate-trust h2,
+body[data-page="service-real-estate"] .service-offer-card h3,
+body[data-page="service-real-estate"] .contact-form h3,
+body[data-page="service-real-estate"] .cta-banner h3,
+body[data-page="service-real-estate"] .intro-card--real-estate h3,
+body[data-page="service-real-estate"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-real-estate"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-real-estate"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-real-estate"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-real-estate"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-real-estate"] .service-offer-card__price-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Partner quotes: text-only trust strip */
+body[data-page="service-real-estate"] .section--real-estate-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-real-estate"] .section-head--real-estate-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-real-estate"] .section-head--real-estate-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-real-estate"] .section--real-estate-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-real-estate"] #lead-form .field input[type="text"],
+body[data-page="service-real-estate"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-real-estate"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-real-estate"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-real-estate"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-real-estate"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-real-estate"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-real-estate"] .page-hero-grid--real-estate {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Notary & inheritance service page: same layout pattern as real-estate */
+body[data-page="service-notary-inheritance"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-notary-inheritance"] .page-hero-grid--notary-inheritance {
+  align-items: stretch;
+}
+
+body[data-page="service-notary-inheritance"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-notary-inheritance"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-notary-inheritance"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-property {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-notary-inheritance"] .section-head--notary-inheritance .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-notary-inheritance"] .page-hero h1,
+body[data-page="service-notary-inheritance"] .section-head--notary-inheritance h2,
+body[data-page="service-notary-inheritance"] .section-head--notary-inheritance-trust h2,
+body[data-page="service-notary-inheritance"] .service-offer-card h3,
+body[data-page="service-notary-inheritance"] .contact-form h3,
+body[data-page="service-notary-inheritance"] .cta-banner h3,
+body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance h3,
+body[data-page="service-notary-inheritance"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-notary-inheritance"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-notary-inheritance"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-notary-inheritance"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-notary-inheritance"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-notary-inheritance"] .service-offer-card__price-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-notary-inheritance"] .section-head--notary-inheritance-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-notary-inheritance"] .section-head--notary-inheritance-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-notary-inheritance"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-notary-inheritance"] #lead-form .field input[type="text"],
+body[data-page="service-notary-inheritance"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-notary-inheritance"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-notary-inheritance"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-notary-inheritance"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-notary-inheritance"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-notary-inheritance"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-notary-inheritance"] .page-hero-grid--notary-inheritance {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Court valuation service page: same layout pattern as real-estate */
+body[data-page="service-court-valuation"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-court-valuation"] .page-hero-grid--court-valuation {
+  align-items: stretch;
+}
+
+body[data-page="service-court-valuation"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-court-valuation"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-court-valuation"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-court-valuation"] .intro-card--court-valuation {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-court-valuation"] .intro-card--court-valuation h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-court-valuation"] .intro-card--court-valuation .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-court-valuation"] .intro-card--court-valuation .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-court-valuation"] .section--court-valuation-formats {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-court-valuation"] .section-head--court-valuation .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-court-valuation"] .page-hero h1,
+body[data-page="service-court-valuation"] .section-head--court-valuation h2,
+body[data-page="service-court-valuation"] .section-head--court-valuation-trust h2,
+body[data-page="service-court-valuation"] .service-offer-card h3,
+body[data-page="service-court-valuation"] .contact-form h3,
+body[data-page="service-court-valuation"] .cta-banner h3,
+body[data-page="service-court-valuation"] .intro-card--court-valuation h3,
+body[data-page="service-court-valuation"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-court-valuation"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-court-valuation"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-court-valuation"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-court-valuation"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-court-valuation"] .section--court-valuation-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-court-valuation"] .section-head--court-valuation-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-court-valuation"] .section-head--court-valuation-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-court-valuation"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-court-valuation"] .section--court-valuation-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-court-valuation"] #lead-form .field input[type="text"],
+body[data-page="service-court-valuation"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-court-valuation"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-court-valuation"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-court-valuation"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-court-valuation"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-court-valuation"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-court-valuation"] .page-hero-grid--court-valuation {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Damage valuation service page: same layout pattern as real-estate */
+body[data-page="service-damage-valuation"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-damage-valuation"] .page-hero-grid--damage-valuation {
+  align-items: stretch;
+}
+
+body[data-page="service-damage-valuation"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-damage-valuation"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-damage-valuation"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-damage-valuation"] .intro-card--damage-valuation {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-damage-valuation"] .intro-card--damage-valuation h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-damage-valuation"] .intro-card--damage-valuation .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-damage-valuation"] .intro-card--damage-valuation .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-damage-valuation"] .section--damage-valuation-formats {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-damage-valuation"] .section-head--damage-valuation .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-damage-valuation"] .page-hero h1,
+body[data-page="service-damage-valuation"] .section-head--damage-valuation h2,
+body[data-page="service-damage-valuation"] .section-head--damage-valuation-trust h2,
+body[data-page="service-damage-valuation"] .service-offer-card h3,
+body[data-page="service-damage-valuation"] .contact-form h3,
+body[data-page="service-damage-valuation"] .cta-banner h3,
+body[data-page="service-damage-valuation"] .intro-card--damage-valuation h3,
+body[data-page="service-damage-valuation"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-damage-valuation"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-damage-valuation"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-damage-valuation"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-damage-valuation"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-damage-valuation"] .section--damage-valuation-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-damage-valuation"] .section-head--damage-valuation-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-damage-valuation"] .section-head--damage-valuation-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-damage-valuation"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-damage-valuation"] .section--damage-valuation-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-damage-valuation"] #lead-form .field input[type="text"],
+body[data-page="service-damage-valuation"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-damage-valuation"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-damage-valuation"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-damage-valuation"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-damage-valuation"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-damage-valuation"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-damage-valuation"] .page-hero-grid--damage-valuation {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Business valuation service page: same layout pattern as real-estate */
+body[data-page="service-business-valuation"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-business-valuation"] .page-hero-grid--business-valuation {
+  align-items: stretch;
+}
+
+body[data-page="service-business-valuation"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-business-valuation"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-business-valuation"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-business-valuation"] .intro-card--business-valuation {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-business-valuation"] .intro-card--business-valuation h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-business-valuation"] .intro-card--business-valuation .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-business-valuation"] .intro-card--business-valuation .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-business-valuation"] .section--business-valuation-scenarios {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-business-valuation"] .section-head--business-valuation .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-business-valuation"] .page-hero h1,
+body[data-page="service-business-valuation"] .section-head--business-valuation h2,
+body[data-page="service-business-valuation"] .section-head--business-valuation-trust h2,
+body[data-page="service-business-valuation"] .service-offer-card h3,
+body[data-page="service-business-valuation"] .contact-form h3,
+body[data-page="service-business-valuation"] .cta-banner h3,
+body[data-page="service-business-valuation"] .intro-card--business-valuation h3,
+body[data-page="service-business-valuation"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-business-valuation"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-business-valuation"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-business-valuation"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-business-valuation"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-business-valuation"] .service-offer-card__price-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+body[data-page="service-business-valuation"] .section--business-valuation-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-business-valuation"] .section-head--business-valuation-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-business-valuation"] .section-head--business-valuation-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-business-valuation"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-business-valuation"] .section--business-valuation-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-business-valuation"] #lead-form .field input[type="text"],
+body[data-page="service-business-valuation"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-business-valuation"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-business-valuation"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-business-valuation"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-business-valuation"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-business-valuation"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-business-valuation"] .page-hero-grid--business-valuation {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Commercial property service page: same layout pattern as real-estate */
+body[data-page="service-commercial-property"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-commercial-property"] .page-hero-grid--commercial-property {
+  align-items: stretch;
+}
+
+body[data-page="service-commercial-property"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-commercial-property"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-commercial-property"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-commercial-property"] .intro-card--commercial-property {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-commercial-property"] .intro-card--commercial-property h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-commercial-property"] .intro-card--commercial-property .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-commercial-property"] .intro-card--commercial-property .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-commercial-property"] .section--commercial-property-scenarios {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-commercial-property"] .section-head--commercial-property .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-commercial-property"] .page-hero h1,
+body[data-page="service-commercial-property"] .section-head--commercial-property h2,
+body[data-page="service-commercial-property"] .section-head--commercial-property-trust h2,
+body[data-page="service-commercial-property"] .service-offer-card h3,
+body[data-page="service-commercial-property"] .contact-form h3,
+body[data-page="service-commercial-property"] .cta-banner h3,
+body[data-page="service-commercial-property"] .intro-card--commercial-property h3,
+body[data-page="service-commercial-property"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-commercial-property"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-commercial-property"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-commercial-property"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-commercial-property"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-commercial-property"] .service-offer-card__price-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+body[data-page="service-commercial-property"] .section--commercial-property-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-commercial-property"] .section-head--commercial-property-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-commercial-property"] .section-head--commercial-property-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-commercial-property"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-commercial-property"] .section--commercial-property-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-commercial-property"] #lead-form .field input[type="text"],
+body[data-page="service-commercial-property"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-commercial-property"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-commercial-property"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-commercial-property"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-commercial-property"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-commercial-property"] .page-hero-grid--commercial-property {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Equipment & transport service page: same layout pattern as real-estate */
+body[data-page="service-equipment-transport"] .page-hero {
+  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+}
+
+body[data-page="service-equipment-transport"] .page-hero-grid--equipment-transport {
+  align-items: stretch;
+}
+
+body[data-page="service-equipment-transport"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-equipment-transport"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-equipment-transport"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-equipment-transport"] .intro-card--equipment-transport {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 28px);
+  background: rgba(236, 238, 242, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 18px 40px rgba(12, 21, 34, 0.18);
+}
+
+body[data-page="service-equipment-transport"] .intro-card--equipment-transport h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+body[data-page="service-equipment-transport"] .intro-card--equipment-transport .check-list {
+  gap: 14px;
+}
+
+body[data-page="service-equipment-transport"] .intro-card--equipment-transport .check-list li {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+
+body[data-page="service-equipment-transport"] .section--equipment-transport-scenarios {
+  padding-top: clamp(56px, 10vw, 88px);
+  padding-bottom: clamp(64px, 12vw, 104px);
+  background: #fafafa;
+}
+
+body[data-page="service-equipment-transport"] .section-head--equipment-transport .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-equipment-transport"] .page-hero h1,
+body[data-page="service-equipment-transport"] .section-head--equipment-transport h2,
+body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust h2,
+body[data-page="service-equipment-transport"] .service-offer-card h3,
+body[data-page="service-equipment-transport"] .contact-form h3,
+body[data-page="service-equipment-transport"] .cta-banner h3,
+body[data-page="service-equipment-transport"] .intro-card--equipment-transport h3,
+body[data-page="service-equipment-transport"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-equipment-transport"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-equipment-transport"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-equipment-transport"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-equipment-transport"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-equipment-transport"] .section--equipment-transport-trust {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-equipment-transport"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-equipment-transport"] .section--equipment-transport-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-equipment-transport"] #lead-form .field input[type="text"],
+body[data-page="service-equipment-transport"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-equipment-transport"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-equipment-transport"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-equipment-transport"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-equipment-transport"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-equipment-transport"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-equipment-transport"] .page-hero-grid--equipment-transport {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+    min-height: min(520px, calc(70dvh - 80px));
+  }
+}
+
+/* Notary inheritance service: conversion-focused layout (typography, proof, form) */
+body[data-page="service-notary"] .page-hero-notary__copy {
+  display: grid;
+  gap: 16px;
+}
+
+body[data-page="service-notary"] .page-hero h1,
+body[data-page="service-notary"] .section-head h2,
+body[data-page="service-notary"] .service-offer-card h3,
+body[data-page="service-notary"] .contact-form h3,
+body[data-page="service-notary"] .cta-banner h3,
+body[data-page="service-notary"] .intro-card h3 {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+body[data-page="service-notary"] .page-hero-notary__lead {
+  max-width: 62ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(1rem, 2.2vw, 1.08rem);
+  line-height: 1.6;
+}
+
+body[data-page="service-notary"] .importance-callout {
+  margin-top: 8px;
+  padding: 24px;
+  max-width: min(66ch, 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+body[data-page="service-notary"] .importance-callout__title {
+  margin: 0 0 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-inverse);
+}
+
+body[data-page="service-notary"] .importance-callout__text {
+  margin: 0;
+  color: var(--text-inverse-soft);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: none;
+}
+
+body[data-page="service-notary"] .service-offer-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-notary"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-notary"] .social-proof {
+  display: grid;
+  gap: 16px;
+  margin: 16px 0 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+body[data-page="service-notary"] .social-proof__item {
+  margin: 0;
+}
+
+body[data-page="service-notary"] .social-proof__quote {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text);
+  font-weight: 500;
+}
+
+body[data-page="service-notary"] .social-proof__cite {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: normal;
+}
+
+body[data-page="service-notary"] #lead-form .field input[type="text"],
+body[data-page="service-notary"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-notary"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-notary"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-notary"] #lead-form .field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: var(--accent);
+}
+
+body[data-page="service-notary"] #lead-form .form-urgency-note {
+  margin: 0 0 16px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
 }

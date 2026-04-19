@@ -152,23 +152,23 @@ From existing `files/`:
 
 ## PHASE 3 — UX & Animation Polish
 
-- [ ] **Step 15:** Add `prefers-reduced-motion` media query to disable all animations for accessible users — completely missing per §4.3 — `assets/css/styles.css` [easy] [15 min] *(should include quiz step transitions in `index.html` / `site.js` scope)*
-- [ ] **Step 16:** Tune animation durations to spec: micro-animations 150-250ms, block reveals 300-500ms, stagger delays 40-100ms — current values are close but not aligned (e.g. `.reveal` is 450ms); quiz step transitions are ~200ms — `assets/css/styles.css` + inline `<style>` in `index.html` [easy] [15 min]
-- [ ] **Step 17:** Add counting-up animation to stat values ("12+", "1500+", "30 мин") — partially exists in inline `<script>` on `index.html` but not in the shared `site.js`; missing on `/about/` page — `assets/js/site.js` [medium] [30 min]
-- [ ] **Step 18:** Remove navbar button pulse animation (infinite scale bounce on `.site-header .btn`) — violates §4.2 "avoid competing animations" — `index.html` (inline `<style>`) [easy] [15 min]
-- [ ] **Step 19:** Add sequential step-highlight animation to the process section (§4.1 "поочередное подсвечивание этапов 1-2-3-4") — not implemented — `assets/js/site.js` + `assets/css/styles.css` [medium] [30 min]
-- [ ] **Step 20:** Consolidate inline `<style>` block from `index.html` (large design-system + quiz overrides) into `assets/css/styles.css` — duplicated and overlapping with main stylesheet — `assets/css/styles.css` + `index.html` [medium] [30 min] *requires steps 15-19 first*
+- [x] **Step 15:** Add `prefers-reduced-motion` media query to disable all animations for accessible users — completely missing per §4.3 — `assets/css/styles.css` [easy] [15 min] *(should include quiz step transitions in `index.html` / `site.js` scope)*
+- [x] **Step 16:** Tune animation durations to spec: micro-animations 150-250ms, block reveals 300-500ms, stagger delays 40-100ms — current values are close but not aligned (e.g. `.reveal` is 450ms); quiz step transitions are ~200ms — `assets/css/styles.css` + inline `<style>` in `index.html` [easy] [15 min]
+   - [x] **Step 17:** Add counting-up animation to stat values ("12+", "1500+", "30 мин") — partially exists in inline `<script>` on `index.html` but not in the shared `site.js`; missing on `/about/` page — `assets/js/site.js` [medium] [30 min]
+- [x] **Step 18:** Remove navbar button pulse animation (infinite scale bounce on `.site-header .btn`) — violates §4.2 "avoid competing animations" — `index.html` (inline `<style>`) [easy] [15 min]
+- [x] **Step 19:** Add sequential step-highlight animation to the process section (§4.1 "поочередное подсвечивание этапов 1-2-3-4") — not implemented — `assets/js/site.js` + `assets/css/styles.css` [medium] [30 min]
+- [x] **Step 20:** Consolidate inline `<style>` block from `index.html` (large design-system + quiz overrides) into `assets/css/styles.css` — duplicated and overlapping with main stylesheet — `assets/css/styles.css` + `index.html` [medium] [30 min] *requires steps 15-19 first*
 
 ---
 
 ## PHASE 4 — SEO & Technical (lowest priority, polish)
 
-- [ ] **Step 21:** Add JSON-LD `Organization` schema markup (name, phone, address, logo, SRO) — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min]
-- [ ] **Step 22:** Add `FAQPage` JSON-LD schema for the FAQ section — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min] *requires step 8 first*
-- [ ] **Step 23:** Add local SEO-optimized `<title>` and `<meta description>` to each of the 7 service pages with "оценка + тип + город" pattern — current titles are generic (e.g. "Оценка ущерба | Оценка Групп") — all 7 `services/*/index.html` [easy] [30 min]
-- [ ] **Step 24:** Fix font mismatch: subpages load `Cormorant Garamond + Manrope` while `index.html` loads `Cormorant + Noto Serif + Inter` — align typography across site — `contacts/index.html`, `about/index.html`, `privacy/index.html`, `reviews/index.html`, `thanks/index.html`, `documents/index.html`, all 7 service pages [easy] [30 min]
-- [ ] **Step 25:** Add `<link rel="canonical">` and `Open Graph` meta tags to all pages — completely missing — all HTML files [easy] [30 min]
-- [ ] **Step 26:** Add "Публичная оферта / Условия оказания услуг" page — missing per §3.1 — new `terms/index.html` + footer link in `assets/js/site.js` [medium] [1 hour]
+- [x] **Step 21:** Add JSON-LD `Organization` schema markup (name, phone, address, logo, SRO) — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min]
+- [x] **Step 22:** Add `FAQPage` JSON-LD schema for the FAQ section — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min] *requires step 8 first*
+- [x] **Step 23:** Add local SEO-optimized `<title>` and `<meta description>` to each of the 7 service pages with "оценка + тип + город" pattern — current titles are generic (e.g. "Оценка ущерба | Оценка Групп") — all 7 `services/*/index.html` [easy] [30 min]
+- [x] **Step 24:** Fix font mismatch: subpages load `Cormorant Garamond + Manrope` while `index.html` loads `Cormorant + Noto Serif + Inter` — align typography across site — `contacts/index.html`, `about/index.html`, `privacy/index.html`, `reviews/index.html`, `thanks/index.html`, `documents/index.html`, all 7 service pages [easy] [30 min]
+- [x] **Step 25:** Add `<link rel="canonical">` and `Open Graph` meta tags to all pages — completely missing — all HTML files [easy] [30 min]
+- [x] **Step 26:** Add "Публичная оферта / Условия оказания услуг" page — missing per §3.1 — new `terms/index.html` + footer link in `assets/js/site.js` [medium] [1 hour]
 
 ---
 

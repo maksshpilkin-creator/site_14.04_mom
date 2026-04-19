@@ -175,6 +175,7 @@ function createFooter() {
         </div>
         <div class="footer-bottom">
           <p class="footer-copyright">© <span data-current-year></span> Оценка Групп</p>
+          <a class="footer-legal" href="/terms/">Публичная оферта</a>
           <a class="footer-legal" href="/privacy/">Политика конфиденциальности</a>
         </div>
       </div>
@@ -232,7 +233,7 @@ function setupReveal() {
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.16 }
+    { rootMargin: "0px 0px 80px 0px", threshold: 0.08 }
   );
 
   items.forEach((item) => observer.observe(item));
@@ -299,6 +300,74 @@ function setupStatsCountUp() {
   );
 
   statNodes.forEach((node) => observer.observe(node));
+}
+
+function setupProcessStepSequence() {
+  const section = document.querySelector("#process");
+  if (!section) return;
+
+  const steps = Array.from(section.querySelectorAll(".process-step"));
+  if (steps.length < 2) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeIndex = -1;
+  let timerId = null;
+  let isRunning = false;
+
+  function setActive(index) {
+    steps.forEach((step, i) => step.classList.toggle("is-sequence-active", i === index));
+    activeIndex = index;
+  }
+
+  function tick() {
+    const nextIndex = activeIndex < 0 ? 0 : (activeIndex + 1) % steps.length;
+    setActive(nextIndex);
+  }
+
+  function startSequence() {
+    if (isRunning) return;
+    isRunning = true;
+    tick();
+    if (prefersReducedMotion) return;
+    timerId = window.setInterval(tick, 1500);
+  }
+
+  function stopSequence() {
+    isRunning = false;
+    if (timerId) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+    steps.forEach((step) => step.classList.remove("is-sequence-active"));
+    activeIndex = -1;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startSequence();
+          return;
+        }
+        stopSequence();
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(section);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopSequence();
+      return;
+    }
+    const rect = section.getBoundingClientRect();
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < viewportH * 0.65 && rect.bottom > viewportH * 0.2) {
+      startSequence();
+    }
+  });
 }
 
 /** Raw digits → up to 11 chars: Russian E.164 style 7XXXXXXXXXX */
@@ -841,6 +910,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
   setupReveal();
   setupStatsCountUp();
+  setupProcessStepSequence();
   setupPhoneInputs();
   setupQuiz();
   setupForms();
