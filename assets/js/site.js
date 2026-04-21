@@ -6,8 +6,8 @@ const SITE_CONFIG = {
   email: "info@ocenka-group.ru",
   address: "Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А",
   legalName: "ООО «Оценка Групп»",
-  inn: "ИНН 0000000000",
-  ogrn: "ОГРН 0000000000000",
+  inn: "ИНН 7802596912",
+  ogrn: "ОГРН 1167847399895",
 };
 
 const NAV_ITEMS = [
@@ -185,9 +185,19 @@ function createFooter() {
 
 function mountShell() {
   const page = document.body.dataset.page || "home";
-  const headerTarget = document.querySelector("[data-site-header]");
+  const placeholder = document.querySelector("[data-site-header]");
+  const main = document.getElementById("main-content");
   const footerTarget = document.querySelector("[data-site-footer]");
-  if (headerTarget) headerTarget.innerHTML = createHeader(page);
+
+  if (main && main.parentElement === document.body) {
+    if (!document.querySelector("[data-header]")) {
+      main.insertAdjacentHTML("beforebegin", createHeader(page).trim());
+    }
+    if (placeholder) placeholder.remove();
+  } else if (placeholder) {
+    placeholder.innerHTML = createHeader(page);
+  }
+
   if (footerTarget) footerTarget.innerHTML = createFooter();
 }
 
