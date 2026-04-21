@@ -185,9 +185,19 @@ function createFooter() {
 
 function mountShell() {
   const page = document.body.dataset.page || "home";
-  const headerTarget = document.querySelector("[data-site-header]");
+  const placeholder = document.querySelector("[data-site-header]");
+  const main = document.getElementById("main-content");
   const footerTarget = document.querySelector("[data-site-footer]");
-  if (headerTarget) headerTarget.innerHTML = createHeader(page);
+
+  if (main && main.parentElement === document.body) {
+    if (!document.querySelector("[data-header]")) {
+      main.insertAdjacentHTML("beforebegin", createHeader(page).trim());
+    }
+    if (placeholder) placeholder.remove();
+  } else if (placeholder) {
+    placeholder.innerHTML = createHeader(page);
+  }
+
   if (footerTarget) footerTarget.innerHTML = createFooter();
 }
 

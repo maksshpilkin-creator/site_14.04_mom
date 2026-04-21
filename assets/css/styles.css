@@ -303,6 +303,7 @@ ul {
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
   padding: 16px 0;
   transition: all 0.3s ease;
 }
@@ -936,14 +937,42 @@ ul {
   color: var(--accent-dark);
 }
 
-.partners-strip__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+/* Partners row: infinite horizontal marquee (two identical halves in .marquee-inner) */
+.marquee-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-inner {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-inner {
+    animation: none;
+  }
 }
 
 .partners-strip__item {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   min-height: 46px;
@@ -1640,10 +1669,6 @@ html.js-reveal .reveal.is-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .partners-strip__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1702,10 +1727,6 @@ html.js-reveal .reveal.is-visible {
   .case-grid,
   .steps-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .partners-strip__grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .audience-grid,
