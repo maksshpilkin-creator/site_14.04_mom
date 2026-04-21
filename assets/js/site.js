@@ -204,7 +204,7 @@ function setupNavigation() {
   }
 
   function syncHeader() {
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
+    header.classList.toggle("scrolled", window.scrollY > 50);
   }
 
   toggle.addEventListener("click", () => {
@@ -244,11 +244,13 @@ function parseCountValue(rawText) {
   const match = text.match(/(\d[\d\s]*)/);
   if (!match) return null;
 
-  const numericPart = match[1].replace(/\s/g, "");
+  const consumed = match[1];
+  const trimmedEnd = consumed.replace(/\s+$/, "");
+  const numericPart = trimmedEnd.replace(/\s/g, "");
   const targetValue = Number.parseInt(numericPart, 10);
   if (!Number.isFinite(targetValue) || targetValue <= 0) return null;
 
-  const suffix = text.replace(match[1], "");
+  const suffix = text.slice(match.index + trimmedEnd.length);
   return { targetValue, suffix };
 }
 
