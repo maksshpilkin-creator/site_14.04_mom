@@ -4,7 +4,7 @@ const SITE_CONFIG = {
   phoneHref: "+78126404446",
   whatsappHref: "https://wa.me/78126404446",
   email: "info@ocenka-group.ru",
-  address: "Санкт-Петербург, проспект Энгельса, 33к1, офис 502А",
+  address: "Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А",
   legalName: "ООО «Оценка Групп»",
   inn: "ИНН 0000000000",
   ogrn: "ОГРН 0000000000000",
@@ -233,7 +233,7 @@ function setupReveal() {
         observer.unobserve(entry.target);
       });
     },
-    { rootMargin: "0px 0px 80px 0px", threshold: 0.08 }
+    { rootMargin: "0px 0px 140px 0px", threshold: 0.1 }
   );
 
   items.forEach((item) => observer.observe(item));

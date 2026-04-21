@@ -43,8 +43,8 @@
           "addressCountry": "RU"
         },
         "identifier": [
-          "ИНН 0000000000",
-          "ОГРН 0000000000000"
+          "ИНН 7802596912",
+          "ОГРН 1167847399895"
         ]
       }
     </script>
@@ -58,7 +58,7 @@
             "name": "Сколько стоит оценка и от чего зависит цена?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Стоимость зависит от типа объекта, цели отчёта (банк, суд, нотариус, сделка), региона и необходимости выезда. На главной странице экспресс-квиз даёт ориентир по диапазону; окончательную сумму и срок фиксируем после краткого уточнения задачи — без навязанных доплат «по факту»."
+              "text": "Стоимость зависит от типа объекта, цели отчёта (банк, суд, нотариус, сделка), региона и необходимости выезда. На главной странице экспресс-квиз даёт ориентир по диапазону; окончательную сумму и срок фиксируем после краткого уточнения задачи — без навязанных доплат «по факту».\n\n— Жилая недвижимость: от 4 500 ₽\n— Коммерческая недвижимость: от 12 000 ₽\n— Транспорт: от 5 000 ₽\n— Бизнес и доли: от 50 000 ₽\n— Оценка ущерба: от 10 000 ₽\n— Судебная экспертиза: от 15 000 ₽\n\nОриентир по стоимости — от 4 500 ₽ за жилую недвижимость, от 12 000 ₽ за коммерческую, от 5 000 ₽ за транспорт, от 50 000 ₽ за бизнес и доли. Точную сумму называем после уточнения объекта и цели отчёта."
             }
           },
           {
@@ -90,7 +90,7 @@
             "name": "Можно ли ускорить подготовку отчёта?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Да, при сжатых сроках обсуждаем ускоренный режим: что реально успеть с учётом осмотра, документов и согласований. Срочность влияет на стоимость — проговариваем это до старта, чтобы не было сюрпризов."
+              "text": "Да, при сжатых сроках обсуждаем ускоренный режим: что реально успеть с учётом осмотра, документов и согласований. Срочность влияет на стоимость — проговариваем это до старта, чтобы не было сюрпризов. Срочный выезд и подготовка отчёта за 1 день — возможны для большинства объектов. Стоимость срочного отчёта уточняется индивидуально."
             }
           },
           {
@@ -108,6 +108,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script>document.documentElement.classList.add("js-reveal");</script>
     <script src="/assets/js/site.js" defer></script>
   </head>
   <body data-page="home">
@@ -115,23 +116,39 @@
     <div data-site-header></div>
 
     <main id="main-content">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <span class="eyebrow">Федеральная оценочная практика</span>
-            <h1>Оценка имущества по всей России для банка, суда, нотариуса и бизнеса</h1>
-            <p>
-              Квартиры, дома, коммерческая недвижимость, бизнес, ущерб, оборудование и транспорт. Сразу называем стоимость, срок подготовки отчета и список документов.
-            </p>
-            <div class="hero-actions">
-              <a class="btn" href="#hero-quiz">Рассчитать стоимость</a>
-              <a class="btn-secondary" href="/contacts/#lead-form">Получить консультацию</a>
+      <section class="hero hero--split">
+        <div class="container hero-shell">
+          <div class="hero-split">
+            <div class="hero-copy reveal">
+              <span class="eyebrow">Федеральная оценочная практика</span>
+              <h1>Оценка имущества по всей России для банка, суда, нотариуса и бизнеса</h1>
+              <p>
+                Квартиры, дома, коммерческая недвижимость, бизнес, ущерб, оборудование и транспорт. Сразу называем стоимость, срок подготовки отчета и список документов.
+              </p>
+              <div class="hero-actions">
+                <a class="btn" href="#hero-quiz">Рассчитать стоимость</a>
+                <a class="btn-secondary" href="/contacts/#lead-form">Получить консультацию</a>
+              </div>
             </div>
-            <div class="hero-trust">
-              <span class="chip">СРО</span>
-              <span class="chip">Страхование ответственности</span>
-              <span class="chip">Отчеты принимают банк, суд и нотариус</span>
+            <div class="hero-visual reveal is-visible">
+              <div class="hero-portrait">
+                <img
+                  src="/files/team.webp"
+                  alt="Команда Оценка Групп"
+                  width="720"
+                  height="960"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </div>
             </div>
+          </div>
+          <div class="hero-strip" role="list">
+            <span class="hero-strip__item" role="listitem">СРО</span>
+            <span class="hero-strip__sep" aria-hidden="true"></span>
+            <span class="hero-strip__item" role="listitem">Страхование ответственности</span>
+            <span class="hero-strip__sep" aria-hidden="true"></span>
+            <span class="hero-strip__item" role="listitem">Отчеты принимают банк, суд и нотариус</span>
           </div>
         </div>
       </section>
@@ -433,53 +450,21 @@
       <section class="section-tight">
         <div class="container stats-grid">
           <article class="stat-card reveal">
-            <div class="stat-value">12+</div>
+            <div class="stat-value">19+</div>
             <p class="stat-label">лет практики в оценке имущества и активов</p>
           </article>
           <article class="stat-card reveal">
-            <div class="stat-value">1500+</div>
-            <p class="stat-label">отчетов для частных клиентов и бизнеса</p>
+            <div class="stat-value">15 000+</div>
+            <p class="stat-label">отчётов для частных клиентов и бизнеса</p>
           </article>
           <article class="stat-card reveal">
-            <div class="stat-value">30 мин</div>
+            <div class="stat-value">30 минут</div>
             <p class="stat-label">на первичный ответ в рабочее время</p>
           </article>
           <article class="stat-card reveal">
             <div class="stat-value">Россия</div>
             <p class="stat-label">работаем по всей стране с региональными задачами</p>
           </article>
-        </div>
-      </section>
-
-      <section class="section" id="audience">
-        <div class="container">
-          <div class="section-head reveal">
-            <span class="eyebrow">Маршрут клиента</span>
-            <h2>Сразу ведем по понятному сценарию</h2>
-            <p>На первом экране посетитель видит свой путь: частная задача или задача бизнеса. Дальше переводим в нужную услугу без общего шума.</p>
-          </div>
-          <div class="audience-grid">
-            <article class="audience-card reveal">
-              <h3>Мне нужна оценка для личной задачи</h3>
-              <p>Ипотека, наследство, раздел имущества, нотариус, суд, ущерб после залива или ДТП.</p>
-              <a class="btn-text" href="/services/real-estate/">Перейти к частным задачам</a>
-            </article>
-            <article class="audience-card reveal">
-              <h3>Мне нужна оценка для бизнеса</h3>
-              <p>Коммерческие объекты, доли и бизнес, оборудование, кредитование, сделки, корпоративные процедуры.</p>
-              <a class="btn-text" href="/services/business-valuation/">Перейти к бизнес-задачам</a>
-            </article>
-            <article class="audience-card reveal">
-              <h3>Мне нужна срочная оценка</h3>
-              <p>Жёсткий дедлайн, суд завтра или банк ждёт документы сегодня. Работаем в ускоренном режиме.</p>
-              <a class="btn-text" href="#urgent">Перейти к срочным задачам</a>
-            </article>
-            <article class="audience-card audience-card-help reveal">
-              <h3>Не знаю с чего начать</h3>
-              <p>Объясните ситуацию — сами определим тип оценки, нужные документы и реальный срок.</p>
-              <a class="btn-text" href="#contacts">Получить бесплатную консультацию</a>
-            </article>
-          </div>
         </div>
       </section>
 
@@ -531,45 +516,71 @@
         </div>
       </section>
 
-      <section class="section" id="about">
-        <div class="container story-grid">
-          <div class="media-card reveal">
-            <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80" alt="Совещание в офисе оценочной компании" />
+      <section class="section section-about" id="about">
+        <div class="container story-grid about-layout">
+          <div class="about-media reveal">
+            <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80" alt="Совещание в офисе оценочной компании" width="1200" height="1500" loading="lazy" decoding="async" />
           </div>
-          <div class="reveal">
-            <div class="section-head">
+          <div class="about-copy reveal">
+            <header class="about-head">
               <span class="eyebrow">О компании</span>
               <h2>Независимая оценка с понятным процессом и юридической опорой</h2>
-              <p>Мы ведем частные и корпоративные задачи так, чтобы клиент не тратил время на расшифровку требований банка, суда или нотариуса. Сначала уточняем цель отчета, затем собираем документы и выдаем результат в согласованный срок.</p>
-            </div>
-            <ul class="detail-list">
-              <li>Практика по жилой, коммерческой и промышленной недвижимости</li>
-              <li>Отдельный поток для корпоративных задач и оценки бизнеса</li>
-              <li>Отчеты и образцы документов доступны для предварительного просмотра</li>
+              <p class="about-lead">
+                Мы ведем частные и корпоративные задачи так, чтобы клиент не тратил время на расшифровку требований банка, суда или нотариуса. Сначала уточняем цель отчета, затем собираем документы и выдаем результат в согласованный срок.
+              </p>
+            </header>
+            <ul class="about-features" role="list">
+              <li class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"
+                  ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 21V10.5L12 4l8 6.5V21" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" /><path d="M9 21V12h6v9" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" /></svg
+                ></span>
+                <span class="about-feature-text">Практика по жилой, коммерческой и промышленной недвижимости</span>
+              </li>
+              <li class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"
+                  ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" /><path d="M4 9h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round" /><path d="M12 12v3" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" /></svg
+                ></span>
+                <span class="about-feature-text">Отдельный поток для корпоративных задач и оценки бизнеса</span>
+              </li>
+              <li class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"
+                  ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round" /><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round" /><circle cx="10.5" cy="14.5" r="3.25" stroke="currentColor" stroke-width="1.65" /><path d="m16 16 2.5 2.5" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" /></svg
+                ></span>
+                <span class="about-feature-text">Отчеты и образцы документов доступны для предварительного просмотра</span>
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section-trust">
         <div class="container">
-          <div class="section-head reveal">
+          <div class="section-head section-head--trust reveal">
             <span class="eyebrow">Почему доверяют</span>
             <h2>Доверие строится на понятных доказательствах</h2>
             <p>Сначала показываем документы и факты, затем говорим о подходе. Это снимает главный страх клиента: что отчет не примут по месту назначения.</p>
           </div>
           <div class="trust-grid">
             <article class="trust-card reveal">
-              <h3>Работа по всей России</h3>
-              <p>Подключаем региональные задачи без привязки к одному городу. Учитываем локальные требования и сроки.</p>
+              <div class="trust-card__icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.5c4.1-3.5 6.5-7.2 6.5-11a6.5 6.5 0 1 0-13 0c0 3.8 2.4 7.5 6.5 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><circle cx="12" cy="10.5" r="2.25" stroke="currentColor" stroke-width="1.5" /></svg
+              ></div>
+              <h3 class="trust-card__title">Работа по всей России</h3>
+              <p class="trust-card__desc">Подключаем региональные задачи без привязки к одному городу. Учитываем локальные требования и сроки.</p>
             </article>
             <article class="trust-card reveal">
-              <h3>Документы и СРО</h3>
-              <p>Показываем подтверждающие документы, квалификацию и образцы отчетов до старта проекта.</p>
+              <div class="trust-card__icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><path d="M9 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M9 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><circle cx="12" cy="19" r="2.5" stroke="currentColor" stroke-width="1.5" /></svg
+              ></div>
+              <h3 class="trust-card__title">Документы и СРО</h3>
+              <p class="trust-card__desc">Показываем подтверждающие документы, квалификацию и образцы отчетов до старта проекта.</p>
             </article>
             <article class="trust-card reveal">
-              <h3>Форматы для практики</h3>
-              <p>Сразу уточняем, для кого нужен отчет: банк, суд, нотариус, страховая компания или корпоративная процедура.</p>
+              <div class="trust-card__icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M4 6.5h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M4 12h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M4 17.5h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg
+              ></div>
+              <h3 class="trust-card__title">Форматы для практики</h3>
+              <p class="trust-card__desc">Сразу уточняем, для кого нужен отчет: банк, суд, нотариус, страховая компания или корпоративная процедура.</p>
             </article>
           </div>
         </div>
@@ -767,7 +778,14 @@
               </button>
               <div class="faq-panel" data-faq-panel hidden>
                 <p>
-                  Стоимость зависит от типа объекта, цели отчёта (банк, суд, нотариус, сделка), региона и необходимости выезда. На главной странице экспресс-квиз даёт ориентир по диапазону; окончательную сумму и срок фиксируем после краткого уточнения задачи — без навязанных доплат «по факту».
+                  Стоимость зависит от типа объекта, цели отчёта (банк, суд, нотариус, сделка), региона и необходимости выезда. На главной странице экспресс-квиз даёт ориентир по диапазону; окончательную сумму и срок фиксируем после краткого уточнения задачи — без навязанных доплат «по факту».<br /><br />
+                  — Жилая недвижимость: от 4 500 ₽<br />
+                  — Коммерческая недвижимость: от 12 000 ₽<br />
+                  — Транспорт: от 5 000 ₽<br />
+                  — Бизнес и доли: от 50 000 ₽<br />
+                  — Оценка ущерба: от 10 000 ₽<br />
+                  — Судебная экспертиза: от 15 000 ₽<br /><br />
+                  Ориентир по стоимости — от 4 500 ₽ за жилую недвижимость, от 12 000 ₽ за коммерческую, от 5 000 ₽ за транспорт, от 50 000 ₽ за бизнес и доли. Точную сумму называем после уточнения объекта и цели отчёта.
                 </p>
               </div>
             </div>
@@ -811,7 +829,7 @@
               </button>
               <div class="faq-panel" data-faq-panel hidden>
                 <p>
-                  Да, при сжатых сроках обсуждаем ускоренный режим: что реально успеть с учётом осмотра, документов и согласований. Срочность влияет на стоимость — проговариваем это до старта, чтобы не было сюрпризов.
+                  Да, при сжатых сроках обсуждаем ускоренный режим: что реально успеть с учётом осмотра, документов и согласований. Срочность влияет на стоимость — проговариваем это до старта, чтобы не было сюрпризов. Срочный выезд и подготовка отчёта за 1 день — возможны для большинства объектов. Стоимость срочного отчёта уточняется индивидуально.
                 </p>
               </div>
             </div>
@@ -963,7 +981,7 @@
               entry.target.classList.add('is-visible');
             }
           });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: '0px 0px 140px 0px' });
 
         const grids = document.querySelectorAll('[class$="-grid"], .form-row, .process-track');
         grids.forEach(grid => {
@@ -972,7 +990,7 @@
             if(!card.classList.contains('reveal')) {
               card.classList.add('reveal');
             }
-            card.style.transitionDelay = `${index * 80}ms`;
+            card.style.transitionDelay = `${Math.min(index * 40, 100)}ms`;
             generalObserver.observe(card);
           });
         });
@@ -1053,26 +1071,6 @@
             });
           });
         }
-
-        // Specific fix for route/audience cards
-        const audienceObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              audienceObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.audience-card').forEach((card, i) => {
-          card.style.transitionDelay = `${i * 80}ms`;
-          audienceObserver.observe(card);
-        });
-
-        const headH2 = document.querySelector('#audience .section-head h2');
-        if (headH2) { headH2.style.transitionDelay = '0ms'; audienceObserver.observe(headH2); }
-        const headP = document.querySelector('#audience .section-head p');
-        if (headP) { headP.style.transitionDelay = '40ms'; audienceObserver.observe(headP); }
       });
     </script>
   </body>
