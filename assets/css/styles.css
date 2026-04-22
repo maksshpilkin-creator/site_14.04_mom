@@ -157,6 +157,10 @@ ul {
   padding: 48px 0;
 }
 
+#documents .section-tight {
+  padding: 20px 0 0;
+}
+
 .section-tight:has(.stats-grid) {
   padding-block: clamp(20px, 4vw, 28px);
 }
@@ -439,12 +443,52 @@ ul {
   background-image: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80");
 }
 
+body[data-page="reviews"] .site-header {
+  position: fixed;
+}
+
+body[data-page="documents"] .site-header {
+  position: fixed;
+}
+
+body[data-page="contacts"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-real-estate"] .site-header {
+  position: fixed;
+}
+
+body[data-page="about"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-business-valuation"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-commercial-property"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-court-valuation"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-damage-valuation"] .site-header {
+  position: fixed;
+}
+
+body[data-page="service-equipment-transport"] .site-header {
+  position: fixed;
+}
+
 .hero-contacts {
   background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
 }
 
 .hero-real-estate {
-  background-image: url("https://images.unsplash.com/photo-1556912170-3b8776d804b7?auto=format&fit=crop&w=1920&q=85");
+  background-image: url("https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1920&q=85");
 }
 
 .hero-business {
@@ -970,30 +1014,41 @@ ul {
   color: var(--accent-dark);
 }
 
-/* Partners row: infinite horizontal marquee (two identical halves in .marquee-inner) */
+/* Partners row: three identical .marquee-set blocks; inner gap stays 0 so translate(-33.333%) matches one segment; 16px rhythm = .marquee-set gap + equal padding-right on each set */
 .marquee-track {
   overflow: hidden;
   width: 100%;
+  padding: 0;
 }
 
 .marquee-inner {
   display: flex;
-  gap: 16px;
+  gap: 0;
   width: max-content;
   animation: marquee-scroll 20s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
 }
 
-.marquee-inner:hover {
-  animation-play-state: paused;
+.marquee-set {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.marquee-set .partners-strip__item:last-child {
+  padding-right: 0;
+  margin-right: 0;
 }
 
 @keyframes marquee-scroll {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-33.333333%, 0, 0);
   }
 }
 
@@ -1017,6 +1072,14 @@ ul {
   font-size: 0.88rem;
   font-weight: 700;
   text-align: center;
+}
+
+.section--cases {
+  padding-top: clamp(24px, 4vw, 40px);
+}
+
+.section--reviews {
+  padding-bottom: clamp(24px, 4vw, 40px);
 }
 
 .card:hover,
@@ -1238,6 +1301,22 @@ body[data-page="service-real-estate"] .intro-card--real-estate .intro-card__list
   font-weight: 500;
 }
 
+body[data-page="documents"] .hero-documents .page-hero-grid > .reveal > p {
+  margin-bottom: 18px;
+}
+
+body[data-page="documents"] .hero-documents .page-hero-grid > .reveal > h1 {
+  margin-bottom: 24px;
+}
+
+body[data-page="documents"] .hero-documents.page-hero {
+  padding-top: 108px;
+}
+
+body[data-page="documents"] .hero-documents .breadcrumbs {
+  transform: translateY(-10px);
+}
+
 .media-card,
 .document-card figure,
 .review-card figure {
@@ -1419,6 +1498,7 @@ body[data-page="documents"] .document-card:has(figure) figure {
   flex-shrink: 0;
   height: 200px;
   margin: 0;
+  background: #f8f7f4;
 }
 
 body[data-page="documents"] .document-card:has(figure) figure img {
@@ -1426,18 +1506,26 @@ body[data-page="documents"] .document-card:has(figure) figure img {
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 body[data-page="documents"] .document-card:has(figure) h3 {
   flex-shrink: 0;
   margin: 0;
-  min-height: 2.75em;
+  min-height: 0;
 }
 
 body[data-page="documents"] .document-card:has(figure) p {
   margin: 0;
+}
+
+body[data-page="documents"] .document-card h3 {
+  margin-bottom: 0;
+}
+
+body[data-page="documents"] .document-card p {
+  margin-top: 0;
 }
 
 /* Documents page: download cards — equal height, button pinned to bottom */
@@ -1478,8 +1566,166 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
   transform: translateY(1px) scale(0.99);
 }
 
+.doc-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.doc-lightbox.active {
+  display: flex;
+}
+
+.doc-lightbox__img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+
+.doc-lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.document-card figure {
+  cursor: zoom-in;
+}
+
 .cta-banner {
   background: var(--cta-gradient);
+}
+
+.section-coverage-cta {
+  padding-top: clamp(32px, 6vw, 64px);
+}
+
+.cta-grid--coverage {
+  gap: 14px;
+}
+
+.cta-banner--coverage-main,
+.cta-banner--coverage-benefits {
+  position: relative;
+  border-radius: 18px;
+}
+
+.cta-banner--coverage-main {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 22px 20px;
+  overflow: hidden;
+  background: #f6f6f5;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  border-left: 3px solid #c5a880;
+  box-shadow: 0 16px 42px rgba(18, 18, 18, 0.04);
+}
+
+.cta-banner--coverage-main .eyebrow {
+  letter-spacing: 0.13em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #44413d;
+}
+
+.cta-banner--coverage-main h2 {
+  margin: 0;
+  font-family: "Noto Serif", Georgia, serif;
+  font-size: clamp(2.2rem, 8vw, 3.5rem);
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  color: #171717;
+  max-width: 11ch;
+}
+
+.cta-banner--coverage-main p {
+  margin: 0;
+  font-size: clamp(1.02rem, 3.3vw, 1.24rem);
+  line-height: 1.45;
+  color: #2f2f2f;
+  max-width: 44ch;
+  position: relative;
+  z-index: 1;
+}
+
+.coverage-accent {
+  position: absolute;
+  right: 14px;
+  bottom: -14px;
+  font-family: "Noto Serif", Georgia, serif;
+  font-size: 120px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.84;
+  color: #171717;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.cta-banner--coverage-benefits {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 20px 20px 22px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.cta-banner--coverage-benefits h3 {
+  margin: 0;
+  font-family: "Noto Serif", Georgia, serif;
+  font-size: clamp(1.95rem, 6.8vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: #171717;
+  max-width: 17ch;
+}
+
+.coverage-benefits-list {
+  display: grid;
+}
+
+.coverage-benefit-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.coverage-benefit-row:last-child {
+  border-bottom: 0;
+}
+
+.coverage-benefit-row__number {
+  color: #c5a880;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+}
+
+.coverage-benefit-row p {
+  margin: 0;
+  color: #3e3e3e;
+  font-size: clamp(1.03rem, 3.1vw, 1.17rem);
+  line-height: 1.45;
 }
 
 .footer {
@@ -1790,6 +2036,24 @@ html.js-reveal .reveal.is-visible {
   .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+  }
+
+  .cta-grid--coverage {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .cta-banner--coverage-main,
+  .cta-banner--coverage-benefits {
+    min-height: 100%;
+  }
+
+  .cta-banner--coverage-main {
+    padding: clamp(26px, 2.4vw, 34px) clamp(26px, 2.4vw, 36px);
+  }
+
+  .cta-banner--coverage-benefits {
+    padding: clamp(24px, 2.2vw, 32px) clamp(24px, 2.2vw, 32px) clamp(26px, 2.2vw, 34px);
   }
 
   .section-about .story-grid.about-layout {
@@ -3629,6 +3893,7 @@ body[data-page="service-real-estate"] .page-hero-grid--real-estate {
 body[data-page="service-real-estate"] .page-hero__copy {
   display: grid;
   gap: clamp(16px, 3vw, 24px);
+  padding-top: clamp(12px, 2.5vw, 28px);
 }
 
 body[data-page="service-real-estate"] .page-hero__lead {
@@ -3866,6 +4131,10 @@ body[data-page="service-real-estate"] #lead-form .form-urgency-note {
   body[data-page="service-real-estate"] .real-estate-trust-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
+  }
+
+  body[data-page="service-real-estate"] .page-hero__copy {
+    padding-top: clamp(64px, 8.5vw, 120px);
   }
 
   body[data-page="service-real-estate"] .page-hero-grid--real-estate {
@@ -4110,6 +4379,30 @@ body[data-page="service-commercial-property"] .page-hero__copy {
   gap: clamp(16px, 3vw, 24px);
 }
 
+body[data-page="service-equipment-transport"] .page-hero__copy {
+  padding-top: clamp(12px, 2.4vw, 28px);
+}
+
+body[data-page="service-business-valuation"] .page-hero__copy {
+  padding-top: clamp(12px, 2.5vw, 28px);
+}
+
+body[data-page="service-commercial-property"] .page-hero__copy {
+  padding-top: clamp(12px, 2.5vw, 28px);
+}
+
+body[data-page="service-court-valuation"] .page-hero__copy {
+  padding-top: clamp(8px, 1.8vw, 20px);
+}
+
+body[data-page="service-damage-valuation"] .page-hero__copy {
+  padding-top: clamp(12px, 2.5vw, 28px);
+}
+
+body[data-page="service-damage-valuation"] .page-hero .breadcrumbs {
+  margin-top: 22px;
+}
+
 body[data-page="service-court-valuation"] .page-hero__lead,
 body[data-page="service-damage-valuation"] .page-hero__lead,
 body[data-page="service-equipment-transport"] .page-hero__lead,
@@ -4294,6 +4587,10 @@ body[data-page="service-business-valuation"] .page-hero h1,
 body[data-page="service-commercial-property"] .page-hero h1 {
   font-size: clamp(2.7rem, 7.5vw, 4.8rem);
   line-height: 1.1;
+}
+
+body[data-page="service-court-valuation"] .page-hero h1 {
+  font-size: clamp(2.3rem, 6.6vw, 4rem);
 }
 
 body[data-page="service-court-valuation"] .service-offer-card,
@@ -4650,6 +4947,26 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
     align-self: end;
   }
 
+  body[data-page="service-equipment-transport"] .page-hero__copy {
+    padding-top: clamp(72px, 10vw, 140px);
+  }
+
+  body[data-page="service-business-valuation"] .page-hero__copy {
+    padding-top: clamp(64px, 8.5vw, 120px);
+  }
+
+  body[data-page="service-commercial-property"] .page-hero__copy {
+    padding-top: clamp(64px, 8.5vw, 120px);
+  }
+
+  body[data-page="service-court-valuation"] .page-hero__copy {
+    padding-top: clamp(48px, 6.8vw, 92px);
+  }
+
+  body[data-page="service-damage-valuation"] .page-hero__copy {
+    padding-top: clamp(32px, 5.4vw, 72px);
+  }
+
   /* Equal-height offer cards: override global align-items:start on this grid */
   body[data-page="service-court-valuation"] .section--court-valuation-formats .service-offer-grid,
   body[data-page="service-damage-valuation"] .section--damage-valuation-formats .service-offer-grid,
@@ -4684,6 +5001,289 @@ body[data-page="service-commercial-property"] .section--commercial-property-trus
 
 body[data-page="service-commercial-property"] .section--commercial-property-cta.section-tight {
   padding: 64px 0;
+}
+
+/* Real estate: align to court-valuation service template */
+body[data-page="service-real-estate"] .page-hero {
+  padding: clamp(8px, 1.4vw, 16px) 0 clamp(48px, 8vw, 72px);
+}
+
+body[data-page="service-real-estate"] .page-hero-grid--court-valuation {
+  align-items: stretch;
+}
+
+body[data-page="service-real-estate"] .page-hero__copy {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+body[data-page="service-real-estate"] .page-hero__lead {
+  max-width: 54ch;
+  color: var(--text-inverse-soft);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+}
+
+body[data-page="service-real-estate"] .page-hero__aside {
+  display: flex;
+  align-items: stretch;
+}
+
+body[data-page="service-real-estate"] .intro-card--court-valuation {
+  width: 100%;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-formats {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #fafafa;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-trust {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #fafafa;
+  border-top: 1px solid #eaeaea;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta.section-tight {
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-formats .section-head {
+  gap: 32px;
+}
+
+body[data-page="service-real-estate"] .section-head--court-valuation .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+body[data-page="service-real-estate"] .section-head--court-valuation-trust {
+  margin-bottom: 24px;
+}
+
+body[data-page="service-real-estate"] .section-head--court-valuation-trust h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+}
+
+body[data-page="service-real-estate"] .page-hero h1,
+body[data-page="service-real-estate"] .section-head--court-valuation h2,
+body[data-page="service-real-estate"] .section-head--court-valuation-trust h2,
+body[data-page="service-real-estate"] .service-offer-card h3,
+body[data-page="service-real-estate"] .contact-form h3,
+body[data-page="service-real-estate"] .cta-banner h3,
+body[data-page="service-real-estate"] .real-estate-trust-card__org {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+body[data-page="service-real-estate"] .page-hero h1 {
+  font-size: clamp(2.7rem, 7.5vw, 4.8rem);
+  line-height: 1.1;
+}
+
+body[data-page="service-real-estate"] .service-offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+body[data-page="service-real-estate"] .service-offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-real-estate"] .service-offer-card__price-row {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page="service-real-estate"] .service-offer-card__price-main {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-grid {
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__org {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+body[data-page="service-real-estate"] .real-estate-trust-card__year {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .cta-banner--cases {
+  position: relative;
+  display: grid;
+  gap: clamp(14px, 2.5vw, 18px);
+  padding: clamp(22px, 4vw, 32px);
+  padding-left: clamp(22px, 4vw, 30px);
+  border: 1px solid rgba(182, 138, 69, 0.22);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse 100% 80% at 0% 0%, rgba(182, 138, 69, 0.1), transparent 52%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(247, 243, 236, 0.96));
+  box-shadow:
+    0 18px 36px rgba(31, 42, 55, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .cta-banner__eyebrow {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .cta-banner--cases h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.45rem, 3.2vw, 1.95rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--text);
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips li {
+  position: relative;
+  margin: 0;
+  padding: 12px 14px 12px 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(182, 138, 69, 0.18);
+  background: rgba(255, 255, 255, 0.78);
+  color: #3f4753;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+  transition: border-color var(--motion-micro) ease, background-color var(--motion-micro) ease, transform var(--motion-micro) ease;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(182, 138, 69, 0.22);
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips li:nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips li:hover {
+  border-color: rgba(182, 138, 69, 0.38);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+body[data-page="service-real-estate"] #lead-form .field input[type="text"],
+body[data-page="service-real-estate"] #lead-form .field input[type="tel"] {
+  min-height: 56px;
+}
+
+body[data-page="service-real-estate"] #lead-form .field input[type="text"]:focus,
+body[data-page="service-real-estate"] #lead-form .field input[type="tel"]:focus,
+body[data-page="service-real-estate"] #lead-form .field textarea:focus {
+  outline: 2px solid #c5a880;
+  outline-offset: 2px;
+  box-shadow: none;
+  border-color: #c5a880;
+}
+
+body[data-page="service-real-estate"] #lead-form .form-urgency-note {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 480px) {
+  body[data-page="service-real-estate"] .section--court-valuation-cta .court-case-chips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  body[data-page="service-real-estate"] .real-estate-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body[data-page="service-real-estate"] .page-hero-grid--court-valuation {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    align-items: start;
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  body[data-page="service-real-estate"] .page-hero__aside {
+    align-self: end;
+  }
+
+  body[data-page="service-real-estate"] .section--court-valuation-formats .service-offer-grid {
+    align-items: stretch;
+  }
 }
 
 /* Notary inheritance service: conversion-focused layout (typography, proof, form) */
