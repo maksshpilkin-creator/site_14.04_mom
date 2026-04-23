@@ -483,6 +483,10 @@ body[data-page="service-equipment-transport"] .site-header {
   position: fixed;
 }
 
+body[data-page="home"] .site-header {
+  position: fixed;
+}
+
 .hero-contacts {
   background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
 }
@@ -2920,6 +2924,10 @@ textarea:focus {
   text-align: center;
 }
 
+body[data-page="home"] .hero.hero--split .hero-copy {
+  padding-top: clamp(12px, 2.5vw, 28px);
+}
+
 .hero.hero--split .hero-copy h1 {
   line-height: 1.08;
   max-width: 22ch;
@@ -3034,6 +3042,10 @@ textarea:focus {
 
   .hero.hero--split .hero-copy {
     text-align: left;
+  }
+
+  body[data-page="home"] .hero.hero--split .hero-copy {
+    padding-top: clamp(64px, 8.5vw, 120px);
   }
 
   .hero.hero--split .hero-copy h1,
@@ -5031,6 +5043,66 @@ body[data-page="service-real-estate"] .page-hero__aside {
 
 body[data-page="service-real-estate"] .intro-card--court-valuation {
   width: 100%;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate-ref {
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  gap: clamp(12px, 2.4vw, 18px);
+  padding: clamp(18px, 3.5vw, 30px);
+  border: 1px solid rgba(182, 138, 69, 0.2);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(252, 249, 244, 0.97));
+  box-shadow:
+    0 16px 34px rgba(18, 25, 37, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate-ref .intro-card__kicker {
+  display: inline-flex;
+  width: fit-content;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 138, 69, 0.36);
+  background: rgba(255, 255, 255, 0.94);
+  color: #1f3e5f;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body[data-page="service-real-estate"] .intro-card--real-estate-ref h3 {
+  margin: 0;
+  color: #09162a;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.05rem, 6.8vw, 3.15rem);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 0.95;
+}
+
+body[data-page="service-real-estate"] .intro-card__list--real-estate-ref {
+  gap: 12px;
+}
+
+body[data-page="service-real-estate"] .intro-card__list--real-estate-ref li {
+  padding: 12px 14px;
+  border: 1px solid rgba(182, 138, 69, 0.28);
+  border-radius: 12px;
+  background: #fff;
+  color: #1f2f45;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.32;
+}
+
+body[data-page="service-real-estate"] .intro-card__list--real-estate-ref li::before {
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2c4d73;
 }
 
 body[data-page="service-real-estate"] .section--court-valuation-formats {
