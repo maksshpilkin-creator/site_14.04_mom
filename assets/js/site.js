@@ -928,3 +928,43 @@ document.addEventListener("DOMContentLoaded", () => {
   setupForms();
   setupFaqAccordion();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const curtain = document.getElementById("page-curtain");
+  if (curtain) curtain.remove();
+
+  document.body.classList.remove("page-exit");
+  window.setTimeout(() => {
+    document.body.classList.add("page-ready");
+  }, 10);
+});
+
+document.addEventListener("click", (event) => {
+  if (event.defaultPrevented) return;
+  if (event.button !== 0) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  const link = event.target instanceof Element ? event.target.closest("a") : null;
+  if (!link) return;
+  if (link.classList.contains("skip-link")) return;
+  if (link.target === "_blank") return;
+  if (link.hasAttribute("download")) return;
+
+  const rawHref = link.getAttribute("href");
+  if (!rawHref || rawHref.startsWith("#")) return;
+
+  const nextUrl = new URL(link.href, window.location.href);
+  if (nextUrl.origin !== window.location.origin) return;
+  if (nextUrl.protocol === "mailto:" || nextUrl.protocol === "tel:") return;
+
+  const currentNoHash = `${window.location.origin}${window.location.pathname}${window.location.search}`;
+  const nextNoHash = `${nextUrl.origin}${nextUrl.pathname}${nextUrl.search}`;
+  if (currentNoHash === nextNoHash && nextUrl.hash) return;
+
+  event.preventDefault();
+  document.body.classList.remove("page-ready");
+  document.body.classList.add("page-exit");
+  window.setTimeout(() => {
+    window.location.href = nextUrl.href;
+  }, 260);
+});
