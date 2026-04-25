@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /privacy/
+Disallow: /terms/
+Disallow: /thanks/
+Allow: /
+
+User-agent: Yandex
+Disallow: /privacy/
+Disallow: /terms/
+Disallow: /thanks/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
+Clean-param: yclid&ysclid&gclid&fbclid
+Allow: /
+
+Sitemap: https://ocenka-group.ru/sitemap.xml
