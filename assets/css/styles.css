@@ -33,7 +33,7 @@
   --shadow-focus: 0 0 0 2px rgba(182, 138, 69, 0.18);
   --shadow-danger: 0 0 0 2px rgba(176, 63, 63, 0.14);
   --shadow-floating: 0 16px 34px rgba(31, 42, 55, 0.22);
-  --hero-overlay: linear-gradient(135deg, rgba(12, 21, 34, 0.88), rgba(12, 21, 34, 0.66));
+  --hero-overlay: linear-gradient(132deg, rgba(18, 34, 52, 0.58) 8%, rgba(27, 49, 74, 0.42) 46%, rgba(44, 72, 102, 0.28) 100%);
   --page-overlay: linear-gradient(135deg, rgba(12, 21, 34, 0.9), rgba(12, 21, 34, 0.64));
   --cta-gradient: linear-gradient(135deg, rgba(182, 138, 69, 0.12), rgba(255, 255, 255, 0.95));
   --hero-home-image: url("https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1600&q=80");
@@ -42,9 +42,11 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
   --container: 1200px;
-  --header-height: 78px;
+  --header-height: 62px;
   --motion-micro: 0.2s;
   --motion-reveal: 0.28s;
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Raleway', sans-serif;
 }
 
 @property --ring-end {
@@ -65,7 +67,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Manrope", "Inter", Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   text-rendering: optimizeLegibility;
 }
@@ -101,9 +103,48 @@ h3,
 .brand-mark,
 .display-serif {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.98;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.logo,
+.site-logo,
+header .brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.stat-number,
+.price-value,
+.hero-number,
+[class*="number"],
+[class*="stat"] {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+nav,
+button,
+.btn,
+input,
+textarea,
+select,
+label,
+p,
+li,
+span,
+a,
+footer {
+  font-family: var(--font-body);
 }
 
 h1 {
@@ -159,6 +200,10 @@ ul {
 
 #documents .section-tight {
   padding: 20px 0 0;
+}
+
+#reviews .section-tight {
+  padding-bottom: 0;
 }
 
 .section-tight:has(.stats-grid) {
@@ -306,18 +351,18 @@ ul {
 .site-header {
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   width: 100%;
-  padding: 16px 0;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
-.site-header.scrolled {
-  padding: 8px 0;
+.site-header.scrolled .nav-shell {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.97);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
 }
 
 .nav-shell {
@@ -411,12 +456,12 @@ ul {
 
 .hero {
   min-height: calc(100dvh - 24px);
-  padding: 116px 0 64px;
+  padding: 60px 0 64px;
   background-image: var(--hero-overlay), var(--hero-home-image);
 }
 
 .page-hero {
-  padding: 136px 0 60px;
+  padding: 72px 0 60px;
 }
 
 .page-hero::before {
@@ -443,49 +488,6 @@ ul {
   background-image: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80");
 }
 
-body[data-page="reviews"] .site-header {
-  position: fixed;
-}
-
-body[data-page="documents"] .site-header {
-  position: fixed;
-}
-
-body[data-page="contacts"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-real-estate"] .site-header {
-  position: fixed;
-}
-
-body[data-page="about"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-business-valuation"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-commercial-property"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-court-valuation"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-damage-valuation"] .site-header {
-  position: fixed;
-}
-
-body[data-page="service-equipment-transport"] .site-header {
-  position: fixed;
-}
-
-body[data-page="home"] .site-header {
-  position: fixed;
-}
 
 .hero-contacts {
   background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
@@ -566,6 +568,44 @@ body[data-page="home"] .site-header {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.hero-trust-line {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 24px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 24px;
+}
+
+.hero-stat__value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #C5A880;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat__label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
 }
 
 .hero-trust,
@@ -653,7 +693,7 @@ body[data-page="home"] .site-header {
 
 .quiz-question,
 .quiz-result-title {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.7rem, 4vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -1461,14 +1501,12 @@ body[data-page="documents"] .hero-documents .breadcrumbs {
 body[data-page="reviews"] .review-card figure {
   display: flex;
   flex-direction: column;
-  cursor: zoom-in;
 }
 
 body[data-page="reviews"] .review-card figure img {
   height: auto;
   flex: 0 0 auto;
   min-height: 0;
-  cursor: zoom-in;
 }
 
 body[data-page="reviews"] .review-photo-download {
@@ -1576,43 +1614,9 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
   transform: translateY(1px) scale(0.99);
 }
 
-.doc-lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.88);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  cursor: zoom-out;
-}
-
-.doc-lightbox.active {
-  display: flex;
-}
-
-.doc-lightbox__img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
-}
-
-.doc-lightbox__close {
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 36px;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.document-card figure {
-  cursor: zoom-in;
+[data-preview-card]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .cta-banner {
@@ -1654,7 +1658,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
 
 .cta-banner--coverage-main h2 {
   margin: 0;
-  font-family: "Noto Serif", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 8vw, 3.5rem);
   line-height: 0.93;
   letter-spacing: -0.03em;
@@ -1676,7 +1680,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
   position: absolute;
   right: 14px;
   bottom: -14px;
-  font-family: "Noto Serif", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 120px;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -1698,7 +1702,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
 
 .cta-banner--coverage-benefits h3 {
   margin: 0;
-  font-family: "Noto Serif", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.95rem, 6.8vw, 3rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
@@ -1802,7 +1806,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
 
 .footer-logo-mark {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.2vw, 2.15rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -1841,7 +1845,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
 
 .footer-heading {
   margin: 0 0 14px;
-  font-family: "Manrope", "Inter", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -2101,6 +2105,11 @@ html.js-reveal .reveal.is-visible {
     flex-wrap: wrap;
   }
 
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 0;
+  }
+
   .documents-grid,
   .review-grid,
   .trust-grid,
@@ -2229,7 +2238,7 @@ html.js-reveal .reveal.is-visible {
 }
 
 .faq-trigger__text {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -2407,8 +2416,8 @@ html.js-reveal .reveal.is-visible {
   --danger: var(--tertiary);
 
   /* Typography overrides */
-  --font-heading: "Noto Serif", serif;
-  --font-body: "Inter", sans-serif;
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Raleway', sans-serif;
 
   /* Spacing & Border Radius */
   --radius-sm: 8px;
@@ -2438,6 +2447,7 @@ h6,
 .quiz-question,
 .quiz-result-title {
   font-family: var(--font-heading) !important;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -2572,7 +2582,7 @@ button,
 
 .section-trust .trust-card__title {
   margin: 0 0 12px;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.38rem, 2.1vw, 1.55rem);
   font-weight: 700;
   line-height: 1.22;
@@ -2903,10 +2913,16 @@ textarea:focus {
 
 /* Home hero: split layout, dark gradient, info strip */
 .hero.hero--split {
-  min-height: auto;
+  position: relative;
+  isolation: isolate;
   display: block;
   text-align: left;
-  padding: clamp(44px, 8vw, 88px) 0 clamp(36px, 5vw, 52px);
+  min-height: auto;
+  padding: 0;
+  width: min(100% - 32px, 1200px);
+  margin: 8px auto 24px;
+  border-radius: 20px;
+  overflow: hidden;
   background-image: linear-gradient(165deg, #060a12 0%, #132a45 40%, #0b1426 100%);
   background-color: #080d18;
   background-size: cover;
@@ -2914,37 +2930,102 @@ textarea:focus {
   color: var(--text-inverse);
 }
 
+.hero.hero--split::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  background:
+    radial-gradient(
+      62% 90% at 51% 50%,
+      rgba(13, 27, 46, 0.22) 0%,
+      rgba(13, 27, 46, 0.1) 50%,
+      rgba(13, 27, 46, 0) 74%
+    ),
+    linear-gradient(
+      to right,
+      rgba(13, 27, 46, 0.9) 22%,
+      rgba(13, 27, 46, 0.72) 40%,
+      rgba(13, 27, 46, 0.42) 56%,
+      rgba(13, 27, 46, 0.18) 68%,
+      rgba(13, 27, 46, 0.05) 78%,
+      rgba(13, 27, 46, 0) 86%
+    );
+  filter: blur(9px);
+  transform: scale(1.01);
+  transform-origin: center;
+  will-change: filter, transform;
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero.hero--split > .hero-shell {
-  width: min(100% - 40px, 1280px);
-  margin-inline: auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .hero-split {
-  display: grid;
-  gap: clamp(28px, 4vw, 44px);
+  position: relative;
+  min-height: min(88dvh, 640px);
+  display: flex;
   align-items: center;
 }
 
 .hero.hero--split .hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 55%;
+  padding: 80px 48px 72px;
   gap: clamp(18px, 2.5vw, 26px);
-  text-align: center;
+  text-align: left;
 }
 
 body[data-page="home"] .hero.hero--split .hero-copy {
-  padding-top: clamp(12px, 2.5vw, 28px);
+  padding: 48px 48px 64px;
+}
+
+body[data-page="home"] .hero.hero--split .hero-actions .btn {
+  background: #c5a880;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+body[data-page="home"] .hero.hero--split .hero-actions .btn:hover,
+body[data-page="home"] .hero.hero--split .hero-actions .btn:focus-visible {
+  background: #b8966e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 168, 128, 0.35);
+}
+
+body[data-page="home"] .hero.hero--split .hero-actions .btn-secondary {
+  background: transparent;
+  border: 2px solid #c5a880;
+  color: #c5a880;
+  backdrop-filter: none;
+}
+
+body[data-page="home"] .hero.hero--split .hero-actions .btn-secondary:hover,
+body[data-page="home"] .hero.hero--split .hero-actions .btn-secondary:focus-visible {
+  background: rgba(197, 168, 128, 0.08);
+  border-color: #c5a880;
+  color: #c5a880;
 }
 
 .hero.hero--split .hero-copy h1 {
   line-height: 1.08;
   max-width: 22ch;
-  margin-inline: auto;
+  margin-inline: 0;
   font-size: clamp(2.35rem, 5.2vw, 3.65rem);
 }
 
 .hero.hero--split .hero-copy p {
   line-height: 1.68;
   max-width: 48ch;
-  margin-inline: auto;
+  margin-inline: 0;
   color: rgba(255, 255, 255, 0.78);
 }
 
@@ -2953,26 +3034,116 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 }
 
 .hero-visual {
-  width: 100%;
-  max-width: min(100%, 560px);
-  margin-inline: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  z-index: 0;
 }
 
 .hero-portrait {
-  border-radius: 18px;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid rgba(130, 175, 225, 0.3);
-  box-shadow:
-    0 28px 56px rgba(0, 0, 0, 0.38),
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  border: 0;
+  box-shadow: none;
 }
 
 .hero-portrait img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  display: block;
+  opacity: 1;
+  visibility: visible;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
+}
+
+body[data-page="home"] .hero-portrait {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 0;
+  padding-top: 0;
+}
+
+body[data-page="home"] .hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 88% 12%;
+  transform: translateZ(0) scale(1.05);
+  transform-origin: 100% 0%;
+}
+
+body[data-page="home"] .hero.hero--split .hero-portrait img {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 22%
+  );
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 22%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+.hero-rating {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  max-width: fit-content;
+  margin-top: 24px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-rating__stars {
+  color: #C5A880;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.hero-rating__text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-rating__score {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hero-rating__label {
+  white-space: nowrap;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hero.hero--split .hero-visual,
+.hero.hero--split .hero-portrait {
+  opacity: 1;
+  visibility: visible;
 }
 
 .hero.hero--split .hero-actions {
@@ -2980,6 +3151,11 @@ body[data-page="home"] .hero.hero--split .hero-copy {
   gap: 14px;
   align-items: stretch;
   justify-content: center;
+}
+
+.hero.hero--split .hero-stats {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .hero.hero--split .btn,
@@ -3017,10 +3193,11 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 
 .hero-strip {
   margin-top: clamp(24px, 3.5vw, 40px);
-  padding: clamp(14px, 2vw, 18px) clamp(12px, 2vw, 20px);
+  padding: clamp(18px, 2.6vw, 26px) clamp(16px, 2.8vw, 28px);
+  min-height: clamp(72px, 9vw, 96px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  font-size: 0.8125rem;
+  border-radius: 16px;
+  font-size: clamp(0.92rem, 0.85rem + 0.25vw, 1.05rem);
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.62);
   background: rgba(255, 255, 255, 0.04);
@@ -3033,7 +3210,36 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 }
 
 .hero-strip__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  justify-content: center;
+  column-gap: 8px;
   line-height: 1.45;
+}
+
+.hero-strip__item::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin-top: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 11px 11px;
+}
+
+.hero-strip__item:nth-child(1)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5.3 4.1 7.3 8 3.4' stroke='white' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.hero-strip__item:nth-child(3)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M5 1.4 7.6 2.2v2.3c0 1.9-1.5 3.3-2.6 4.1-1.1-.8-2.6-2.2-2.6-4.1V2.2L5 1.4Z' stroke='white' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.hero-strip__item:nth-child(5)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 3.3h6M3.2 3.3l-1 2.1h2l-1-2.1Zm3.6 0-1 2.1h2l-1-2.1ZM5 2.2V6.9' stroke='white' stroke-width='1.05' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .hero-strip__sep {
@@ -3041,17 +3247,25 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 }
 
 @media (min-width: 900px) {
-  .hero-split {
-    grid-template-columns: minmax(0, 1.06fr) minmax(240px, 0.9fr);
-    column-gap: clamp(48px, 6.5vw, 80px);
+  .hero.hero--split {
+    width: min(100% - clamp(40px, 6vw, 120px), 1180px);
+    margin: 8px auto 28px;
   }
 
-  .hero.hero--split .hero-copy {
+  body:not([data-page="home"]) .hero.hero--split .hero-copy {
     text-align: left;
+    align-self: center;
+    padding: 80px 48px 72px;
+  }
+
+  body[data-page="home"] .hero-split {
+    align-items: flex-start;
   }
 
   body[data-page="home"] .hero.hero--split .hero-copy {
-    padding-top: clamp(64px, 8.5vw, 120px);
+    text-align: left;
+    align-self: flex-start;
+    padding: 48px 48px 64px;
   }
 
   .hero.hero--split .hero-copy h1,
@@ -3060,19 +3274,35 @@ body[data-page="home"] .hero.hero--split .hero-copy {
   }
 
   .hero-visual {
-    max-width: none;
-    margin-inline: 0;
+    width: 50%;
+    height: 100%;
   }
 
   .hero-portrait {
     max-width: 100%;
-    margin-left: auto;
+  }
+
+  body:not([data-page="home"]) .hero.hero--split .hero-portrait img {
+    object-position: 40% 8%;
+    transform: scale(0.94) translateZ(0);
+    transform-origin: right bottom;
+  }
+
+  body[data-page="home"] .hero.hero--split .hero-portrait img {
+    object-position: 88% 12%;
+    transform: translateZ(0) scale(1.05);
+    transform-origin: 100% 0%;
   }
 
   .hero.hero--split .hero-actions {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
   }
 
   .hero-strip {
@@ -3098,11 +3328,13 @@ body[data-page="home"] .hero.hero--split .hero-copy {
   .hero-strip__item:nth-child(1) {
     text-align: left;
     justify-self: start;
+    justify-content: start;
   }
 
   .hero-strip__item:nth-child(3) {
     text-align: center;
     justify-self: center;
+    justify-content: start;
     white-space: normal;
     max-width: 28ch;
   }
@@ -3110,24 +3342,63 @@ body[data-page="home"] .hero.hero--split .hero-copy {
   .hero-strip__item:nth-child(5) {
     text-align: right;
     justify-self: end;
+    justify-content: start;
     white-space: normal;
     max-width: 36ch;
   }
 }
 
 @media (max-width: 899px) {
-  .hero.hero--split > .hero-shell {
-    width: min(100% - 32px, 1280px);
-  }
-}
-
-@media (min-width: 900px) and (max-width: 1023px) {
   .hero.hero--split {
-    padding: clamp(64px, 9vw, 100px) 0 clamp(28px, 4vw, 40px);
+    width: auto;
+    margin: 0 16px 32px;
+  }
+
+  .hero.hero--split::after {
+    inset: 0;
+    background: linear-gradient(to bottom, #0D1B2E 0%, rgba(13, 27, 46, 0.75) 52%, transparent 100%);
+    filter: none;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+    opacity: 1;
   }
 
   .hero-split {
-    column-gap: clamp(40px, 5vw, 56px);
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    height: min(56vw, 420px);
+    right: auto;
+    top: auto;
+    order: 2;
+  }
+
+  body[data-page="home"] .hero-portrait {
+    align-items: center;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  body[data-page="home"] .hero-portrait img {
+    width: min(100%, 360px);
+    height: 100%;
+    max-height: 100%;
+    object-position: center 10%;
+  }
+
+  .hero.hero--split .hero-copy {
+    max-width: 100%;
+    padding: 40px 24px 28px;
+  }
+
+  body[data-page="home"] .hero.hero--split .hero-copy {
+    padding: 40px 24px 28px;
   }
 }
 
@@ -3313,7 +3584,7 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 }
 
 #hero-quiz[data-quiz] .quiz-question {
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 2rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -3591,7 +3862,7 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 
 #hero-quiz[data-quiz] .quiz-result-heading {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -3600,7 +3871,7 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 
 #hero-quiz[data-quiz] .quiz-result-title[data-quiz-result-title] {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 1.35rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -3949,7 +4220,7 @@ body[data-page="service-real-estate"] .service-offer-card h3,
 body[data-page="service-real-estate"] .contact-form h3,
 body[data-page="service-real-estate"] .cta-banner h3,
 body[data-page="service-real-estate"] .real-estate-trust-card__org {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -3973,7 +4244,7 @@ body[data-page="service-real-estate"] .service-offer-card__price-row {
 
 body[data-page="service-real-estate"] .service-offer-card__price-main {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -4064,7 +4335,7 @@ body[data-page="service-real-estate"] .section--real-estate-cta .cta-banner--sit
 
 body[data-page="service-real-estate"] .section--real-estate-cta .cta-banner--situations .cta-banner__eyebrow {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -4108,7 +4379,7 @@ body[data-page="service-real-estate"] .section--real-estate-cta .cta-situation-c
   border: 1px solid #eaeaea;
   background: #fff;
   color: #1a1a1a;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.4;
@@ -4234,7 +4505,7 @@ body[data-page="service-notary-inheritance"] .contact-form h3,
 body[data-page="service-notary-inheritance"] .cta-banner h3,
 body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance h3,
 body[data-page="service-notary-inheritance"] .real-estate-trust-card__org {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -4258,7 +4529,7 @@ body[data-page="service-notary-inheritance"] .service-offer-card__price-row {
 
 body[data-page="service-notary-inheritance"] .service-offer-card__price-main {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -4402,7 +4673,7 @@ body[data-page="service-equipment-transport"] .page-hero__copy {
 }
 
 body[data-page="service-business-valuation"] .page-hero__copy {
-  padding-top: clamp(12px, 2.5vw, 28px);
+  padding-top: clamp(8px, 1.8vw, 20px);
 }
 
 body[data-page="service-commercial-property"] .page-hero__copy {
@@ -4592,7 +4863,7 @@ body[data-page="service-business-valuation"] .service-offer-card h3,
 body[data-page="service-business-valuation"] .contact-form h3,
 body[data-page="service-business-valuation"] .cta-banner h3,
 body[data-page="service-business-valuation"] .real-estate-trust-card__org {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -4608,6 +4879,10 @@ body[data-page="service-commercial-property"] .page-hero h1 {
 }
 
 body[data-page="service-court-valuation"] .page-hero h1 {
+  font-size: clamp(2.3rem, 6.6vw, 4rem);
+}
+
+body[data-page="service-business-valuation"] .page-hero h1 {
   font-size: clamp(2.3rem, 6.6vw, 4rem);
 }
 
@@ -4645,7 +4920,7 @@ body[data-page="service-equipment-transport"] .service-offer-card__price-main,
 body[data-page="service-business-valuation"] .service-offer-card__price-main,
 body[data-page="service-commercial-property"] .service-offer-card__price-main {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -4793,7 +5068,7 @@ body[data-page="service-equipment-transport"] .section--equipment-transport-cta 
 body[data-page="service-business-valuation"] .section--business-valuation-cta .cta-banner__eyebrow,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .cta-banner__eyebrow {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -4970,7 +5245,7 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
   }
 
   body[data-page="service-business-valuation"] .page-hero__copy {
-    padding-top: clamp(64px, 8.5vw, 120px);
+    padding-top: clamp(48px, 6.8vw, 92px);
   }
 
   body[data-page="service-commercial-property"] .page-hero__copy {
@@ -5008,6 +5283,10 @@ body[data-page="service-business-valuation"] .section--business-valuation-cta.se
 
 body[data-page="service-business-valuation"] .section--business-valuation-scenarios .section-head {
   gap: 32px;
+}
+
+body[data-page="service-business-valuation"] .section-head--business-valuation-trust {
+  margin-bottom: 32px;
 }
 
 /* Commercial property: 64px vertical rhythm (aligned with business valuation service template) */
@@ -5155,7 +5434,7 @@ body[data-page="service-real-estate"] .service-offer-card h3,
 body[data-page="service-real-estate"] .contact-form h3,
 body[data-page="service-real-estate"] .cta-banner h3,
 body[data-page="service-real-estate"] .real-estate-trust-card__org {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -5184,7 +5463,7 @@ body[data-page="service-real-estate"] .service-offer-card__price-row {
 
 body[data-page="service-real-estate"] .service-offer-card__price-main {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -5251,7 +5530,7 @@ body[data-page="service-real-estate"] .section--court-valuation-cta .cta-banner-
 
 body[data-page="service-real-estate"] .section--court-valuation-cta .cta-banner__eyebrow {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -5376,7 +5655,7 @@ body[data-page="service-notary"] .service-offer-card h3,
 body[data-page="service-notary"] .contact-form h3,
 body[data-page="service-notary"] .cta-banner h3,
 body[data-page="service-notary"] .intro-card h3 {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -5401,7 +5680,7 @@ body[data-page="service-notary"] .importance-callout {
 
 body[data-page="service-notary"] .importance-callout__title {
   margin: 0 0 8px;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -5508,6 +5787,8 @@ body[data-page="service-notary"] #lead-form .form-urgency-note {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
   display: block;
 }
 

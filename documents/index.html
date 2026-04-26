@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://ocenka-group.ru/assets/images/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <script>document.documentElement.classList.add("js-reveal");</script>
     <script src="/assets/js/site.js" defer></script>
@@ -64,32 +64,32 @@
 
       <section class="section">
         <div class="container documents-grid">
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Членство в СРО">
             <figure><img src="/documents_photos/24637628_1920_q60.png" alt="Свидетельство о членстве в СРО РОО" /></figure>
             <h3>Членство в СРО</h3>
             <p>Ключевой документ для подтверждения статуса и профессионального допуска.</p>
           </article>
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Квалификация по оценке бизнеса">
             <figure><img src="/documents_photos/45566237_1920_q60.png" alt="Квалификационный аттестат в области оценочной деятельности" /></figure>
             <h3>Квалификация по оценке бизнеса</h3>
             <p>Для корпоративных процедур, сделок, оценки долей и активов.</p>
           </article>
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Профильное образование">
             <figure><img src="/documents_photos/7149772_1920_q60.png" alt="Диплом о профессиональной переподготовке" /></figure>
             <h3>Профильное образование</h3>
             <p>Подтверждающая база для банковских, судебных и нотариальных сценариев.</p>
           </article>
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Страхование ответственности Ингосстрах">
             <figure><img src="/documents_photos/45566361_1920_q60.png" alt="Страхование ответственности (Ингосстрах)" /></figure>
             <h3>Страхование ответственности (Ингосстрах)</h3>
             <p>Договор страхования ответственности оценщика</p>
           </article>
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Выписка из реестра СРО СВОД">
             <figure><img src="/documents_photos/45566387_1920_q60.png" alt="Выписка из реестра СРО СВОД" /></figure>
             <h3>Выписка из реестра СРО СВОД</h3>
             <p>Подтверждение действующего членства в СРО</p>
           </article>
-          <article class="document-card reveal">
+          <article class="document-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть документ: Страхование ответственности Евроинс">
             <figure><img src="/documents_photos/46104993_1920_q60.png" alt="Страхование ответственности (Евроинс)" /></figure>
             <h3>Страхование ответственности (Евроинс)</h3>
             <p>Полис страхования оценочной деятельности</p>
@@ -139,48 +139,13 @@
     </main>
     <div data-site-footer></div>
     <a class="floating-call" data-phone-href data-phone-display></a>
-    <div id="doc-lightbox" class="doc-lightbox" role="dialog" aria-modal="true">
-      <button class="doc-lightbox__close" aria-label="Закрыть">✕</button>
-      <img class="doc-lightbox__img" src="" alt="" />
-    </div>
     <script>
-      (function () {
-        const cards = Array.from(document.querySelectorAll(".document-card"));
-        const certificateCards = cards.filter((card) => card.querySelector("figure img") && !card.querySelector("a.btn"));
-        const certificateImages = certificateCards
-          .map((card) => card.querySelector("figure img"))
-          .filter(Boolean);
-
-        const lightbox = document.getElementById("doc-lightbox");
-        const lightboxImage = lightbox ? lightbox.querySelector(".doc-lightbox__img") : null;
-        const closeButton = lightbox ? lightbox.querySelector(".doc-lightbox__close") : null;
-
-        if (!lightbox || !lightboxImage || !closeButton || !certificateImages.length) return;
-
-        function closeLightbox() {
-          lightbox.classList.remove("active");
-          lightboxImage.setAttribute("src", "");
-          lightboxImage.setAttribute("alt", "");
-        }
-
-        certificateImages.forEach((image) => {
-          image.addEventListener("click", () => {
-            const src = image.getAttribute("src");
-            if (!src) return;
-            lightboxImage.setAttribute("src", src);
-            lightboxImage.setAttribute("alt", image.getAttribute("alt") || "");
-            lightbox.classList.add("active");
-          });
+      document.querySelectorAll('.document-card figure img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
         });
-
-        closeButton.addEventListener("click", closeLightbox);
-        lightbox.addEventListener("click", (event) => {
-          if (event.target === lightbox) closeLightbox();
-        });
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") closeLightbox();
-        });
-      })();
+      });
     </script>
   </body>
 </html>
