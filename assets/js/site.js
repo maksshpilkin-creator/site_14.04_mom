@@ -880,6 +880,65 @@ function fillDynamicText() {
   });
 }
 
+function setupPreviewLightbox() {
+  const lightbox = document.getElementById("doc-lightbox");
+  const image = lightbox ? lightbox.querySelector(".doc-lightbox__img") : null;
+  const title = lightbox ? lightbox.querySelector(".doc-lightbox__title") : null;
+  const frame = lightbox ? lightbox.querySelector(".doc-lightbox__frame") : null;
+  const closeItems = lightbox ? lightbox.querySelectorAll("[data-preview-close]") : [];
+  const cards = Array.from(document.querySelectorAll("[data-preview-card]"));
+  let activeTrigger = null;
+
+  if (!lightbox || !image || !title || !frame || !cards.length) return;
+
+  function closePreview() {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("hidden", "");
+    frame.scrollTop = 0;
+    image.setAttribute("src", "");
+    image.setAttribute("alt", "");
+    title.textContent = "";
+    document.body.classList.remove("preview-open");
+    if (activeTrigger) activeTrigger.focus();
+    activeTrigger = null;
+  }
+
+  function openPreview(card) {
+    const previewImage = card.querySelector("figure img");
+    const previewTitle = card.querySelector("h3");
+    const src = previewImage ? previewImage.getAttribute("src") : "";
+    if (!src) return;
+
+    activeTrigger = card;
+    image.setAttribute("src", src);
+    image.setAttribute("alt", previewImage.getAttribute("alt") || "");
+    title.textContent = previewTitle ? previewTitle.textContent.trim() : "";
+    frame.scrollTop = 0;
+    lightbox.removeAttribute("hidden");
+    document.body.classList.add("preview-open");
+    requestAnimationFrame(() => lightbox.classList.add("active"));
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (target && target.closest("a, button")) return;
+      openPreview(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openPreview(card);
+    });
+  });
+
+  closeItems.forEach((item) => item.addEventListener("click", closePreview));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.classList.contains("active")) closePreview();
+  });
+}
+
 function setupFaqAccordion() {
   const root = document.querySelector("[data-faq-accordion]");
   if (!root) return;
@@ -926,6 +985,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupPhoneInputs();
   setupQuiz();
   setupForms();
+  setupPreviewLightbox();
   setupFaqAccordion();
 });
 

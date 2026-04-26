@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://ocenka-group.ru/assets/images/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <script>document.documentElement.classList.add("js-reveal");</script>
     <script src="/assets/js/site.js" defer></script>
@@ -58,12 +58,12 @@
 
       <section class="section">
         <div class="container review-grid">
-          <article class="review-card reveal"><figure><img src="/review/11234824.jpg" alt="Отзыв клиента о работе специалистов" /></figure><h3>Оценка для банка</h3><p>Клиент получил понятный порядок действий и успел в срок подачи пакета документов.</p></article>
-          <article class="review-card reveal"><figure><img src="/review/45093367.jpg" alt="Отзыв о подготовке отчета для нотариуса" /></figure><h3>Нотариальное оформление</h3><p>Сценарий с наследством, где важна была корректность отчета и скорость подготовки.</p></article>
-          <article class="review-card reveal"><figure><img src="/review/9122550.jpg" alt="Отзыв клиента по оценке имущества" /></figure><h3>Сложная личная задача</h3><p>Клиенту нужна была ясность по документам и стоимости без повторных консультаций.</p></article>
-          <article class="review-card reveal"><figure><img src="/review/11360531.jpg" alt="Отзыв клиента по срочной задаче" /></figure><h3>Срочная подготовка</h3><p>Работа с жестким дедлайном, где решение принималось по телефону в день обращения.</p></article>
-          <article class="review-card reveal"><figure><img src="/review/11234891_1150_q60.png" alt="Отзыв о взаимодействии с компанией" /></figure><h3>Коммерческий объект</h3><p>Клиенту нужен был отчет для переговоров и внутреннего согласования по объекту.</p></article>
-          <article class="review-card reveal"><figure><img src="/review/17650571.jpg" alt="Отзыв по оценке транспортного средства" /></figure><h3>Транспорт и ущерб</h3><p>Подготовили отчет под спорную ситуацию с восстановительной стоимостью.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Оценка для банка"><figure><img src="/review/11234824.jpg" alt="Отзыв клиента о работе специалистов" /></figure><h3>Оценка для банка</h3><p>Клиент получил понятный порядок действий и успел в срок подачи пакета документов.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Нотариальное оформление"><figure><img src="/review/45093367.jpg" alt="Отзыв о подготовке отчета для нотариуса" /></figure><h3>Нотариальное оформление</h3><p>Сценарий с наследством, где важна была корректность отчета и скорость подготовки.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Сложная личная задача"><figure><img src="/review/9122550.jpg" alt="Отзыв клиента по оценке имущества" /></figure><h3>Сложная личная задача</h3><p>Клиенту нужна была ясность по документам и стоимости без повторных консультаций.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Срочная подготовка"><figure><img src="/review/11360531.jpg" alt="Отзыв клиента по срочной задаче" /></figure><h3>Срочная подготовка</h3><p>Работа с жестким дедлайном, где решение принималось по телефону в день обращения.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Коммерческий объект"><figure><img src="/review/11234891_1150_q60.png" alt="Отзыв о взаимодействии с компанией" /></figure><h3>Коммерческий объект</h3><p>Клиенту нужен был отчет для переговоров и внутреннего согласования по объекту.</p></article>
+          <article class="review-card reveal" data-preview-card tabindex="0" role="button" aria-label="Открыть отзыв: Транспорт и ущерб"><figure><img src="/review/17650571.jpg" alt="Отзыв по оценке транспортного средства" /></figure><h3>Транспорт и ущерб</h3><p>Подготовили отчет под спорную ситуацию с восстановительной стоимостью.</p></article>
         </div>
       </section>
 
@@ -106,48 +106,13 @@
     </main>
     <div data-site-footer></div>
     <a class="floating-call" data-phone-href data-phone-display></a>
-    <div id="doc-lightbox" class="doc-lightbox" role="dialog" aria-modal="true">
-      <button class="doc-lightbox__close" aria-label="Закрыть">✕</button>
-      <img class="doc-lightbox__img" src="" alt="" />
-    </div>
     <script>
-      (function () {
-        const cards = Array.from(document.querySelectorAll(".review-card"));
-        const certificateCards = cards.filter((card) => card.querySelector("figure img"));
-        const certificateImages = certificateCards
-          .map((card) => card.querySelector("figure img"))
-          .filter(Boolean);
-
-        const lightbox = document.getElementById("doc-lightbox");
-        const lightboxImage = lightbox ? lightbox.querySelector(".doc-lightbox__img") : null;
-        const closeButton = lightbox ? lightbox.querySelector(".doc-lightbox__close") : null;
-
-        if (!lightbox || !lightboxImage || !closeButton || !certificateImages.length) return;
-
-        function closeLightbox() {
-          lightbox.classList.remove("active");
-          lightboxImage.setAttribute("src", "");
-          lightboxImage.setAttribute("alt", "");
-        }
-
-        certificateImages.forEach((image) => {
-          image.addEventListener("click", () => {
-            const src = image.getAttribute("src");
-            if (!src) return;
-            lightboxImage.setAttribute("src", src);
-            lightboxImage.setAttribute("alt", image.getAttribute("alt") || "");
-            lightbox.classList.add("active");
-          });
+      document.querySelectorAll('.review-card figure img, .review-card img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
         });
-
-        closeButton.addEventListener("click", closeLightbox);
-        lightbox.addEventListener("click", (event) => {
-          if (event.target === lightbox) closeLightbox();
-        });
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") closeLightbox();
-        });
-      })();
+      });
     </script>
   </body>
 </html>
