@@ -16,7 +16,6 @@ const NAV_ITEMS = [
   { href: "/documents/", label: "Документы", key: "documents" },
   { href: "/reviews/", label: "Отзывы", key: "reviews" },
   { href: "/contacts/", label: "Контакты", key: "contacts" },
-  { href: "/text-effect/", label: "Text Effect", key: "text-effect" },
 ];
 
 const QUIZ_RULES = {
