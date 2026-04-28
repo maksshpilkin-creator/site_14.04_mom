@@ -1,119 +1,128 @@
 # Design Update — 20.04
-_Аудит выполнен Claude Code. На основе скиллов frontend-design, page-cro, copywriting из marketingskills._
+_Audit completed by Claude Code. Based on the frontend-design, page-cro, and copywriting skills from marketingskills._
+_Status last updated: 2026-04-28_
 
 ---
 
-## 🔴 Критичное (исправить до запуска)
+## 🔴 Critical step (do first)
 
-- **Вебхук не подключён** — в `assets/js/site.js` строка 2: `webhookUrl: "YOUR_N8N_WEBHOOK_URL"` и в HTML-атрибутах форм `data-webhook="YOUR_N8N_WEBHOOK_URL"`. Все заявки с квиза и формы контактов теряются прямо сейчас. Нужно: вписать реальный URL в `SITE_CONFIG.webhookUrl` в `site.js`.
+Complete this block before any conversion or visual polish changes:
 
-- **Несоответствие бренда: "Экспресс Оценка" vs "Оценка Групп"** — в `createHeader()` (`site.js`, строка 122) написано `Экспресс Оценка`, в футере и SEO-метатегах — `Оценка Групп`. Посетитель видит разные названия в шапке и Footer. Исправить: синхронизировать на `Оценка Групп` везде.
+1. ✅ **Unify brand naming in all entry points**  
+   Done. Header, footer, and copyright all consistently use "Экспресс Оценка" in `assets/js/site.js`.
 
-- **Опечатка "Telegrem"** — в `contacts/index.html`, строка 106: ссылка на Telegram подписана "Telegrem". Это видит каждый посетитель страницы контактов. Исправить: `Telegrem` → `Telegram`.
+2. ✅ **Fix visible trust typo on contacts page**  
+   Done. `contacts/index.html` now reads "Telegram".
 
-- **Лишние шрифты загружают страницы** — `about/index.html` (строка 29) и `contacts/index.html` (строка 29) подключают Cormorant Garamond + Manrope, которые нигде в CSS не используются (переменные `--font-heading` и `--font-body` указывают на Raleway). Это +200–400ms к LCP без пользы. Убрать лишний `<link>` со шрифтами из обеих страниц.
+3. ✅ **Remove unused font payload from static pages**  
+   Done. No Cormorant Garamond or Manrope `<link>` imports remain in `about/index.html` or `contacts/index.html`.
 
-- **Inline-стили нарушают правила проекта** — `index.html`, строки 521 и 533: `style="display: none; opacity: 0; transform: translateY(10px);"` — прямое нарушение "No inline styles" из CLAUDE.md. Вынести в CSS-классы (например `.quiz-result-hidden`).
+4. ✅ **Remove inline quiz styles and move to CSS classes**  
+   Done. `.quiz-result-hidden` and `.quiz-result-visible` classes defined in `styles.css` (lines 919–932) and used throughout `index.html`.
 
-- **Hero stats bar ломается на мобильных** — `.hero-stats-bar .hero-stats` имеет `grid-template-columns: repeat(4, 1fr)` без мобильного брейкпоинта (`styles.css`, строка 599). На экранах < 480px четыре колонки сожмутся до нечитаемых 60–70px. Исправить: добавить `grid-template-columns: repeat(2, 1fr)` в медиа до 767px.
+5. ✅ **Fix mobile readability for hero stats grid**  
+   Done. `@media (max-width: 767px) { .hero-stats-bar .hero-stats { grid-template-columns: repeat(2, 1fr); } }` added at `styles.css` line 710.
 
----
-
-## 🟡 Важное (влияет на конверсию)
-
-- **H1 — feature-focused, не benefit-focused** — "Поручите задачу профессионалам. Готовый отчёт для банка, суда и нотариуса." описывает что делает компания, а не что получит клиент. Нужен outcome. Альтернативы: "Отчёт для банка — от 2 дней. Принимают 28+ банков, суды и нотариусы." / "Ваш отчёт примут в банке, суде и у нотариуса. Срок — от 1 дня."
-
-- **CTA "Получить консультацию" — слабый** — `index.html`, строка 222. Слабый глагол + нет описания ценности. Заменить на "Узнать стоимость бесплатно" или "Получить расчёт за 1 минуту".
-
-- **Дублирование статистики** — hero-stats-bar показывает 4 показателя (15 000+ отчётов, от 1 дня, 19+ лет, 28+ банков), а сразу после квиза — `section.section-tight` с теми же числами в stat-card. Посетитель видит идентичные данные дважды на одной странице. Убрать дублирующий блок или переформулировать один из них.
-
-- **Раздел "Команда": h2 = eyebrow** — `index.html`, строки 715–717: `<span class="eyebrow">Команда</span> <h2>Команда</h2>`. Одинаковый текст в двух местах без ценности. Заменить h2 на осмысленный: "Оценщики с подтверждёнными аттестатами СРО".
-
-- **Банки-партнёры появляются слишком поздно** — `.partners-strip` с СберБанком, ВТБ, Альфа-Банком стоит в конце страницы, после отзывов. Это главный trust-сигнал. Переместить сразу под hero-stats-bar или в trust-секцию выше.
-
-- **Ссылка на документы некорректна** — `index.html`, строка 853: `href="/documents/index.html"` — нужно `/documents/`. Исправить.
-
-- **Страница "О компании" без CTA** — `about/index.html` не содержит формы или кнопки в основной части. Для B2B-клиента, изучающего компанию — тупик. Добавить CTA-баннер или инлайн-форму в конец страницы.
-
-- **Floating bar перекрывает контент на мобильных** — `.floating-cta-bar` (высота ~64px) фиксирован внизу, но `<body>` не имеет компенсирующего `padding-bottom`. Нижний контент будет закрыт кнопками. Добавить `padding-bottom: 80px` на body при `max-width: 767px`.
-
-- **`!important` хак в production CSS** — `styles.css`, строки 3013–3017: `.stat-value { font-size: 2rem !important; ... color: var(--accent) !important; }` с комментарием "Fixes: #3". Симптом конфликта специфичности. Разобраться с источником конфликта и убрать `!important`.
-
-- **Email-gate в квизе стоит слишком рано** — `index.html`, строки 506–518: цена и срок видны сразу, но список документов спрятан за email. Это дополнительный friction в середине воронки. Рассмотреть показ документов сразу, а email-gate — только перед шагом "Связаться со специалистом".
+6. ✅ **Validation gate**  
+   All prerequisites complete.
 
 ---
 
-## 🟢 Nice to have (полировка)
+## 🟡 Important (affects conversion)
 
-- **line-height: 0.98 на заголовках** — `styles.css`, строка 113: слишком плотно для многострочных заголовков на мобильных. Поднять до 1.05–1.1 и протестировать на реальных устройствах.
+- ✅ **H1 is feature-focused, not benefit-focused** — Changed to "Ваш отчёт примут в банке, суде и у нотариуса. Срок — от 1 дня."
 
-- **Нет контрастного шрифта для body** — `design_requirements.md` рекомендует Manrope/Inter, но вся типографика на Raleway — и heading, и body. Нет визуального разделения уровней. Рассмотреть второй шрифт для body text.
+- ✅ **CTA "Получить консультацию" is weak** — Changed to "Узнать стоимость бесплатно" in `index.html`.
 
-- **Hardcoded цвета за пределами переменных** — в `styles.css`: `#C5A880`, `#d4b87a`, `#b8966e`, `#3e3e3e`, `#080d18`, `#0e1e3c`, `#23314e` прописаны прямо в правилах. Заменить на CSS-переменные (`var(--accent)`, `var(--accent-dark)`, `var(--hero-flat-bg)` и т.д.) для поддерживаемости.
+- ✅ **Statistics are duplicated** — Removed the duplicate `section.section-tight` stat cards block that appeared after the quiz. Hero stats bar remains.
 
-- **Hover на карточках команды отсутствует** — `.team-card` не имеет hover-эффекта, хотя `.card:hover`, `.trust-card:hover` — есть. Добавить единообразный `transform: translateY(-4px)` для team-card.
+- ✅ **"Team" section: h2 = eyebrow** — `<h2>Команда</h2>` replaced with `<h2>Оценщики с подтверждёнными аттестатами СРО</h2>`.
 
-- **Декоративный элемент "RU"** — `index.html`, строка 967: `<span class="coverage-accent" aria-hidden="true">RU</span>` выглядит как незаконченная идея. Оформить как полноценный background-элемент или убрать.
+- ✅ **Partner banks appear too late** — `.partners-strip` moved to directly below the hero stats bar (before the quiz section).
 
-- **Анимация reveal с `!important`** — `styles.css`, строка 2092: `transition: ... !important;` — решить через повышение специфичности, а не через `!important`.
+- ✅ **Documents link is partially fixed** — Done. `index.html` line 898 now uses `href="/documents/"`.
 
----
+- ✅ **"About company" page has no CTA** — Done. Added CTA banner ("Узнайте стоимость за 2 минуты" + "Рассчитать стоимость" → `/#quiz`) before `</main>` in `about/index.html`.
 
-## 📐 Отсутствующие секции
+- ✅ **Floating bar overlaps content on mobile** — Done. `padding-bottom: 80px` added to `body` inside the existing `@media (max-width: 767px)` floating-bar block in `styles.css`.
 
-- **Блок "Гарантии"** — главный страх клиента: "Примут ли отчёт?". FAQ частично отвечает, но нет явного блока с гарантией. Нужно: "Переделываем бесплатно", "Страхование ответственности оценщиков", "Работаем по СРО". Размещение: после trust-карточек или перед FAQ.
+- ✅ **`!important` hack in production CSS** — Done. `color: var(--accent)` and `font-weight: 700` moved into the base `.stat-value` rule (line ~1399). Duplicate rule with `!important` at ~3138 removed.
 
-- **Прайс-лист** — цены спрятаны в тексте FAQ. Это нарушает принцип прозрачности и снижает доверие. Нужны карточки: услуга / от X ₽ / срок. Размещение: между секциями "Услуги" и "Доверие".
-
-- **Блок "Для кого"** — сайт обращается одновременно ко всем: физлица, бизнес, банки, суды. Нет сегментации. Нужны 3–4 карточки: "Для ипотеки", "Для суда", "Для бизнеса", "Для наследства" с разными болями и CTA. Размещение: после hero.
-
-- **Логотипы банков** — `.partners-strip__item` содержит только текст ("СберБанк", "ВТБ"). Визуальные логотипы имели бы в 3–5x больший trust-эффект. Запросить у клиента разрешение на использование логотипов банков.
-
-- **Видео или превью процесса** — для B2B-услуги (оценка бизнеса от 50 000 ₽) 60-секундное видео с директором конвертирует значительно лучше текста. Рассмотреть embed Яндекс.Видео в about-секцию или отдельную страницу.
-
-- **Страница для B2B-клиентов** — нет отдельного flow для корпоративных клиентов с другим CTA ("Обсудить проект" вместо "Рассчитать стоимость") и другими болями.
+- ✅ **Email gate in quiz appears too early** — Done. `full-result-content` (documents + answer summary) now renders immediately. Email gate (`partial-email-form`) moved to just before the contact form. Button text updated to "Связаться со специалистом". JS handler no longer toggles `fullContent` visibility.
 
 ---
 
-## 🎨 Разрывы дизайн-системы
+## 🟢 Nice to have (polish)
 
-- **Три варианта hero-background** — `:root` задаёт `--hero-flat-bg: #0e1e3c` и `--hero-stats-bg: #23314e`, но `.hero.hero--split` использует `background-image: linear-gradient(165deg, #060a12 0%, ...)` напрямую. Третий вариант вне переменных — унифицировать.
+- **`line-height: 0.98` on headings** — `styles.css`, line 112: too tight for multi-line mobile headings. Increase to 1.05–1.1 and test on real devices.
 
-- **Радиус карточек непоследователен** — `.hero-portrait`: в одном месте `border-radius: 12px`, в другом `16px` (оба вне переменных). `.case-card__icon { border-radius: 14px }` — тоже без переменной. Привести всё к `--radius-sm / --radius-md / --radius-lg`.
+- **No contrasting font for body text** — `design_requirements.md` recommends Manrope/Inter, but all typography uses Raleway for both headings and body. There is no visual hierarchy split. Consider a second font for body text.
 
-- **Цвет в `.hero-stat__value` и `.hero-stat__icon`** — `styles.css`, строки 641–643: `color: #C5A880` вместо `var(--accent)`.
+- **Hardcoded colors outside variables** — in `styles.css`: `#C5A880`, `#d4b87a`, `#b8966e`, `#3e3e3e`, `#080d18`, `#0e1e3c`, `#23314e` appear ~11 times in raw rules. Replace with CSS variables (`var(--accent)`, `var(--accent-dark)`, `var(--hero-flat-bg)`, etc.) for maintainability.
 
-- **Цвет в `.coverage-benefit-row p`** — `styles.css`, строка 1804: `color: #3e3e3e` вместо `var(--muted)` или `var(--text)`.
+- **Team cards have no hover effect** — `.team-card` has no hover behavior, while `.card:hover` and `.trust-card:hover` do. Add consistent `transform: translateY(-4px)` for team cards.
 
-- **Нет систематической шкалы h4–h6** — `styles.css`, строки 116–120: `h4, h5, h6` имеют семейство и вес, но без font-size. Нет типографической шкалы для всех уровней.
+- **Decorative "RU" element** — `index.html`, line 1001: `<span class="coverage-accent" aria-hidden="true">RU</span>` looks unfinished. Either style it as a full background element or remove it.
 
----
-
-## 📱 Мобильные проблемы
-
-- **hero-stats-bar: 4 колонки без breakpoint** — `grid-template-columns: repeat(4, 1fr)` на всех размерах. На < 480px четыре иконки + текст = нечитаемо. Добавить `@media (max-width: 767px) { grid-template-columns: repeat(2, 1fr); }`.
-
-- **Нет padding-bottom для floating bar** — floating-cta-bar занимает ~64px снизу, но body/main не компенсирует. Нижний контент (FAQ, footer) будет скрыт за кнопками на мобильных.
-
-- **mobile-first нарушен в hero** — `.hero.hero--split .hero-copy` задаёт `padding: 80px 48px 72px` как базовое значение (`styles.css`, строка 3093), потом переопределяется в медиа-запросах. Нарушение принципа mobile-first из CLAUDE.md — базовый стиль должен быть для мобильных.
-
-- **CTA-кнопка в шапке отсутствует на планшетах** — `nav-actions` скрыты при < 1200px. На планшетах (768–1199px) нет прямого пути к форме из header. Показать кнопку "Рассчитать" от 768px.
-
-- **Touch targets для `.btn-text`** — `min-height: auto; padding: 0` (`styles.css`, строки 328–330): кнопки "Назад", "Изменить ответы", "Открыть страницу" могут быть < 44px на мобильных. Добавить `min-height: 44px` на mobile.
-
-- **Quiz options на малых экранах** — 5 вариантов с иконкой + заголовок + описание на iPhone SE (320px) требуют много вертикального скролла без видимого прогресса. Рассмотреть компактный вид (только заголовок без `.quiz-option-note`) ниже 480px.
+- **Reveal animation uses `!important`** — `styles.css`: `transition: ... !important` appears in multiple rules (lines 2658, 2805, 2823, 2848, 4384, 4396, 4414). Fix through selector specificity instead of `!important`.
 
 ---
 
-## ⚡ Быстрые победы (каждая < 30 минут)
+## 📐 Missing Sections
 
-1. **Исправить "Telegrem" → "Telegram"** — `contacts/index.html`, строка 106. (1 мин)
-2. **Синхронизировать бренд** — "Экспресс Оценка" → "Оценка Групп" в `site.js`, строка 122. (2 мин)
-3. **Удалить лишние шрифты** (Cormorant Garamond + Manrope) из `about/index.html` и `contacts/index.html`. (5 мин)
-4. **Переместить partners-strip (банки)** выше — сразу после hero-stats-bar. (10 мин)
-5. **Добавить `padding-bottom: 80px`** на `body` в `@media (max-width: 767px)` — устранить перекрытие floating bar. (5 мин)
-6. **Исправить stats bar на мобильных** — добавить `@media (max-width: 767px) { .hero-stats-bar .hero-stats { grid-template-columns: repeat(2, 1fr); } }`. (5 мин)
-7. **Исправить ссылку** `/documents/index.html` → `/documents/` в `index.html`, строка 853. (1 мин)
-8. **Убрать дублирование eyebrow + h2 "Команда"** — заменить `<h2>Команда</h2>` на "Оценщики с подтверждёнными аттестатами СРО". (5 мин)
-9. **Заменить CTA "Получить консультацию"** → "Узнать стоимость бесплатно" в hero `index.html`, строка 222. (2 мин)
-10. **Вынести inline-стили quiz** из `index.html`, строки 521–533 в CSS-классы `.quiz-result-hidden` / `.quiz-result-visible`. (10 мин)
+- **"Guarantees" block** — the main client fear is: "Will the report be accepted?". FAQ answers this partially, but there is no clear guarantee section. Needed: "Free revision if required", "Valuer liability insurance", "SRO-compliant work". Placement: after trust cards or before FAQ.
+
+- **Price list** — pricing is hidden inside FAQ text. This hurts transparency and trust. Add cards: service / from X RUB / timeline. Placement: between the "Services" and "Trust" sections.
+
+- **"Who it is for" block** — the site speaks to everyone at once: individuals, businesses, banks, courts. No segmentation. Add 3–4 cards: "For mortgage", "For court", "For business", "For inheritance" with distinct pain points and CTAs. Placement: after hero.
+
+- **Bank logos** — `.partners-strip__item` currently contains text only ("СберБанк", "ВТБ"). Visual logos would have a 3–5x stronger trust effect. Request client permission to use bank logos.
+
+- **Video or process preview** — for a B2B service (business valuation from 50,000 RUB), a 60-second director video usually converts better than text. Consider embedding Yandex Video in the about section or on a dedicated page.
+
+- **Dedicated B2B page** — there is no separate flow for corporate clients with a different CTA ("Обсудить проект" instead of "Рассчитать стоимость") and different pain points.
+
+---
+
+## 🎨 Design System Gaps
+
+- **Three hero background variants** — `:root` defines `--hero-flat-bg: #0e1e3c` and `--hero-stats-bg: #23314e`, but `.hero.hero--split` directly uses `background-image: linear-gradient(165deg, #060a12 0%, ...)`. A third variant exists outside tokens — unify this.
+
+- **Card radius is inconsistent** — `.hero-portrait` uses `border-radius: 12px` in one place and `16px` in another (both outside variables). `.case-card__icon { border-radius: 14px }` also bypasses tokens. Normalize all to `--radius-sm / --radius-md / --radius-lg`.
+
+- **Color in `.hero-stat__value` and `.hero-stat__icon`** — `styles.css`: `color: #C5A880` instead of `var(--accent)`.
+
+- **Color in `.coverage-benefit-row p`** — `styles.css`: `color: #3e3e3e` instead of `var(--muted)` or `var(--text)`.
+
+- **No systematic h4–h6 scale** — `styles.css`: `h4, h5, h6` define font family and weight but no font size. Typography scale is incomplete.
+
+---
+
+## 📱 Mobile Issues
+
+- ✅ **hero-stats-bar: 4 columns without breakpoint** — Fixed. `@media (max-width: 767px)` now sets `grid-template-columns: repeat(2, 1fr)` for `.hero-stats-bar .hero-stats`.
+
+- ✅ **No bottom padding for floating bar** — Done. `padding-bottom: 80px` added to `body` at `max-width: 767px`.
+
+- **mobile-first is violated in hero** — `.hero.hero--split .hero-copy` sets desktop padding as the base value in `styles.css`, then overrides it in media queries. This violates the mobile-first rule in `CLAUDE.md` — base styles should target mobile.
+
+- **Header CTA button is missing on tablets** — `nav-actions` are hidden below 1200px (base `display: none`, shown at `min-width: 1200px`). On tablets (768–1199px), there is no direct path from header to form. Show "Рассчитать" starting at 768px.
+
+- **Touch targets for `.btn-text`** — `min-height: auto; padding: 0` (`styles.css`, lines 328–330): buttons like "Назад", "Изменить ответы", "Открыть страницу" can be < 44px on mobile. Add `min-height: 44px` on mobile.
+
+- **Quiz options on small screens** — 5 options with icon + title + description on iPhone SE (320px) require too much vertical scroll with little visible progress. Consider compact mode (title only, no `.quiz-option-note`) below 480px.
+
+---
+
+## ⚡ Quick Wins (each < 30 minutes)
+
+1. ✅ **Fix "Telegrem" → "Telegram"** — done in `contacts/index.html`.
+2. ✅ **Sync brand naming** — done in `site.js`.
+3. ✅ **Remove unused fonts** (Cormorant Garamond + Manrope) from `about/index.html` and `contacts/index.html`.
+4. **Move partners strip (banks) higher** — right after hero stats bar. (10 min)
+5. ✅ **Add `padding-bottom: 80px`** to `body` in `@media (max-width: 767px)` — floating bar overlap eliminated.
+6. ✅ **Fix stats bar on mobile** — `@media (max-width: 767px) { .hero-stats-bar .hero-stats { grid-template-columns: repeat(2, 1fr); } }` added.
+7. ✅ **Fix remaining broken link** — Done. `href="/documents/"` in `index.html`.
+8. ✅ **Remove duplicated eyebrow + h2 "Команда"** — done. h2 now reads "Оценщики с подтверждёнными аттестатами СРО".
+9. ✅ **Replace CTA "Получить консультацию"** — done. Now "Узнать стоимость бесплатно".
+10. ✅ **Move quiz inline styles** into CSS classes `.quiz-result-hidden` / `.quiz-result-visible` — done.

@@ -5,7 +5,7 @@ const SITE_CONFIG = {
   whatsappHref: "https://wa.me/78126404446",
   email: "info@ocenka-group.ru",
   address: "Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А",
-  legalName: "ООО «Оценка Групп»",
+  legalName: "ООО «Экспресс Оценка»",
   inn: "ИНН 7802596912",
   ogrn: "ОГРН 1167847399895",
 };
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { href: "/documents/", label: "Документы", key: "documents" },
   { href: "/reviews/", label: "Отзывы", key: "reviews" },
   { href: "/contacts/", label: "Контакты", key: "contacts" },
+  { href: "/text-effect/", label: "Text Effect", key: "text-effect" },
 ];
 
 const QUIZ_RULES = {
@@ -117,7 +118,7 @@ function createHeader(page) {
     <header class="site-header" data-header>
       <div class="container">
         <div class="nav-shell">
-          <a class="brand" href="/" aria-label="Оценка Групп">
+          <a class="brand" href="/" aria-label="Экспресс Оценка">
             <span class="brand-mark">Экспресс Оценка</span>
             <span class="brand-note">Отчеты для банка, суда, нотариуса и бизнеса</span>
           </a>
@@ -144,7 +145,7 @@ function createFooter() {
         <div class="footer-main">
           <div class="footer-brand">
             <a class="footer-logo" href="/">
-              <span class="footer-logo-mark">Оценка Групп</span>
+              <span class="footer-logo-mark">Экспресс Оценка</span>
               <span class="footer-logo-tagline">Федеральная оценочная практика для частных клиентов и бизнеса</span>
             </a>
             <p class="footer-lead">Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.</p>
@@ -174,7 +175,7 @@ function createFooter() {
           </div>
         </div>
         <div class="footer-bottom">
-          <p class="footer-copyright">© <span data-current-year></span> Оценка Групп</p>
+          <p class="footer-copyright">© <span data-current-year></span> Экспресс Оценка</p>
           <a class="footer-legal" href="/terms/">Публичная оферта</a>
           <a class="footer-legal" href="/privacy/">Политика конфиденциальности</a>
         </div>
@@ -1006,6 +1007,129 @@ function setupHeroPrefill() {
   });
 }
 
+function getTextEffectSegments(text, per) {
+  if (per === "line") return String(text).split("\n");
+  if (per === "char") return String(text).split("");
+  return String(text).split(/(\s+)/);
+}
+
+function getTextEffectStagger(per) {
+  if (per === "char") return 30;
+  if (per === "line") return 100;
+  return 50;
+}
+
+function animateStaticTextEffect(node) {
+  const text = String(node.textContent || "").trim();
+  if (!text) return;
+
+  const per = node.dataset.per || "word";
+  const preset = node.dataset.preset || "slide";
+  const delayMs = Math.max(0, Number(node.dataset.delay || 0) * 1000);
+  const isHeroPremium = preset === "hero-premium";
+  const staggerMs = isHeroPremium
+    ? Math.max(28, Math.floor(getTextEffectStagger(per) * 0.85))
+    : Math.max(20, Math.floor(getTextEffectStagger(per) * 0.7));
+  const segments = getTextEffectSegments(text, per);
+  const segmentClassName = per === "line" ? "is-line" : per === "char" ? "is-char" : "is-word";
+
+  node.setAttribute("aria-label", text);
+  node.innerHTML = "";
+
+  segments.forEach((segment, index) => {
+    const segmentNode = document.createElement("span");
+    segmentNode.className = `text-effect-segment ${segmentClassName}`;
+    segmentNode.dataset.preset = preset;
+    segmentNode.textContent = segment;
+    segmentNode.setAttribute("aria-hidden", "true");
+    segmentNode.style.transition = isHeroPremium
+      ? "opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms cubic-bezier(0.22, 1, 0.36, 1)"
+      : "opacity 220ms ease, transform 260ms ease, filter 260ms ease";
+    segmentNode.style.transitionDelay = `${delayMs + index * staggerMs}ms`;
+    node.appendChild(segmentNode);
+  });
+
+  requestAnimationFrame(() => {
+    node.querySelectorAll(".text-effect-segment").forEach((segmentNode) => {
+      segmentNode.classList.add("is-visible");
+    });
+  });
+}
+
+function setupStaticTextEffects() {
+  const nodes = document.querySelectorAll("[data-text-effect-static]");
+  if (!nodes.length) return;
+  nodes.forEach((node) => animateStaticTextEffect(node));
+}
+
+function setupTextEffectDemo() {
+  const root = document.querySelector("[data-text-effect-root]");
+  const triggerButton = document.querySelector("[data-text-effect-trigger]");
+  const textInput = document.querySelector("[data-text-effect-input]");
+  const perSelect = document.querySelector("[data-text-effect-per]");
+  const presetSelect = document.querySelector("[data-text-effect-preset]");
+  const delayInput = document.querySelector("[data-text-effect-delay]");
+  const loopToggle = document.querySelector("[data-text-effect-loop]");
+
+  if (!root || !triggerButton || !textInput || !perSelect || !presetSelect || !delayInput || !loopToggle) return;
+
+  let loopTimerId = null;
+
+  function clearLoop() {
+    if (!loopTimerId) return;
+    window.clearTimeout(loopTimerId);
+    loopTimerId = null;
+  }
+
+  function renderAndAnimate() {
+    const text = String(textInput.value || "").trim() || "Animate your ideas with motion-primitives";
+    const per = perSelect.value;
+    const preset = presetSelect.value;
+    const delayMs = Math.max(0, Number(delayInput.value || 0) * 1000);
+    const shouldLoop = loopToggle.checked;
+    const staggerMs = getTextEffectStagger(per);
+    const segments = getTextEffectSegments(text, per);
+    const segmentClassName = per === "line" ? "is-line" : per === "char" ? "is-char" : "is-word";
+
+    clearLoop();
+    root.innerHTML = "";
+    root.dataset.per = per;
+    root.dataset.preset = preset;
+    root.dataset.delay = String(delayMs / 1000);
+
+    segments.forEach((segment, index) => {
+      const node = document.createElement("span");
+      node.className = `text-effect-segment ${segmentClassName}`;
+      node.dataset.preset = preset;
+      node.textContent = segment;
+      node.style.transition = "opacity 320ms ease, transform 380ms ease, filter 380ms ease";
+      node.style.transitionDelay = `${delayMs + index * staggerMs}ms`;
+      root.appendChild(node);
+    });
+
+    const nodes = root.querySelectorAll(".text-effect-segment");
+    requestAnimationFrame(() => {
+      nodes.forEach((node) => node.classList.add("is-visible"));
+    });
+
+    if (!shouldLoop) return;
+
+    const cycleDuration = delayMs + nodes.length * staggerMs + 1200;
+    loopTimerId = window.setTimeout(() => {
+      nodes.forEach((node) => node.classList.remove("is-visible"));
+      window.setTimeout(renderAndAnimate, 360);
+    }, cycleDuration);
+  }
+
+  triggerButton.addEventListener("click", renderAndAnimate);
+  perSelect.addEventListener("change", renderAndAnimate);
+  presetSelect.addEventListener("change", renderAndAnimate);
+  delayInput.addEventListener("change", renderAndAnimate);
+  loopToggle.addEventListener("change", renderAndAnimate);
+
+  renderAndAnimate();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   mountShell();
   setupFloatingCtaBar();
@@ -1020,6 +1144,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupForms();
   setupPreviewLightbox();
   setupFaqAccordion();
+  setupTextEffectDemo();
+  setupStaticTextEffects();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
