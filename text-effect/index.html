@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href="https://ocenka-group.ru/text-effect/" />
+    <title>Text Effect Demo — Экспресс Оценка</title>
+    <meta
+      name="description"
+      content="Демо текстовых анимаций с режимами per-char, per-word и per-line для статической версии сайта."
+    />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script>
+      document.documentElement.classList.add("js-reveal");
+    </script>
+    <script src="/assets/js/site.js" defer></script>
+  </head>
+  <body data-page="text-effect">
+    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+    <div data-site-header></div>
+
+    <main id="main-content">
+      <section class="page-hero text-effect-hero">
+        <div class="container page-hero-grid">
+          <div class="reveal">
+            <div class="breadcrumbs"><a href="/">Главная</a><span>/</span><span>Text Effect</span></div>
+            <h1>Демо анимации текста</h1>
+            <p class="lead">
+              Статическая адаптация React-компонента: поддержка анимаций по символам, словам и строкам с разными пресетами.
+            </p>
+          </div>
+          <div class="media-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+              alt="Рабочее пространство с текстом на экране"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container text-effect-layout">
+          <article class="text-effect-panel reveal">
+            <h2>Настройки</h2>
+            <div class="text-effect-controls">
+              <label class="field">
+                <span>Текст</span>
+                <textarea data-text-effect-input rows="5">Animate your ideas with motion-primitives</textarea>
+              </label>
+
+              <div class="text-effect-grid">
+                <label class="field">
+                  <span>Режим сегментации</span>
+                  <select data-text-effect-per>
+                    <option value="word">word</option>
+                    <option value="char">char</option>
+                    <option value="line">line</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Пресет</span>
+                  <select data-text-effect-preset>
+                    <option value="fade">fade</option>
+                    <option value="slide">slide</option>
+                    <option value="blur">blur</option>
+                    <option value="scale">scale</option>
+                    <option value="shake">shake</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="text-effect-grid">
+                <label class="field">
+                  <span>Задержка (сек)</span>
+                  <input data-text-effect-delay type="number" min="0" step="0.1" value="0" />
+                </label>
+
+                <label class="field text-effect-toggle">
+                  <input data-text-effect-loop type="checkbox" />
+                  <span>Повторять анимацию</span>
+                </label>
+              </div>
+
+              <button class="btn" type="button" data-text-effect-trigger>Запустить анимацию</button>
+            </div>
+          </article>
+
+          <article class="text-effect-preview reveal">
+            <h2>Preview</h2>
+            <div class="text-effect-stage">
+              <p
+                class="text-effect-output"
+                data-text-effect-root
+                data-per="word"
+                data-preset="fade"
+                data-delay="0"
+              >
+                Animate your ideas with motion-primitives
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <a class="floating-call" data-phone-href data-phone-display></a>
+  </body>
+</html>

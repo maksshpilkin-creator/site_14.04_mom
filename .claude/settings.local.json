@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '/max-width.*1200px|min-width.*1200px/{found=1} found && /nav-actions/{print NR\": \"$0; found=0}' C:/projects_sites/site_for_mom/assets/css/styles.css)"
+    ]
+  }
+}
