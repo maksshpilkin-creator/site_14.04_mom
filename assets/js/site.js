@@ -974,6 +974,38 @@ function setupFaqAccordion() {
   });
 }
 
+function setupHeroPrefill() {
+  const pills = document.querySelectorAll(".hero-prefill__pill[data-prefill]");
+  if (!pills.length) return;
+  let isPrefillLocked = false;
+
+  pills.forEach((pill) => {
+    pill.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (isPrefillLocked || pill.classList.contains("is-active")) return;
+      isPrefillLocked = true;
+      const value = pill.dataset.prefill;
+
+      const quizAnswer = document.querySelector(
+        `[data-quiz-answer][data-quiz-field="object_type"][data-value="${value}"]`
+      );
+
+      pills.forEach((p) => p.classList.remove("is-active"));
+      pill.classList.add("is-active");
+      pills.forEach((p) => p.setAttribute("aria-disabled", "true"));
+
+      const quizEl = document.getElementById("hero-quiz");
+      if (quizEl) {
+        quizEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      if (quizAnswer) {
+        window.setTimeout(() => quizAnswer.click(), 400);
+      }
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   mountShell();
   setupFloatingCtaBar();
@@ -984,6 +1016,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProcessStepSequence();
   setupPhoneInputs();
   setupQuiz();
+  setupHeroPrefill();
   setupForms();
   setupPreviewLightbox();
   setupFaqAccordion();

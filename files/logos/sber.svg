@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 20" fill="none">
+  <circle cx="10" cy="10" r="9" fill="#1A9F29"/>
+  <path d="M13.5 6.5C12.6 5.6 11.4 5 10 5C7.2 5 5 7.2 5 10C5 12.8 7.2 15 10 15C11.4 15 12.6 14.4 13.5 13.5" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <text x="23" y="14.5" font-family="'Arial', sans-serif" font-size="13" font-weight="700" fill="#1A9F29" letter-spacing="0.2">!15@</text>
+</svg>

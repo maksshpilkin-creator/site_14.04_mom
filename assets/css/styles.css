@@ -582,6 +582,104 @@ ul {
   overflow: hidden;
 }
 
+.hero-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-trust__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #c5a880;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-trust__logos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+}
+
+.hero-trust__logos img {
+  height: 20px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.hero-trust__more {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.58);
+  white-space: normal;
+  line-height: 1.45;
+}
+
+.hero-prefill {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-prefill__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-prefill__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-prefill__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  border-radius: 99px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #c5a880;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.hero-prefill__pill:hover,
+.hero-prefill__pill.is-active {
+  background: rgba(197, 168, 128, 0.12);
+  border-color: rgba(197, 168, 128, 0.65);
+  color: #d4c0a0;
+}
+
+.hero-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-cred {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 0.01em;
+}
+
+.hero-cred svg {
+  width: 13px;
+  height: 13px;
+  stroke: #c5a880;
+  flex-shrink: 0;
+}
+
 .hero-stats-bar {
   background: var(--hero-stats-bg);
   padding: 16px 0;
@@ -806,6 +904,16 @@ ul {
 .quiz-result-grid {
   display: grid;
   gap: 12px;
+}
+
+.quiz-result-grid--spaced {
+  margin-top: 24px;
+}
+
+.quiz-result-hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .quiz-result-card {
