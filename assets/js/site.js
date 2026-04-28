@@ -5,7 +5,7 @@ const SITE_CONFIG = {
   whatsappHref: "https://wa.me/78126404446",
   email: "info@ocenka-group.ru",
   address: "Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А",
-  legalName: "ООО «Оценка Групп»",
+  legalName: "ООО «Экспресс Оценка»",
   inn: "ИНН 7802596912",
   ogrn: "ОГРН 1167847399895",
 };
@@ -117,7 +117,7 @@ function createHeader(page) {
     <header class="site-header" data-header>
       <div class="container">
         <div class="nav-shell">
-          <a class="brand" href="/" aria-label="Оценка Групп">
+          <a class="brand" href="/" aria-label="Экспресс Оценка">
             <span class="brand-mark">Экспресс Оценка</span>
             <span class="brand-note">Отчеты для банка, суда, нотариуса и бизнеса</span>
           </a>
@@ -144,7 +144,7 @@ function createFooter() {
         <div class="footer-main">
           <div class="footer-brand">
             <a class="footer-logo" href="/">
-              <span class="footer-logo-mark">Оценка Групп</span>
+              <span class="footer-logo-mark">Экспресс Оценка</span>
               <span class="footer-logo-tagline">Федеральная оценочная практика для частных клиентов и бизнеса</span>
             </a>
             <p class="footer-lead">Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.</p>
@@ -174,7 +174,7 @@ function createFooter() {
           </div>
         </div>
         <div class="footer-bottom">
-          <p class="footer-copyright">© <span data-current-year></span> Оценка Групп</p>
+          <p class="footer-copyright">© <span data-current-year></span> Экспресс Оценка</p>
           <a class="footer-legal" href="/terms/">Публичная оферта</a>
           <a class="footer-legal" href="/privacy/">Политика конфиденциальности</a>
         </div>

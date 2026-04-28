@@ -1,7 +1,7 @@
 - generic [active] [ref=e1]:
   - banner [ref=e2]:
     - generic [ref=e4]:
-      - link "Оценка Групп" [ref=e5] [cursor=pointer]:
+      - link "Экспресс Оценка" [ref=e5] [cursor=pointer]:
         - /url: /
         - generic [ref=e6]: Экспресс Оценка
         - generic [ref=e7]: Отчеты для банка, суда, нотариуса и бизнеса
@@ -29,7 +29,7 @@
           - link "Получить консультацию" [ref=e25] [cursor=pointer]:
             - /url: /contacts/#lead-form
       - generic [ref=e27]:
-        - img "Команда Оценка Групп" [ref=e28]
+        - img "Команда Экспресс Оценка" [ref=e28]
         - generic [ref=e29]:
           - generic [ref=e30]: ★★★★★
           - generic [ref=e31]:
@@ -478,9 +478,9 @@
     - generic [ref=e544]:
       - generic [ref=e545]:
         - generic [ref=e546]:
-          - link "Оценка Групп Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e547] [cursor=pointer]:
+          - link "Экспресс Оценка Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e547] [cursor=pointer]:
             - /url: /
-            - generic [ref=e548]: Оценка Групп
+            - generic [ref=e548]: Экспресс Оценка
             - generic [ref=e549]: Федеральная оценочная практика для частных клиентов и бизнеса
           - paragraph [ref=e550]: Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.
           - paragraph [ref=e551]: СРО, страхование ответственности, отчеты для банков, судов, нотариусов и корпоративных процедур.
@@ -510,11 +510,11 @@
                 - /url: mailto:info@ocenka-group.ru
             - listitem [ref=e570]: Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А
           - list "Реквизиты компании" [ref=e571]:
-            - listitem [ref=e572]: ООО «Оценка Групп»
+            - listitem [ref=e572]: ООО «Экспресс Оценка»
             - listitem [ref=e573]: ИНН 7802596912
             - listitem [ref=e574]: ОГРН 1167847399895
       - generic [ref=e575]:
-        - paragraph [ref=e576]: © 2026 Оценка Групп
+        - paragraph [ref=e576]: © 2026 Экспресс Оценка
         - link "Публичная оферта" [ref=e577] [cursor=pointer]:
           - /url: /terms/
         - link "Политика конфиденциальности" [ref=e578] [cursor=pointer]:

@@ -9,19 +9,19 @@
     <meta name="geo.placename" content="Санкт-Петербург" />
     <meta name="geo.position" content="59.9343;30.3086" />
     <meta name="ICBM" content="59.9343, 30.3086" />
-    <title>Оценка имущества в Санкт-Петербурге — Оценка Групп</title>
+    <title>Оценка имущества в Санкт-Петербурге — Экспресс Оценка</title>
     <meta name="description" content="Независимая оценка недвижимости, бизнеса, транспорта и ущерба в СПб. Принимают банки, суды и нотариусы. Отчёт от 1 дня. +7 (812) 640-44-46" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:site_name" content="Оценка Групп" />
-    <meta property="og:title" content="Оценка имущества в Санкт-Петербурге — Оценка Групп" />
+    <meta property="og:site_name" content="Экспресс Оценка" />
+    <meta property="og:title" content="Оценка имущества в Санкт-Петербурге — Экспресс Оценка" />
     <meta property="og:description" content="Независимая оценка недвижимости, бизнеса, транспорта и ущерба в СПб. Принимают банки, суды и нотариусы. Отчёт от 1 дня. +7 (812) 640-44-46" />
     <meta property="og:url" content="https://ocenka-group.ru/" />
     <meta property="og:image" content="https://ocenka-group.ru/assets/img/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Оценка Групп | Оценка имущества по всей России" />
+    <meta name="twitter:title" content="Экспресс Оценка | Оценка имущества по всей России" />
     <meta
       name="twitter:description"
       content="Оценка недвижимости, бизнеса, ущерба, оборудования и транспорта. Отчеты для банка, суда, нотариуса и бизнеса по всей России."
@@ -31,7 +31,7 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Оценка Групп",
+        "name": "Экспресс Оценка",
         "url": "https://ocenka-group.ru/",
         "logo": "https://ocenka-group.ru/assets/images/logo.png",
         "telephone": "+7 (812) 640-44-46",
@@ -118,8 +118,8 @@
     {
       "@type": "ProfessionalService",
       "@id": "https://ocenka-group.ru/#business",
-      "name": "Оценка Групп",
-      "legalName": "ООО «Оценка Групп»",
+      "name": "Экспресс Оценка",
+      "legalName": "ООО «Экспресс Оценка»",
       "url": "https://ocenka-group.ru/",
       "logo": "https://ocenka-group.ru/assets/img/logo.png",
       "image": "https://ocenka-group.ru/assets/img/og.jpg",
@@ -188,7 +188,7 @@
       "@type": "WebSite",
       "@id": "https://ocenka-group.ru/#website",
       "url": "https://ocenka-group.ru/",
-      "name": "Оценка Групп",
+      "name": "Экспресс Оценка",
       "inLanguage": "ru-RU",
       "publisher": {"@id": "https://ocenka-group.ru/#business"}
     },
@@ -258,7 +258,7 @@
               <div class="hero-portrait">
                 <img
                   src="/files/team2.png"
-                  alt="Команда Оценка Групп"
+                  alt="Команда Экспресс Оценка"
                   width="720"
                   height="960"
                   decoding="async"
@@ -1271,10 +1271,10 @@
             const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
             if (!email || !emailRe.test(email)) {
-              partialError.style.display = 'block';
+              partialError.classList.add('is-visible');
               return;
             }
-            partialError.style.display = 'none';
+            partialError.classList.remove('is-visible');
             
             // Gather quiz answers
             const q1 = document.querySelector('input[name="object_type"]')?.value || '';
@@ -1300,7 +1300,7 @@
               // Success Path
               if (hiddenEmailInput) hiddenEmailInput.value = email;
               
-              partialForm.style.display = 'none';
+              partialForm.hidden = true;
               successMsg.hidden = false;
               successMsg.classList.add('is-visible');
               const successTextEl = successMsg.querySelector('.quiz-email-success__text');
@@ -1308,23 +1308,15 @@
                 successTextEl.textContent = `Отправлено на ${email}`;
               }
               
-              fullContent.style.display = 'block';
-              fullContact.style.display = 'block';
-              
-              void fullContent.offsetWidth; 
-              
-              fullContent.style.transition = 'opacity 400ms ease, transform 400ms ease';
-              fullContent.style.opacity = '1';
-              fullContent.style.transform = 'translateY(0)';
-              
-              fullContact.style.transition = 'opacity 400ms ease, transform 400ms ease';
-              fullContact.style.opacity = '1';
-              fullContact.style.transform = 'translateY(0)';
+              fullContent.classList.remove('quiz-result-hidden');
+              fullContact.classList.remove('quiz-result-hidden');
+              fullContent.classList.add('quiz-result-visible');
+              fullContact.classList.add('quiz-result-visible');
             }).catch(e => {
               partialBtn.textContent = originalBtnText;
               partialBtn.disabled = false;
               partialError.textContent = 'Произошла ошибка. Попробуйте еще раз.';
-              partialError.style.display = 'block';
+              partialError.classList.add('is-visible');
             });
           });
         }

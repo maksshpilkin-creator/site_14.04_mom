@@ -706,6 +706,12 @@ ul {
   padding-top: 16px;
 }
 
+@media (max-width: 767px) {
+  .hero-stats-bar .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .hero-stat {
   display: flex;
   flex-direction: row;
@@ -914,6 +920,17 @@ ul {
   display: none;
   opacity: 0;
   transform: translateY(10px);
+}
+
+.quiz-result-visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.quiz-contact.quiz-result-visible {
+  display: grid;
 }
 
 .quiz-result-card {

@@ -165,7 +165,7 @@ From existing `files/`:
 
 - [x] **Step 21:** Add JSON-LD `Organization` schema markup (name, phone, address, logo, SRO) — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min]
 - [x] **Step 22:** Add `FAQPage` JSON-LD schema for the FAQ section — missing per §3.3 — `index.html` (`<head>`) [easy] [15 min] *requires step 8 first*
-- [x] **Step 23:** Add local SEO-optimized `<title>` and `<meta description>` to each of the 7 service pages with "оценка + тип + город" pattern — current titles are generic (e.g. "Оценка ущерба | Оценка Групп") — all 7 `services/*/index.html` [easy] [30 min]
+- [x] **Step 23:** Add local SEO-optimized `<title>` and `<meta description>` to each of the 7 service pages with "оценка + тип + город" pattern — current titles are generic (e.g. "Оценка ущерба | Экспресс Оценка") — all 7 `services/*/index.html` [easy] [30 min]
 - [x] **Step 24:** Fix font mismatch: subpages load `Cormorant Garamond + Manrope` while `index.html` loads `Cormorant + Noto Serif + Inter` — align typography across site — `contacts/index.html`, `about/index.html`, `privacy/index.html`, `reviews/index.html`, `thanks/index.html`, `documents/index.html`, all 7 service pages [easy] [30 min]
 - [x] **Step 25:** Add `<link rel="canonical">` and `Open Graph` meta tags to all pages — completely missing — all HTML files [easy] [30 min]
 - [x] **Step 26:** Add "Публичная оферта / Условия оказания услуг" page — missing per §3.1 — new `terms/index.html` + footer link in `assets/js/site.js` [medium] [1 hour]

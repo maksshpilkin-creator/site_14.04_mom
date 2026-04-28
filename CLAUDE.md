@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-"Ocenka Group" (Оценка Групп) is a Russian federal valuation company providing property, business, and asset valuation reports for banks, courts, notaries, and corporate clients. The website is a premium B2B/B2C landing page focused on lead generation through an interactive cost estimation quiz.
+"Ocenka Group" (Экспресс Оценка) is a Russian federal valuation company providing property, business, and asset valuation reports for banks, courts, notaries, and corporate clients. The website is a premium B2B/B2C landing page focused on lead generation through an interactive cost estimation quiz.
 
 **Tech Stack:** HTML, Vanilla CSS, Vanilla JS, deployed to Netlify, automated via n8n webhooks → Google Sheets → Telegram.
 
