@@ -221,6 +221,38 @@
                 <a class="btn" href="#hero-quiz">Рассчитать стоимость</a>
                 <a class="btn-secondary" href="/contacts/#lead-form">Получить консультацию</a>
               </div>
+
+              <div class="hero-trust">
+                <span class="hero-trust__label">Отчёты принимают</span>
+                <div class="hero-trust__logos">
+                  <span class="hero-trust__more">Сбербанк · Банк Санкт-Петербург · Росбанк · Газпромбанк · и еще 12</span>
+                </div>
+              </div>
+
+              <div class="hero-prefill">
+                <span class="hero-prefill__label">Что оцениваем?</span>
+                <div class="hero-prefill__pills">
+                  <a href="#hero-quiz" class="hero-prefill__pill" data-prefill="Квартира или дом">Квартира / дом</a>
+                  <a href="#hero-quiz" class="hero-prefill__pill" data-prefill="Коммерческая недвижимость">Коммерческая</a>
+                  <a href="#hero-quiz" class="hero-prefill__pill" data-prefill="Бизнес или доля">Бизнес / доля</a>
+                  <a href="#hero-quiz" class="hero-prefill__pill" data-prefill="Ущерб">Ущерб</a>
+                </div>
+              </div>
+
+              <div class="hero-creds">
+                <div class="hero-cred">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span>СРО-аттестат №РРРОО-001831</span>
+                </div>
+                <div class="hero-cred">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span>ФЗ-135 об оценочной деятельности</span>
+                </div>
+                <div class="hero-cred">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Работаем по всей России</span>
+                </div>
+              </div>
             </div>
             <div class="hero-visual reveal is-visible">
               <div class="hero-portrait">
@@ -518,9 +550,9 @@
                   </div>
 
                   <!-- STATE 2: Full result hidden initially -->
-                  <div id="full-result-content" style="display: none; opacity: 0; transform: translateY(10px);">
-                    <div class="quiz-result-grid" style="margin-top: 24px;">
-                      <article class="quiz-result-card quiz-result-card-docs" style="grid-column: 1 / -1;">
+                  <div id="full-result-content" class="quiz-result-hidden">
+                    <div class="quiz-result-grid quiz-result-grid--spaced">
+                      <article class="quiz-result-card quiz-result-card-docs">
                         <span class="small-label">Что подготовить</span>
                         <ul class="quiz-doc-list" data-quiz-doc-list></ul>
                       </article>
@@ -530,7 +562,7 @@
                   </div>
                 </div>
 
-                <div class="quiz-contact" id="full-result-contact" style="display: none; opacity: 0; transform: translateY(10px);">
+                <div class="quiz-contact quiz-result-hidden" id="full-result-contact">
                   <div class="field">
                     <label for="hero-quiz-phone">Телефон для консультации (опционально)</label>
                     <input id="hero-quiz-phone" name="phone" type="tel" autocomplete="tel" />
