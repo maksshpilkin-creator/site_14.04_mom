@@ -118,7 +118,7 @@ function createHeader(page) {
       <div class="container">
         <div class="nav-shell">
           <a class="brand" href="/" aria-label="Оценка Групп">
-            <span class="brand-mark">Оценка Групп</span>
+            <span class="brand-mark">Экспресс Оценка</span>
             <span class="brand-note">Отчеты для банка, суда, нотариуса и бизнеса</span>
           </a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>

@@ -1,0 +1,145 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Оценка Групп" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: Экспресс Оценка
+        - generic [ref=e8]: Отчеты для банка, суда, нотариуса и бизнеса
+      - navigation "Основная навигация" [ref=e9]:
+        - link "Услуги" [ref=e10] [cursor=pointer]:
+          - /url: /#services
+        - link "О компании" [ref=e11] [cursor=pointer]:
+          - /url: /about/
+        - link "Документы" [ref=e12] [cursor=pointer]:
+          - /url: /documents/
+        - link "Отзывы" [ref=e13] [cursor=pointer]:
+          - /url: /reviews/
+        - link "Контакты" [ref=e14] [cursor=pointer]:
+          - /url: /contacts/
+      - link "Узнать стоимость" [ref=e16] [cursor=pointer]:
+        - /url: /contacts/#lead-form
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - link "Главная" [ref=e22] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e23]: /
+          - generic [ref=e24]: Документы
+        - heading "Документы и образцы, которые можно проверить до старта проекта" [level=1] [ref=e25]
+        - paragraph [ref=e26]: Здесь собраны подтверждающие документы, прайс и файлы, которые помогают клиенту понять уровень подготовки еще до первого созвона.
+        - generic [ref=e27]:
+          - generic [ref=e28]: СРО и квалификация
+          - generic [ref=e29]: Прайс и форматы
+          - generic [ref=e30]: Образцы отчетов
+      - generic [ref=e31]:
+        - generic [ref=e32]: В разделе
+        - heading "Что в разделе документов" [level=3] [ref=e33]
+        - list [ref=e34]:
+          - listitem [ref=e35]: Свидетельства и квалификационные документы
+          - listitem [ref=e36]: Прайс на основные сценарии работ
+          - listitem [ref=e37]: Образец проекта и экспертного заключения
+    - generic [ref=e39]:
+      - 'button "Открыть документ: Членство в СРО" [ref=e40]':
+        - figure [ref=e41]:
+          - img "Свидетельство о членстве в СРО РОО" [ref=e42]
+        - heading "Членство в СРО" [level=3] [ref=e43]
+        - paragraph [ref=e44]: Ключевой документ для подтверждения статуса и профессионального допуска.
+      - 'button "Открыть документ: Квалификация по оценке бизнеса" [ref=e45]':
+        - figure [ref=e46]:
+          - img "Квалификационный аттестат в области оценочной деятельности" [ref=e47]
+        - heading "Квалификация по оценке бизнеса" [level=3] [ref=e48]
+        - paragraph [ref=e49]: Для корпоративных процедур, сделок, оценки долей и активов.
+      - 'button "Открыть документ: Профильное образование" [ref=e50]':
+        - figure [ref=e51]:
+          - img "Диплом о профессиональной переподготовке" [ref=e52]
+        - heading "Профильное образование" [level=3] [ref=e53]
+        - paragraph [ref=e54]: Подтверждающая база для банковских, судебных и нотариальных сценариев.
+      - 'button "Открыть документ: Страхование ответственности Ингосстрах" [ref=e55]':
+        - figure [ref=e56]:
+          - img "Страхование ответственности (Ингосстрах)" [ref=e57]
+        - heading "Страхование ответственности (Ингосстрах)" [level=3] [ref=e58]
+        - paragraph [ref=e59]: Договор страхования ответственности оценщика
+      - 'button "Открыть документ: Выписка из реестра СРО СВОД" [ref=e60]':
+        - figure [ref=e61]:
+          - img "Выписка из реестра СРО СВОД" [ref=e62]
+        - heading "Выписка из реестра СРО СВОД" [level=3] [ref=e63]
+        - paragraph [ref=e64]: Подтверждение действующего членства в СРО
+      - 'button "Открыть документ: Страхование ответственности Евроинс" [ref=e65]':
+        - figure [ref=e66]:
+          - img "Страхование ответственности (Евроинс)" [ref=e67]
+        - heading "Страхование ответственности (Евроинс)" [level=3] [ref=e68]
+        - paragraph [ref=e69]: Полис страхования оценочной деятельности
+    - generic [ref=e70]:
+      - heading "Остальные документы" [level=2] [ref=e73]
+      - generic [ref=e74]:
+        - article [ref=e75]:
+          - generic [ref=e76]:
+            - img [ref=e78]
+            - heading "Прайс" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Ориентиры по стоимости для типовых задач. Точную стоимость подтверждаем после уточнения сценария.
+          - link "Скачать PDF" [ref=e81] [cursor=pointer]:
+            - /url: /files/price.pdf
+        - article [ref=e82]:
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - heading "Пример проекта" [level=3] [ref=e88]
+          - paragraph [ref=e89]: Показывает формат, структуру и глубину раскрытия информации по оценочному проекту.
+          - link "Открыть образец" [ref=e90] [cursor=pointer]:
+            - /url: /files/example_project.pdf
+        - article [ref=e91]:
+          - generic [ref=e92]:
+            - img [ref=e94]
+            - heading "Экспертное заключение" [level=3] [ref=e97]
+          - paragraph [ref=e98]: Дополнительный пример материала для случаев, где требуется усиленная аргументация.
+          - link "Открыть документ" [ref=e99] [cursor=pointer]:
+            - /url: /files/expert_opinion.pdf
+  - contentinfo [ref=e101]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - link "Оценка Групп Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e106] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e107]: Оценка Групп
+            - generic [ref=e108]: Федеральная оценочная практика для частных клиентов и бизнеса
+          - paragraph [ref=e109]: Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.
+          - paragraph [ref=e110]: СРО, страхование ответственности, отчеты для банков, судов, нотариусов и корпоративных процедур.
+        - navigation "Разделы" [ref=e111]:
+          - heading "Разделы" [level=3] [ref=e112]
+          - list [ref=e113]:
+            - listitem [ref=e114]:
+              - link "Оценка недвижимости" [ref=e115] [cursor=pointer]:
+                - /url: /services/real-estate/
+            - listitem [ref=e116]:
+              - link "Оценка бизнеса" [ref=e117] [cursor=pointer]:
+                - /url: /services/business-valuation/
+            - listitem [ref=e118]:
+              - link "Документы и образцы" [ref=e119] [cursor=pointer]:
+                - /url: /documents/
+            - listitem [ref=e120]:
+              - link "Отзывы и кейсы" [ref=e121] [cursor=pointer]:
+                - /url: /reviews/
+        - generic "Контакты" [ref=e122]:
+          - heading "Контакты" [level=3] [ref=e123]
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - link "+7 (812) 640-44-46" [ref=e126] [cursor=pointer]:
+                - /url: tel:+78126404446
+            - listitem [ref=e127]:
+              - link "info@ocenka-group.ru" [ref=e128] [cursor=pointer]:
+                - /url: mailto:info@ocenka-group.ru
+            - listitem [ref=e129]: Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А
+          - list "Реквизиты компании" [ref=e130]:
+            - listitem [ref=e131]: ООО «Оценка Групп»
+            - listitem [ref=e132]: ИНН 7802596912
+            - listitem [ref=e133]: ОГРН 1167847399895
+      - generic [ref=e134]:
+        - paragraph [ref=e135]: © 2026 Оценка Групп
+        - link "Публичная оферта" [ref=e136] [cursor=pointer]:
+          - /url: /terms/
+        - link "Политика конфиденциальности" [ref=e137] [cursor=pointer]:
+          - /url: /privacy/
+  - link "+7 (812) 640-44-46" [ref=e139] [cursor=pointer]:
+    - /url: tel:+78126404446
