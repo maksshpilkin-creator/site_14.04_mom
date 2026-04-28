@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Оценка Групп" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: Экспресс Оценка
+        - generic [ref=e8]: Отчеты для банка, суда, нотариуса и бизнеса
+      - button [ref=e9] [cursor=pointer]
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - link "Главная" [ref=e16] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e17]: /
+          - generic [ref=e18]: О компании
+        - heading "Работаем как оценочная практика, а не как витрина с общими обещаниями" [level=1] [ref=e19]
+        - generic [ref=e20]:
+          - generic [ref=e21]: Частные клиенты
+          - generic [ref=e22]: Бизнес и инвесторы
+          - generic [ref=e23]: Задачи по всей России
+      - generic [ref=e24]:
+        - generic [ref=e25]: Наши принципы
+        - heading "Что для нас важно" [level=3] [ref=e26]
+        - list [ref=e27]:
+          - listitem [ref=e28]: Сначала цель отчета, потом формат работы
+          - listitem [ref=e29]: Понятный список документов без перегруза терминами
+          - listitem [ref=e30]: Точные сроки и честный ориентир по стоимости
+    - generic [ref=e32]:
+      - img "Документы и рабочее место специалиста" [ref=e34]
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]: Подход
+          - heading "Клиент приходит не за красивым отчетом, а за решением задачи" [level=2] [ref=e38]
+        - list [ref=e39]:
+          - listitem [ref=e40]:
+            - img [ref=e42]
+            - generic [ref=e46]: Отдельные сценарии для банка, суда, нотариуса и бизнеса
+          - listitem [ref=e47]:
+            - img [ref=e49]
+            - generic [ref=e52]: Работа с жилыми, коммерческими и сложными активами
+          - listitem [ref=e53]:
+            - img [ref=e55]
+            - generic [ref=e57]: Предварительная проверка задачи до запуска оценки
+    - generic [ref=e59]:
+      - article [ref=e60]:
+        - generic [ref=e61]: 19+
+        - paragraph [ref=e62]: лет в оценочной практике
+      - article [ref=e63]:
+        - generic [ref=e64]: 15 000+
+        - paragraph [ref=e65]: завершенных отчетов
+      - article [ref=e66]:
+        - generic [ref=e67]: B2B + B2C
+        - paragraph [ref=e68]: работаем и с частными, и с корпоративными клиентами
+      - article [ref=e69]:
+        - generic [ref=e70]: СРО
+        - paragraph [ref=e71]: подтверждающие документы и квалификация доступны в разделе документов
+    - generic [ref=e73]:
+      - article [ref=e74]:
+        - generic [ref=e75]:
+          - img [ref=e77]
+          - heading "Частные задачи" [level=3] [ref=e81]
+        - paragraph [ref=e82]: Ипотека, наследство, раздел имущества, оспаривание стоимости, ущерб после ДТП и заливов.
+      - article [ref=e83]:
+        - generic [ref=e84]:
+          - img [ref=e86]
+          - heading "Бизнес-задачи" [level=3] [ref=e88]
+        - paragraph [ref=e89]: Оценка бизнеса, долей, активов, оборудования, коммерческих объектов и имущественных комплексов.
+      - article [ref=e90]:
+        - generic [ref=e91]:
+          - img [ref=e93]
+          - heading "Юридическая применимость" [level=3] [ref=e96]
+        - paragraph [ref=e97]: Сразу уточняем, кто принимает отчет, и строим работу под конкретный сценарий использования.
+  - contentinfo [ref=e99]:
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - link "Оценка Групп Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e104] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e105]: Оценка Групп
+            - generic [ref=e106]: Федеральная оценочная практика для частных клиентов и бизнеса
+          - paragraph [ref=e107]: Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.
+          - paragraph [ref=e108]: СРО, страхование ответственности, отчеты для банков, судов, нотариусов и корпоративных процедур.
+        - navigation "Разделы" [ref=e109]:
+          - heading "Разделы" [level=3] [ref=e110]
+          - list [ref=e111]:
+            - listitem [ref=e112]:
+              - link "Оценка недвижимости" [ref=e113] [cursor=pointer]:
+                - /url: /services/real-estate/
+            - listitem [ref=e114]:
+              - link "Оценка бизнеса" [ref=e115] [cursor=pointer]:
+                - /url: /services/business-valuation/
+            - listitem [ref=e116]:
+              - link "Документы и образцы" [ref=e117] [cursor=pointer]:
+                - /url: /documents/
+            - listitem [ref=e118]:
+              - link "Отзывы и кейсы" [ref=e119] [cursor=pointer]:
+                - /url: /reviews/
+        - generic "Контакты" [ref=e120]:
+          - heading "Контакты" [level=3] [ref=e121]
+          - list [ref=e122]:
+            - listitem [ref=e123]:
+              - link "+7 (812) 640-44-46" [ref=e124] [cursor=pointer]:
+                - /url: tel:+78126404446
+            - listitem [ref=e125]:
+              - link "info@ocenka-group.ru" [ref=e126] [cursor=pointer]:
+                - /url: mailto:info@ocenka-group.ru
+            - listitem [ref=e127]: Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А
+          - list "Реквизиты компании" [ref=e128]:
+            - listitem [ref=e129]: ООО «Оценка Групп»
+            - listitem [ref=e130]: ИНН 7802596912
+            - listitem [ref=e131]: ОГРН 1167847399895
+      - generic [ref=e132]:
+        - paragraph [ref=e133]: © 2026 Оценка Групп
+        - link "Публичная оферта" [ref=e134] [cursor=pointer]:
+          - /url: /terms/
+        - link "Политика конфиденциальности" [ref=e135] [cursor=pointer]:
+          - /url: /privacy/
+  - generic [ref=e136]:
+    - link "Оставить заявку" [ref=e137] [cursor=pointer]:
+      - /url: /contacts/#lead-form
+    - link "+7 (812) 640-44-46" [ref=e138] [cursor=pointer]:
+      - /url: tel:+78126404446

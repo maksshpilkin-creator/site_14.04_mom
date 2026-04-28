@@ -1,0 +1,167 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Оценка Групп" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: Экспресс Оценка
+        - generic [ref=e8]: Отчеты для банка, суда, нотариуса и бизнеса
+      - navigation "Основная навигация" [ref=e9]:
+        - link "Услуги" [ref=e10] [cursor=pointer]:
+          - /url: /#services
+        - link "О компании" [ref=e11] [cursor=pointer]:
+          - /url: /about/
+        - link "Документы" [ref=e12] [cursor=pointer]:
+          - /url: /documents/
+        - link "Отзывы" [ref=e13] [cursor=pointer]:
+          - /url: /reviews/
+        - link "Контакты" [ref=e14] [cursor=pointer]:
+          - /url: /contacts/
+      - link "Узнать стоимость" [ref=e16] [cursor=pointer]:
+        - /url: /contacts/#lead-form
+  - main [ref=e17]:
+    - region "Оценка для нотариуса и наследства — отчёт за 2–4 дня, который примет нотариальная контора с первого раза" [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - link "Главная" [ref=e22] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e23]: /
+            - generic [ref=e24]: Оценка для нотариуса и наследства
+          - heading "Оценка для нотариуса и наследства — отчёт за 2–4 дня, который примет нотариальная контора с первого раза" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Сначала уточняем объект и нотариальный сценарий — затем называем срок и пакет документов
+        - complementary "Когда подходит оценка" [ref=e27]:
+          - generic [ref=e28]:
+            - heading "Подходит для" [level=3] [ref=e29]
+            - list [ref=e30]:
+              - listitem [ref=e31]: Вступление в наследство
+              - listitem [ref=e32]: Расчёт госпошлины у нотариуса
+              - listitem [ref=e33]: Раздел и выкуп доли
+              - listitem [ref=e34]: Оформление прав на имущество
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]: Типы объектов
+        - heading "Оценка по типу имущества" [level=2] [ref=e39]
+        - paragraph [ref=e40]: "Типовые запросы: вступление в наследство и расчёт госпошлины, раздел имущества между наследниками, оформление прав и долей у нотариуса, продажа или выкуп доли. Для квартиры и участка — 2–4 рабочих дня; для доли — 4–6 рабочих дней; для транспорта и ценного имущества — 2–4 рабочих дня. Ориентир по стоимости — на карточках; итог согласуем после короткого созвона."
+      - generic [ref=e41]:
+        - article [ref=e42]:
+          - heading "Квартира, дом, земельный участок" [level=3] [ref=e43]
+          - paragraph [ref=e45]: Отчёт для нотариуса с первого раза — правильный формат, понятная рыночная стоимость, без лишних итераций
+          - generic [ref=e46]:
+            - generic [ref=e47]: Срок
+            - paragraph [ref=e48]: 2–4 рабочих дня
+          - paragraph [ref=e50]: от 4 500 ₽
+          - link "Узнать стоимость" [ref=e51] [cursor=pointer]:
+            - /url: "#lead-form"
+        - article [ref=e52]:
+          - heading "Доли в недвижимости" [level=3] [ref=e53]
+          - paragraph [ref=e55]: Оценка доли для раздела, выкупа или согласования с нотариусом — с учётом скидки на долевую собственность
+          - generic [ref=e56]:
+            - generic [ref=e57]: Срок
+            - paragraph [ref=e58]: 4–6 рабочих дней
+          - paragraph [ref=e60]: от 6 000 ₽
+          - link "Узнать стоимость" [ref=e61] [cursor=pointer]:
+            - /url: "#lead-form"
+        - article [ref=e62]:
+          - heading "Транспорт и ценное имущество" [level=3] [ref=e63]
+          - paragraph [ref=e65]: Оценка авто, техники и иного имущества для включения в наследственную массу — быстро и в формате нотариуса
+          - generic [ref=e66]:
+            - generic [ref=e67]: Срок
+            - paragraph [ref=e68]: 2–4 рабочих дня
+          - paragraph [ref=e70]: от 5 000 ₽
+          - link "Узнать стоимость" [ref=e71] [cursor=pointer]:
+            - /url: "#lead-form"
+    - region "Рекомендации и отметки партнёров" [ref=e72]:
+      - generic [ref=e73]:
+        - heading "Рекомендации и отметки партнёров" [level=2] [ref=e75]
+        - generic [ref=e76]:
+          - article [ref=e77]:
+            - heading "Банк «Санкт-Петербург»" [level=3] [ref=e78]
+            - paragraph [ref=e79]: Более 40 выполненных отчётов, рекомендуют
+            - paragraph [ref=e80]: "2017"
+          - article [ref=e81]:
+            - heading "ПАО «Промсвязьбанк»" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Оценка имущества, добросовестный исполнитель
+            - paragraph [ref=e84]: "2018"
+          - article [ref=e85]:
+            - heading "ООО «НЬЮ ЙОРКЕР Ритейл РУС»" [level=3] [ref=e86]
+            - paragraph [ref=e87]: Профессионализм и компетентность, рекомендуют
+            - paragraph [ref=e88]: "2021"
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - heading "Чаще всего обращаются с:" [level=3] [ref=e92]
+        - list [ref=e93]:
+          - listitem [ref=e94]: Вступление в наследство на квартиру
+          - listitem [ref=e95]: Расчёт госпошлины у нотариуса
+          - listitem [ref=e96]: Раздел имущества между наследниками
+          - listitem [ref=e97]: Выкуп доли
+          - listitem [ref=e98]: Оценка авто для наследства
+      - generic [ref=e99]:
+        - heading "Узнайте стоимость за 1 минуту" [level=3] [ref=e100]
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: Имя
+            - textbox "Имя" [ref=e104]
+          - generic [ref=e105]:
+            - generic [ref=e106]: Телефон
+            - textbox "Телефон" [ref=e107]
+          - generic [ref=e108]:
+            - generic [ref=e109]: Комментарий
+            - textbox "Комментарий" [ref=e110]:
+              - /placeholder: Укажите объект, город и цель оценки
+          - generic [ref=e112]:
+            - checkbox "Согласен на обработку персональных данных в соответствии с политикой конфиденциальности" [ref=e113]
+            - generic [ref=e114]:
+              - text: Согласен на обработку персональных данных в соответствии с
+              - link "политикой конфиденциальности" [ref=e115] [cursor=pointer]:
+                - /url: /privacy/
+          - button "Узнать стоимость" [ref=e116] [cursor=pointer]
+          - paragraph [ref=e117]: Отвечаем в течение 30 минут в рабочее время
+  - contentinfo [ref=e119]:
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - link "Оценка Групп Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e124] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e125]: Оценка Групп
+            - generic [ref=e126]: Федеральная оценочная практика для частных клиентов и бизнеса
+          - paragraph [ref=e127]: Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.
+          - paragraph [ref=e128]: СРО, страхование ответственности, отчеты для банков, судов, нотариусов и корпоративных процедур.
+        - navigation "Разделы" [ref=e129]:
+          - heading "Разделы" [level=3] [ref=e130]
+          - list [ref=e131]:
+            - listitem [ref=e132]:
+              - link "Оценка недвижимости" [ref=e133] [cursor=pointer]:
+                - /url: /services/real-estate/
+            - listitem [ref=e134]:
+              - link "Оценка бизнеса" [ref=e135] [cursor=pointer]:
+                - /url: /services/business-valuation/
+            - listitem [ref=e136]:
+              - link "Документы и образцы" [ref=e137] [cursor=pointer]:
+                - /url: /documents/
+            - listitem [ref=e138]:
+              - link "Отзывы и кейсы" [ref=e139] [cursor=pointer]:
+                - /url: /reviews/
+        - generic "Контакты" [ref=e140]:
+          - heading "Контакты" [level=3] [ref=e141]
+          - list [ref=e142]:
+            - listitem [ref=e143]:
+              - link "+7 (812) 640-44-46" [ref=e144] [cursor=pointer]:
+                - /url: tel:+78126404446
+            - listitem [ref=e145]:
+              - link "info@ocenka-group.ru" [ref=e146] [cursor=pointer]:
+                - /url: mailto:info@ocenka-group.ru
+            - listitem [ref=e147]: Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А
+          - list "Реквизиты компании" [ref=e148]:
+            - listitem [ref=e149]: ООО «Оценка Групп»
+            - listitem [ref=e150]: ИНН 7802596912
+            - listitem [ref=e151]: ОГРН 1167847399895
+      - generic [ref=e152]:
+        - paragraph [ref=e153]: © 2026 Оценка Групп
+        - link "Публичная оферта" [ref=e154] [cursor=pointer]:
+          - /url: /terms/
+        - link "Политика конфиденциальности" [ref=e155] [cursor=pointer]:
+          - /url: /privacy/
+  - link "+7 (812) 640-44-46" [ref=e157] [cursor=pointer]:
+    - /url: tel:+78126404446

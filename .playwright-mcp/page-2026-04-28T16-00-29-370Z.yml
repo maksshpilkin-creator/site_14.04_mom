@@ -1,0 +1,523 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Оценка Групп" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Экспресс Оценка
+        - generic [ref=e7]: Отчеты для банка, суда, нотариуса и бизнеса
+      - navigation "Основная навигация" [ref=e8]:
+        - link "Услуги" [ref=e9] [cursor=pointer]:
+          - /url: /#services
+        - link "О компании" [ref=e10] [cursor=pointer]:
+          - /url: /about/
+        - link "Документы" [ref=e11] [cursor=pointer]:
+          - /url: /documents/
+        - link "Отзывы" [ref=e12] [cursor=pointer]:
+          - /url: /reviews/
+        - link "Контакты" [ref=e13] [cursor=pointer]:
+          - /url: /contacts/
+      - link "Узнать стоимость" [ref=e15] [cursor=pointer]:
+        - /url: /contacts/#lead-form
+  - main [ref=e16]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading "Поручите задачу профессионалам. Готовый отчёт для банка, суда и нотариуса." [level=1] [ref=e21]
+        - paragraph [ref=e22]: Называем стоимость, срок и список документов сразу. Работаем по всей России — без лишних вопросов на старте.
+        - generic [ref=e23]:
+          - link "Рассчитать стоимость" [ref=e24] [cursor=pointer]:
+            - /url: "#hero-quiz"
+          - link "Получить консультацию" [ref=e25] [cursor=pointer]:
+            - /url: /contacts/#lead-form
+      - generic [ref=e27]:
+        - img "Команда Оценка Групп" [ref=e28]
+        - generic [ref=e29]:
+          - generic [ref=e30]: ★★★★★
+          - generic [ref=e31]:
+            - generic [ref=e32]: "5.0"
+            - generic [ref=e33]: на Яндекс Картах · 116 отзывов
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - img [ref=e38]
+        - generic [ref=e41]:
+          - generic [ref=e42]: 15 000+
+          - generic [ref=e43]: выполненных отчётов
+      - generic [ref=e44]:
+        - img [ref=e46]
+        - generic [ref=e49]:
+          - generic [ref=e50]: от 1 дня
+          - generic [ref=e51]: срок готовности отчёта
+      - generic [ref=e52]:
+        - img [ref=e54]
+        - generic [ref=e57]:
+          - generic [ref=e58]: 19+
+          - generic [ref=e59]: лет оценочной практики
+      - generic [ref=e60]:
+        - img [ref=e62]
+        - generic [ref=e65]:
+          - generic [ref=e66]: 28+
+          - generic [ref=e67]: банков принимают наши отчёты
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: Экспресс-квиз
+        - heading "Подскажем стоимость, срок и документы за 1 минуту" [level=3] [ref=e73]
+        - paragraph [ref=e74]: Ответьте на 3 вопроса и сразу увидите ориентир по вашей задаче.
+      - paragraph [ref=e76]: Вопрос 1 из 3
+      - generic [ref=e83]:
+        - paragraph [ref=e84]: Что нужно оценить?
+        - generic [ref=e85]:
+          - button "Квартира или дом Ипотека, наследство, раздел имущества, сделка" [ref=e86] [cursor=pointer]:
+            - img [ref=e88]
+            - generic [ref=e92]:
+              - generic [ref=e93]: Квартира или дом
+              - generic [ref=e94]: Ипотека, наследство, раздел имущества, сделка
+            - generic: ✓
+          - button "Коммерческая недвижимость Офисы, склады, торговые и производственные площади" [ref=e95] [cursor=pointer]:
+            - img [ref=e97]
+            - generic [ref=e99]:
+              - generic [ref=e100]: Коммерческая недвижимость
+              - generic [ref=e101]: Офисы, склады, торговые и производственные площади
+            - generic: ✓
+          - button "Бизнес или доля Корпоративные процедуры, продажа, бухгалтерия" [ref=e102] [cursor=pointer]:
+            - img [ref=e104]
+            - generic [ref=e109]:
+              - generic [ref=e110]: Бизнес или доля
+              - generic [ref=e111]: Корпоративные процедуры, продажа, бухгалтерия
+            - generic: ✓
+          - button "Ущерб Залив, пожар, ДТП, спор со страховой или в суде" [ref=e112] [cursor=pointer]:
+            - img [ref=e114]
+            - generic [ref=e116]:
+              - generic [ref=e117]: Ущерб
+              - generic [ref=e118]: Залив, пожар, ДТП, спор со страховой или в суде
+            - generic: ✓
+          - button "Оборудование или транспорт Авто, спецтехника, станки, производственные активы" [ref=e119] [cursor=pointer]:
+            - img [ref=e121]
+            - generic [ref=e126]:
+              - generic [ref=e127]: Оборудование или транспорт
+              - generic [ref=e128]: Авто, спецтехника, станки, производственные активы
+            - generic: ✓
+    - generic [ref=e130]:
+      - article [ref=e131]:
+        - generic [ref=e132]: 19+
+        - paragraph [ref=e133]: лет практики в оценке имущества и активов
+      - article [ref=e134]:
+        - generic [ref=e135]: 15 000+
+        - paragraph [ref=e136]: отчётов для частных клиентов и бизнеса
+      - article [ref=e137]:
+        - generic [ref=e138]: 30 минут
+        - paragraph [ref=e139]: на первичный ответ в рабочее время
+      - article [ref=e140]:
+        - generic [ref=e141]: Россия
+        - paragraph [ref=e142]: работаем по всей стране с региональными задачами
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]: Основные направления
+        - heading "Услуги" [level=2] [ref=e147]
+      - generic [ref=e148]:
+        - article [ref=e149]:
+          - img [ref=e151]
+          - heading "Оценка недвижимости" [level=3] [ref=e155]
+          - paragraph [ref=e156]: Квартиры, дома, земельные участки и нежилые помещения для банка, суда, нотариуса и сделки.
+          - link "Открыть страницу" [ref=e157] [cursor=pointer]:
+            - /url: /services/real-estate/
+        - article [ref=e158]:
+          - img [ref=e160]
+          - heading "Оценка бизнеса и долей" [level=3] [ref=e161]
+          - paragraph [ref=e162]: Для купли-продажи, кредитования, корпоративных процедур, налоговых и судебных задач.
+          - link "Открыть страницу" [ref=e163] [cursor=pointer]:
+            - /url: /services/business-valuation/
+        - article [ref=e164]:
+          - img [ref=e166]
+          - heading "Коммерческая недвижимость" [level=3] [ref=e168]
+          - paragraph [ref=e169]: Офисы, склады, торговые помещения, производственные площадки и имущественные комплексы.
+          - link "Открыть страницу" [ref=e170] [cursor=pointer]:
+            - /url: /services/commercial-property/
+        - article [ref=e171]:
+          - img [ref=e173]
+          - heading "Оценка для суда" [level=3] [ref=e175]
+          - paragraph [ref=e176]: Отчеты и экспертная поддержка по имущественным спорам, разделу имущества и взысканию убытков.
+          - link "Открыть страницу" [ref=e177] [cursor=pointer]:
+            - /url: /services/court-valuation/
+        - article [ref=e178]:
+          - img [ref=e180]
+          - heading "Оценка ущерба" [level=3] [ref=e184]
+          - paragraph [ref=e185]: Отчеты по заливам, пожарам, ДТП и иным повреждениям имущества для переговоров, претензий и суда.
+          - link "Открыть страницу" [ref=e186] [cursor=pointer]:
+            - /url: /services/damage-valuation/
+        - article [ref=e187]:
+          - img [ref=e189]
+          - heading "Транспорт и оборудование" [level=3] [ref=e191]
+          - paragraph [ref=e192]: Оценка техники, спецтранспорта, станков и производственных активов для бизнеса и спорных ситуаций.
+          - link "Открыть страницу" [ref=e193] [cursor=pointer]:
+            - /url: /services/equipment-transport/
+    - generic [ref=e195]:
+      - img "Совещание в офисе оценочной компании" [ref=e197]
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]: О компании
+          - heading "Независимая оценка с понятным процессом и юридической опорой" [level=2] [ref=e201]
+          - paragraph [ref=e202]: Мы ведем частные и корпоративные задачи так, чтобы клиент не тратил время на расшифровку требований банка, суда или нотариуса. Сначала уточняем цель отчета, затем собираем документы и выдаем результат в согласованный срок.
+        - list [ref=e203]:
+          - listitem [ref=e204]:
+            - img [ref=e206]
+            - generic [ref=e209]: Практика по жилой, коммерческой и промышленной недвижимости
+          - listitem [ref=e210]:
+            - img [ref=e212]
+            - generic [ref=e215]: Отдельный поток для корпоративных задач и оценки бизнеса
+          - listitem [ref=e216]:
+            - img [ref=e218]
+            - generic [ref=e223]: Отчеты и образцы документов доступны для предварительного просмотра
+    - generic [ref=e225]:
+      - generic [ref=e226]:
+        - generic [ref=e227]: Почему доверяют
+        - heading "Доверие строится на понятных доказательствах" [level=2] [ref=e228]
+        - paragraph [ref=e229]: "Сначала показываем документы и факты, затем говорим о подходе. Это снимает главный страх клиента: что отчет не примут по месту назначения."
+      - generic [ref=e230]:
+        - article [ref=e231]:
+          - img [ref=e233]
+          - heading "Работа по всей России" [level=3] [ref=e236]
+          - paragraph [ref=e237]: Подключаем региональные задачи без привязки к одному городу. Учитываем локальные требования и сроки.
+        - article [ref=e238]:
+          - img [ref=e240]
+          - heading "Документы и СРО" [level=3] [ref=e244]
+          - paragraph [ref=e245]: Показываем подтверждающие документы, квалификацию и образцы отчетов до старта проекта.
+        - article [ref=e246]:
+          - img [ref=e248]
+          - heading "Форматы для практики" [level=3] [ref=e250]
+          - paragraph [ref=e251]: "Сразу уточняем, для кого нужен отчет: банк, суд, нотариус, страховая компания или корпоративная процедура."
+    - generic [ref=e253]:
+      - generic [ref=e254]:
+        - generic [ref=e255]: Команда
+        - heading "Команда" [level=2] [ref=e256]
+        - paragraph [ref=e257]: Оценщики с подтверждённой квалификацией и опытом
+      - generic [ref=e258]:
+        - article [ref=e259]:
+          - figure "Ксения Алифанова" [ref=e260]:
+            - img "Ксения Алифанова — Генеральный директор" [ref=e261]
+            - generic [ref=e262]: Ксения Алифанова
+          - generic [ref=e263]:
+            - paragraph [ref=e264]: Генеральный директор
+            - paragraph [ref=e265]: с 2008 года
+            - list [ref=e266]:
+              - listitem [ref=e267]: Executive MBA ИМИСП
+              - listitem [ref=e268]: Спикер Университета «Синергия»
+              - listitem [ref=e269]: Член экспертного совета «Русского общества оценщиков»
+        - article [ref=e270]:
+          - figure "Кристина Саулова" [ref=e271]:
+            - img "Кристина Саулова — Оценщик" [ref=e272]
+            - generic [ref=e273]: Кристина Саулова
+          - generic [ref=e274]:
+            - paragraph [ref=e275]: Оценщик
+            - paragraph [ref=e276]: с 2016 года
+            - list [ref=e277]:
+              - listitem [ref=e278]: Член СРО оценщиков «СМАО»
+              - listitem [ref=e279]: Квалификационный аттестат — Недвижимое имущество
+        - article [ref=e280]:
+          - figure "Виктория Крутякова" [ref=e281]:
+            - img "Виктория Крутякова — Менеджер" [ref=e282]
+            - generic [ref=e283]: Виктория Крутякова
+          - generic [ref=e284]:
+            - paragraph [ref=e285]: Менеджер
+            - paragraph [ref=e286]: с 2016 года
+            - list [ref=e287]:
+              - listitem [ref=e288]: Диплом ВШЭ «Международный бизнес и менеджмент»
+              - listitem [ref=e289]: Квалификационный аттестат по оценке бизнеса
+        - article [ref=e290]:
+          - figure "Анна Саур" [ref=e291]:
+            - img "Анна Саур — Ведущий оценщик" [ref=e292]
+            - generic [ref=e293]: Анна Саур
+          - generic [ref=e294]:
+            - paragraph [ref=e295]: Ведущий оценщик
+            - paragraph [ref=e296]: с 2018 года
+            - list [ref=e297]:
+              - listitem [ref=e298]: Диплом СПбГПУ
+              - listitem [ref=e299]: Квалификационный аттестат — Недвижимое имущество и бизнес
+    - generic [ref=e301]:
+      - generic [ref=e302]:
+        - generic [ref=e303]: Процесс
+        - heading "Этапы работы" [level=2] [ref=e304]
+        - paragraph [ref=e305]: "От заявки до передачи отчета — одна цепочка: вы знаете, что происходит на каждом этапе."
+      - list "Этапы работы" [ref=e306]:
+        - listitem [ref=e307]:
+          - generic [ref=e308]: "1"
+          - generic [ref=e309]:
+            - heading "Заявка" [level=3] [ref=e310]
+            - paragraph [ref=e311]: ~15 мин
+            - paragraph [ref=e312]: Получаем краткое описание задачи и контакт. При необходимости сразу созваниваемся.
+        - listitem [ref=e313]:
+          - generic [ref=e314]: "2"
+          - generic [ref=e315]:
+            - heading "Проверка сценария" [level=3] [ref=e316]
+            - paragraph [ref=e317]: 1 день
+            - paragraph [ref=e318]: Фиксируем цель оценки, адресата отчета, комплект документов и реалистичный срок.
+        - listitem [ref=e319]:
+          - generic [ref=e320]: "3"
+          - generic [ref=e321]:
+            - heading "Документы и осмотр" [level=3] [ref=e322]
+            - paragraph [ref=e323]: 1-3 дня
+            - paragraph [ref=e324]: Собираем документы, организуем выезд специалиста или удаленную часть работ, если это уместно.
+        - listitem [ref=e325]:
+          - generic [ref=e326]: "4"
+          - generic [ref=e327]:
+            - heading "Отчет и передача" [level=3] [ref=e328]
+            - paragraph [ref=e329]: 1-2 дня
+            - paragraph [ref=e330]: Готовим отчет и передаем в формате, который ожидают вы и принимающая сторона.
+    - generic [ref=e332]:
+      - generic [ref=e333]:
+        - generic [ref=e334]: Документы
+        - heading "Документы, позволяющие вести оценочную деятельность" [level=2] [ref=e335]
+        - paragraph [ref=e336]: На главной странице выносены ключевые документы. Полный комплект и образцы отчетов находятся в отдельном разделе.
+      - generic [ref=e337]:
+        - article [ref=e338]:
+          - figure [ref=e339]:
+            - img "Свидетельство о членстве в СРО" [ref=e340]
+          - heading "Членство в СРО" [level=3] [ref=e341]
+          - paragraph [ref=e342]: Подтверждение профессионального статуса и права на ведение оценочной деятельности.
+          - link "Смотреть раздел документов" [ref=e343] [cursor=pointer]:
+            - /url: /documents/
+        - article [ref=e344]:
+          - figure [ref=e345]:
+            - img "Квалификационный документ по оценке бизнеса" [ref=e346]
+          - heading "Квалификация по бизнесу" [level=3] [ref=e347]
+          - paragraph [ref=e348]: "Для задач, где нужен отдельный уровень аргументации: доли, активы, сделки и корпоративные процедуры."
+          - link "Открыть образец отчета" [ref=e349] [cursor=pointer]:
+            - /url: /files/example_project.pdf
+        - article [ref=e350]:
+          - figure [ref=e351]:
+            - img "Диплом специалиста по оценке" [ref=e352]
+          - heading "Образование и специализация" [level=3] [ref=e353]
+          - paragraph [ref=e354]: Комплект подтверждающих документов для банков, судов и корпоративных клиентов.
+          - link "Скачать прайс" [ref=e355] [cursor=pointer]:
+            - /url: /files/price.pdf
+      - link "Перейти ко всем документам" [ref=e357] [cursor=pointer]:
+        - /url: /documents/index.html
+    - generic [ref=e359]:
+      - generic [ref=e360]:
+        - generic [ref=e361]: Отзывы и кейсы
+        - heading "Показываем реальные отзывы и короткие рабочие кейсы" [level=2] [ref=e362]
+        - paragraph [ref=e363]: Вместо обезличенных цитат используем реальные скриншоты отзывов и краткие описания задач, в которых важны сроки и приемка отчета.
+      - generic [ref=e364]:
+        - article [ref=e365]:
+          - figure [ref=e366]:
+            - img "Отзыв клиента о работе специалистов" [ref=e367]
+          - heading "Ипотечная оценка квартиры" [level=3] [ref=e368]
+          - paragraph [ref=e369]: Клиенту нужно было уложиться в срок банка без повторной отправки документов.
+        - article [ref=e370]:
+          - figure [ref=e371]:
+            - img "Отзыв о подготовке отчета для нотариуса" [ref=e372]
+          - heading "Наследственное дело" [level=3] [ref=e373]
+          - paragraph [ref=e374]: Подготовили отчет для нотариуса и заранее проверили комплект документов до выезда.
+        - article [ref=e375]:
+          - figure [ref=e376]:
+            - img "Отзыв о взаимодействии с компанией" [ref=e377]
+          - heading "Корпоративная задача" [level=3] [ref=e378]
+          - paragraph [ref=e379]: Оценка бизнеса для переговоров и внутренних процедур без публичного раскрытия деталей проекта.
+      - link "Посмотреть все отзывы и кейсы" [ref=e381] [cursor=pointer]:
+        - /url: /reviews/
+      - generic "Банки и партнеры" [ref=e382]:
+        - paragraph [ref=e383]: Отчеты обычно принимают
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - generic [ref=e387]: СберБанк
+            - generic [ref=e388]: ВТБ
+            - generic [ref=e389]: Альфа-Банк
+            - generic [ref=e390]: Газпромбанк
+            - generic [ref=e391]: Россельхозбанк
+            - generic [ref=e392]: Нотариальные конторы и суды РФ
+          - generic [ref=e393]:
+            - generic [ref=e394]: СберБанк
+            - generic [ref=e395]: ВТБ
+            - generic [ref=e396]: Альфа-Банк
+            - generic [ref=e397]: Газпромбанк
+            - generic [ref=e398]: Россельхозбанк
+            - generic [ref=e399]: Нотариальные конторы и суды РФ
+          - generic [ref=e400]:
+            - generic [ref=e401]: СберБанк
+            - generic [ref=e402]: ВТБ
+            - generic [ref=e403]: Альфа-Банк
+            - generic [ref=e404]: Газпромбанк
+            - generic [ref=e405]: Россельхозбанк
+            - generic [ref=e406]: Нотариальные конторы и суды РФ
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - generic [ref=e410]: Кейсы и примеры отчетов
+        - heading "Примеры работ" [level=2] [ref=e411]
+        - paragraph [ref=e412]: Показываем, с какими вводными приходят клиенты, какую цель ставят и в какой срок получают рабочий отчет.
+      - generic [ref=e413]:
+        - article [ref=e414]:
+          - heading "Квартира для ипотечной сделки" [level=3] [ref=e415]
+          - paragraph [ref=e416]: Клиенту нужно было подтвердить рыночную стоимость объекта под требования банка без повторной подачи документов.
+          - generic [ref=e417]:
+            - generic [ref=e418]: "Объект: квартира"
+            - generic [ref=e419]: "Цель: ипотека"
+            - generic [ref=e420]: "Срок: 2 рабочих дня"
+          - generic [ref=e421]: Принято банком
+        - article [ref=e422]:
+          - heading "Коммерческое помещение для суда" [level=3] [ref=e423]
+          - paragraph [ref=e424]: Собственнику требовался отчет для имущественного спора с учетом даты оценки и процессуального дедлайна.
+          - generic [ref=e425]:
+            - generic [ref=e426]: "Объект: коммерческая недвижимость"
+            - generic [ref=e427]: "Цель: судебный спор"
+            - generic [ref=e428]: "Срок: 4 рабочих дня"
+          - generic [ref=e429]: Использовано в суде
+        - article [ref=e430]:
+          - heading "Доля в бизнесе для переговоров" [level=3] [ref=e431]
+          - paragraph [ref=e432]: Подготовили оценку доли для корпоративных переговоров и внутреннего согласования справедливого диапазона цены.
+          - generic [ref=e433]:
+            - generic [ref=e434]: "Объект: доля в бизнесе"
+            - generic [ref=e435]: "Цель: корпоративная процедура"
+            - generic [ref=e436]: "Срок: 8 рабочих дней"
+          - generic [ref=e437]: Принято сторонами сделки
+    - generic [ref=e439]:
+      - generic [ref=e440]:
+        - generic [ref=e441]: Федеральный охват
+        - heading "Работаем по всей России" [level=2] [ref=e442]
+        - paragraph [ref=e443]: Оставьте заявку, и специалист скажет стоимость, срок подготовки отчета и что потребуется именно под вашу задачу.
+        - generic: RU
+      - generic [ref=e444]:
+        - heading "Что получите после первого контакта" [level=3] [ref=e445]
+        - list [ref=e446]:
+          - listitem [ref=e447]:
+            - generic [ref=e448]: "01"
+            - paragraph [ref=e449]: Понимание, подходит ли наша оценка под вашу цель
+          - listitem [ref=e450]:
+            - generic [ref=e451]: "02"
+            - paragraph [ref=e452]: Ориентир по сроку и цене без длинного брифа
+          - listitem [ref=e453]:
+            - generic [ref=e454]: "03"
+            - paragraph [ref=e455]: Список документов без юридического перегруза
+    - region "Частые вопросы об оценке" [ref=e456]:
+      - generic [ref=e457]:
+        - generic [ref=e458]:
+          - generic [ref=e459]: Вопросы и ответы
+          - heading "Частые вопросы об оценке" [level=2] [ref=e460]
+          - paragraph [ref=e461]: "Кратко по цене, документам, срокам и формату отчёта. Если вашей ситуации нет в списке — напишите или позвоните: подскажем по конкретной задаче."
+        - generic [ref=e462]:
+          - button "Сколько стоит оценка и от чего зависит цена?" [ref=e464] [cursor=pointer]:
+            - generic [ref=e465]: Сколько стоит оценка и от чего зависит цена?
+          - button "Какие документы нужны для отчёта?" [ref=e468] [cursor=pointer]:
+            - generic [ref=e469]: Какие документы нужны для отчёта?
+          - button "За какой срок готовится отчёт?" [ref=e472] [cursor=pointer]:
+            - generic [ref=e473]: За какой срок готовится отчёт?
+          - button "Примут ли отчёт в банке или в суде?" [ref=e476] [cursor=pointer]:
+            - generic [ref=e477]: Примут ли отчёт в банке или в суде?
+          - button "Можно ли ускорить подготовку отчёта?" [ref=e480] [cursor=pointer]:
+            - generic [ref=e481]: Можно ли ускорить подготовку отчёта?
+          - button "Можно ли оформить заказ удалённо?" [ref=e484] [cursor=pointer]:
+            - generic [ref=e485]: Можно ли оформить заказ удалённо?
+    - generic [ref=e488]:
+      - generic [ref=e489]:
+        - generic [ref=e490]: Контакты
+        - heading "Свяжитесь удобным способом" [level=2] [ref=e491]
+        - paragraph [ref=e492]: "Срочный вопрос — звоните. Несколько объектов или детальный сценарий — оставьте заявку: ответим в рабочее время и согласуем следующий шаг."
+      - generic [ref=e493]:
+        - complementary [ref=e494]:
+          - list [ref=e495]:
+            - listitem [ref=e496]:
+              - generic [ref=e497]: Телефон
+              - link "+7 (812) 640-44-46" [ref=e498] [cursor=pointer]:
+                - /url: tel:+78126404446
+            - listitem [ref=e499]:
+              - generic [ref=e500]: Email
+              - link "akn@ocenka-group.ru" [ref=e501] [cursor=pointer]:
+                - /url: mailto:akn@ocenka-group.ru
+            - listitem [ref=e502]:
+              - generic [ref=e503]: Адрес офиса
+              - generic [ref=e504]: Санкт-Петербург, проспект Энгельса, 33к1, офис 502А
+            - listitem [ref=e505]:
+              - generic [ref=e506]: Режим
+              - generic [ref=e507]: Пн–Пт с 09:00 до 19:00. Срочные обращения — по телефону вне графика при возможности.
+            - listitem [ref=e508]:
+              - generic [ref=e509]: Мессенджер
+              - link "Написать в WhatsApp" [ref=e510] [cursor=pointer]:
+                - /url: https://wa.me/78126404446
+          - generic [ref=e511]:
+            - heading "Офис на карте" [level=3] [ref=e512]
+            - iframe [ref=e514]
+            - link "Открыть в Яндекс.Картах" [ref=e515] [cursor=pointer]:
+              - /url: https://yandex.com/maps/-/CPrLM-L~
+        - generic [ref=e516]:
+          - heading "Короткая заявка" [level=3] [ref=e517]
+          - generic [ref=e518]:
+            - generic [ref=e519]:
+              - generic [ref=e520]: Имя
+              - textbox "Имя" [ref=e521]
+            - generic [ref=e522]:
+              - generic [ref=e523]: Телефон
+              - textbox "Телефон" [ref=e524]
+            - generic [ref=e525]:
+              - generic [ref=e526]: Тип объекта
+              - combobox "Тип объекта" [ref=e527]:
+                - option "Выберите вариант" [selected]
+                - option "Жилая недвижимость"
+                - option "Коммерческая недвижимость"
+                - option "Бизнес"
+                - option "Ущерб"
+                - option "Оборудование или транспорт"
+            - generic [ref=e528]:
+              - generic [ref=e529]: Цель оценки
+              - combobox "Цель оценки" [ref=e530]:
+                - option "Выберите цель" [selected]
+                - option "Банк или ипотека"
+                - option "Суд или спор"
+                - option "Нотариус или наследство"
+                - option "Сделка или продажа"
+                - option "Бизнес-задача или бухгалтерия"
+            - generic [ref=e531]:
+              - generic [ref=e532]: Комментарий
+              - textbox "Комментарий" [ref=e533]:
+                - /placeholder: Опишите задачу, цель оценки и город
+            - generic [ref=e535]:
+              - checkbox "Согласен на обработку персональных данных в соответствии с политикой конфиденциальности" [ref=e536]
+              - generic [ref=e537]:
+                - text: Согласен на обработку персональных данных в соответствии с
+                - link "политикой конфиденциальности" [ref=e538] [cursor=pointer]:
+                  - /url: /privacy/
+            - button "Оставить заявку" [ref=e539] [cursor=pointer]
+            - paragraph [ref=e540]: Перезвоним за 15 минут
+  - contentinfo [ref=e542]:
+    - generic [ref=e544]:
+      - generic [ref=e545]:
+        - generic [ref=e546]:
+          - link "Оценка Групп Федеральная оценочная практика для частных клиентов и бизнеса" [ref=e547] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e548]: Оценка Групп
+            - generic [ref=e549]: Федеральная оценочная практика для частных клиентов и бизнеса
+          - paragraph [ref=e550]: Работаем по всей России. Подсказываем стоимость, сроки и список документов без лишней бюрократии.
+          - paragraph [ref=e551]: СРО, страхование ответственности, отчеты для банков, судов, нотариусов и корпоративных процедур.
+        - navigation "Разделы" [ref=e552]:
+          - heading "Разделы" [level=3] [ref=e553]
+          - list [ref=e554]:
+            - listitem [ref=e555]:
+              - link "Оценка недвижимости" [ref=e556] [cursor=pointer]:
+                - /url: /services/real-estate/
+            - listitem [ref=e557]:
+              - link "Оценка бизнеса" [ref=e558] [cursor=pointer]:
+                - /url: /services/business-valuation/
+            - listitem [ref=e559]:
+              - link "Документы и образцы" [ref=e560] [cursor=pointer]:
+                - /url: /documents/
+            - listitem [ref=e561]:
+              - link "Отзывы и кейсы" [ref=e562] [cursor=pointer]:
+                - /url: /reviews/
+        - generic "Контакты" [ref=e563]:
+          - heading "Контакты" [level=3] [ref=e564]
+          - list [ref=e565]:
+            - listitem [ref=e566]:
+              - link "+7 (812) 640-44-46" [ref=e567] [cursor=pointer]:
+                - /url: tel:+78126404446
+            - listitem [ref=e568]:
+              - link "info@ocenka-group.ru" [ref=e569] [cursor=pointer]:
+                - /url: mailto:info@ocenka-group.ru
+            - listitem [ref=e570]: Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А
+          - list "Реквизиты компании" [ref=e571]:
+            - listitem [ref=e572]: ООО «Оценка Групп»
+            - listitem [ref=e573]: ИНН 7802596912
+            - listitem [ref=e574]: ОГРН 1167847399895
+      - generic [ref=e575]:
+        - paragraph [ref=e576]: © 2026 Оценка Групп
+        - link "Публичная оферта" [ref=e577] [cursor=pointer]:
+          - /url: /terms/
+        - link "Политика конфиденциальности" [ref=e578] [cursor=pointer]:
+          - /url: /privacy/
+  - link "+7 (812) 640-44-46" [ref=e580] [cursor=pointer]:
+    - /url: tel:+78126404446

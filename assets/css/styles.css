@@ -34,6 +34,8 @@
   --shadow-danger: 0 0 0 2px rgba(176, 63, 63, 0.14);
   --shadow-floating: 0 16px 34px rgba(31, 42, 55, 0.22);
   --hero-overlay: linear-gradient(132deg, rgba(18, 34, 52, 0.58) 8%, rgba(27, 49, 74, 0.42) 46%, rgba(44, 72, 102, 0.28) 100%);
+  --hero-flat-bg: #0e1e3c;
+  --hero-stats-bg: #23314e;
   --page-overlay: linear-gradient(135deg, rgba(12, 21, 34, 0.9), rgba(12, 21, 34, 0.64));
   --cta-gradient: linear-gradient(135deg, rgba(182, 138, 69, 0.12), rgba(255, 255, 255, 0.95));
   --hero-home-image: url("https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1600&q=80");
@@ -61,11 +63,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -191,11 +194,11 @@ ul {
 }
 
 .section {
-  padding: 72px 0;
+  padding: 56px 0;
 }
 
 .section-tight {
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 #documents .section-tight {
@@ -207,7 +210,7 @@ ul {
 }
 
 .section-tight:has(.stats-grid) {
-  padding-block: clamp(20px, 4vw, 28px);
+  padding-block: clamp(14px, 3vw, 22px);
 }
 
 .section-tight:has(.stats-grid) .stats-grid {
@@ -225,7 +228,7 @@ ul {
 .section-head {
   display: grid;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .eyebrow {
@@ -456,7 +459,7 @@ ul {
 
 .hero {
   min-height: calc(100dvh - 24px);
-  padding: 60px 0 64px;
+  padding: 44px 0 48px;
   background-image: var(--hero-overlay), var(--hero-home-image);
 }
 
@@ -579,20 +582,57 @@ ul {
   overflow: hidden;
 }
 
+.hero-stats-bar {
+  background: var(--hero-stats-bg);
+  padding: 16px 0;
+  width: 100%;
+}
+
+.hero-stats-bar .hero-stats {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 0;
+  border-top: none;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
 .hero-stats {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  margin-top: 40px;
+  margin-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.12);
-  padding-top: 24px;
+  padding-top: 16px;
 }
 
 .hero-stat {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding-right: 24px;
+}
+
+.hero-stat__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: #C5A880;
+  margin-top: 2px;
+}
+
+.hero-stat__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-stat__text {
+  display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-right: 24px;
 }
 
 .hero-stat__value {
@@ -646,6 +686,10 @@ ul {
 .intro-card,
 .cta-banner {
   padding: 24px;
+}
+
+.cta-banner {
+  padding: 18px;
 }
 
 .quiz-card h3,
@@ -1215,6 +1259,17 @@ ul {
   height: 28px;
 }
 
+.contact-card {
+  overflow: hidden;
+}
+
+.contact-card h3,
+.contact-card p,
+.contact-card a {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 .stat-value {
   margin-bottom: 8px;
   font-size: 2rem;
@@ -1359,6 +1414,14 @@ body[data-page="documents"] .hero-documents.page-hero {
 
 body[data-page="documents"] .hero-documents .breadcrumbs {
   transform: translateY(-10px);
+}
+
+body[data-page="documents"] .hero-documents .page-hero-grid {
+  align-items: end;
+}
+
+body[data-page="contacts"] .hero-contacts .page-trust {
+  margin-top: 12px;
 }
 
 .media-card,
@@ -2092,6 +2155,15 @@ html.js-reveal .reveal.is-visible {
     margin-top: -34px;
   }
 
+  body[data-page="documents"] .hero-documents .page-hero-grid > .reveal {
+    margin-top: -24px;
+  }
+
+  body[data-page="documents"] .intro-card--about {
+    margin-top: 0;
+    align-self: end;
+  }
+
   .hero-grid {
     grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
   }
@@ -2187,7 +2259,7 @@ html.js-reveal .reveal.is-visible {
 
 /* FAQ accordion (homepage) */
 .section-faq {
-  background: var(--surface-soft);
+  background: transparent;
 }
 
 .faq-list {
@@ -2401,7 +2473,7 @@ html.js-reveal .reveal.is-visible {
   --accent-gold: rgba(212, 175, 55, 0.9);
 
   /* Applying via existing CSS variables */
-  --bg: var(--neutral-100);
+  --bg: #f7f5f0;
   --surface: var(--white);
   --surface-soft: #eaecef;
   --text: var(--neutral-900);
@@ -2433,7 +2505,7 @@ html.js-reveal .reveal.is-visible {
 body {
   font-family: var(--font-body);
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
 h1,
@@ -2517,7 +2589,7 @@ button,
 
 .section-trust {
   padding-block: clamp(80px, 10vw, 116px);
-  background: #e9edf2;
+  background: transparent;
 }
 
 .section-trust .container {
@@ -2602,8 +2674,22 @@ button,
 .service-grid .card {
   border-left: none !important;
   background: #ffffff !important;
-  color: var(--text) !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 12px !important;
+  color: inherit !important;
   transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.service-grid .card h3 {
+  color: #1a1a1a !important;
+}
+
+.service-grid .card p {
+  color: #666666 !important;
+}
+
+.service-grid .card .btn-text {
+  color: #1a1a1a !important;
 }
 
 .service-grid .card h3,
@@ -2654,7 +2740,7 @@ button,
 
 /* Process section — timeline cards */
 .section-process {
-  background: var(--surface-soft);
+  background: transparent;
 }
 
 .section-process .section-head {
@@ -2757,13 +2843,13 @@ textarea:focus {
 /* Mobile First Responsive Breakpoints */
 @media (min-width: 375px) {
   .section {
-    padding: 48px 0;
+    padding: 56px 0;
   }
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 64px 0;
+    padding: 56px 0;
   }
 
   .process-track {
@@ -2774,7 +2860,7 @@ textarea:focus {
 
 @media (min-width: 1200px) {
   .section {
-    padding: 96px 0;
+    padding: 76px 0;
   }
 
   .process-track {
@@ -2785,7 +2871,7 @@ textarea:focus {
 
 /* Contacts section */
 .section-contacts {
-  background: var(--surface);
+  background: transparent;
 }
 
 .contacts-shell {
@@ -2835,9 +2921,9 @@ textarea:focus {
   display: grid;
   gap: 6px;
   padding: 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
 }
 
 .contacts-meta__label {
@@ -2862,6 +2948,25 @@ textarea:focus {
 
 .contacts-meta__value a:hover {
   text-decoration: underline;
+}
+
+#contacts .contacts-meta__item {
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+#contacts .contacts-meta__label {
+  color: var(--muted);
+}
+
+#contacts .contacts-meta__value,
+#contacts .contacts-meta__value {
+  color: var(--text);
+}
+
+#contacts .contacts-meta__value a {
+  color: var(--primary);
 }
 
 .contacts-minimap {
@@ -2930,6 +3035,15 @@ textarea:focus {
   color: var(--text-inverse);
 }
 
+body[data-page="home"] .hero.hero--split {
+  background: var(--hero-stats-bg);
+  background-image: none;
+}
+
+body[data-page="home"] .hero.hero--split::after {
+  display: none !important;
+}
+
 .hero.hero--split::after {
   content: "";
   position: absolute;
@@ -2982,7 +3096,17 @@ textarea:focus {
 }
 
 body[data-page="home"] .hero.hero--split .hero-copy {
-  padding: 48px 48px 64px;
+  padding: 48px 24px 64px 48px;
+  min-width: 0;
+}
+
+body[data-page="home"] .hero.hero--split .hero-copy h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  word-break: break-word;
+}
+
+body[data-page="home"] .hero.hero--split .hero-copy > .eyebrow {
+  display: none;
 }
 
 body[data-page="home"] .hero.hero--split .hero-actions .btn {
@@ -3044,6 +3168,15 @@ body[data-page="home"] .hero.hero--split .hero-actions .btn-secondary:focus-visi
   z-index: 0;
 }
 
+body[data-page="home"] .hero-visual {
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .hero-portrait {
   width: 100%;
   height: 100%;
@@ -3069,6 +3202,9 @@ body[data-page="home"] .hero-portrait {
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 16px 16px 0;
   padding-right: 0;
   padding-top: 0;
 }
@@ -3076,27 +3212,60 @@ body[data-page="home"] .hero-portrait {
 body[data-page="home"] .hero-portrait img {
   width: 100%;
   height: 100%;
+  display: block;
+  border-radius: 12px;
   object-fit: cover;
-  object-position: 88% 12%;
+  object-position: center top;
   transform: translateZ(0) scale(1.05);
   transform-origin: 100% 0%;
 }
 
+body[data-page="home"] .hero.hero--split .hero-portrait {
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  align-self: stretch;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 body[data-page="home"] .hero.hero--split .hero-portrait img {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 22%
-  );
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 22%
-  );
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 16px;
+  transform: translate3d(0, 32px, 0) scale(0.9);
+  transform-origin: center top;
+}
+
+body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  right: 16px;
+  margin: 0;
+  background: rgba(26, 26, 26, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  padding: 9px 12px;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .hero-rating {
@@ -3265,7 +3434,8 @@ body[data-page="home"] .hero.hero--split .hero-portrait img {
   body[data-page="home"] .hero.hero--split .hero-copy {
     text-align: left;
     align-self: flex-start;
-    padding: 48px 48px 64px;
+    padding: 48px 24px 64px 48px;
+    min-width: 0;
   }
 
   .hero.hero--split .hero-copy h1,
@@ -3286,12 +3456,6 @@ body[data-page="home"] .hero.hero--split .hero-portrait img {
     object-position: 40% 8%;
     transform: scale(0.94) translateZ(0);
     transform-origin: right bottom;
-  }
-
-  body[data-page="home"] .hero.hero--split .hero-portrait img {
-    object-position: 88% 12%;
-    transform: translateZ(0) scale(1.05);
-    transform-origin: 100% 0%;
   }
 
   .hero.hero--split .hero-actions {
@@ -3386,10 +3550,11 @@ body[data-page="home"] .hero.hero--split .hero-portrait img {
   }
 
   body[data-page="home"] .hero-portrait img {
-    width: min(100%, 360px);
+    width: 100%;
     height: 100%;
     max-height: 100%;
-    object-position: center 10%;
+    object-position: center 4%;
+    transform: translateZ(0);
   }
 
   .hero.hero--split .hero-copy {
@@ -3399,11 +3564,12 @@ body[data-page="home"] .hero.hero--split .hero-portrait img {
 
   body[data-page="home"] .hero.hero--split .hero-copy {
     padding: 40px 24px 28px;
+    min-width: 0;
   }
 }
 
 .section-quiz {
-  background: #f8f7f4;
+  background: transparent;
   padding: clamp(40px, 8vw, 56px) 0 clamp(24px, 5vw, 36px);
   width: 100%;
 }
@@ -4204,7 +4370,7 @@ body[data-page="service-real-estate"] .intro-card--real-estate {
 body[data-page="service-real-estate"] .section--real-estate-scenarios {
   padding-top: clamp(56px, 10vw, 88px);
   padding-bottom: clamp(64px, 12vw, 104px);
-  background: #fafafa;
+  background: transparent;
 }
 
 body[data-page="service-real-estate"] .section-head--real-estate .eyebrow {
@@ -4263,7 +4429,7 @@ body[data-page="service-real-estate"] .service-offer-card__price-sub {
 body[data-page="service-real-estate"] .section--real-estate-trust {
   padding-top: 48px;
   padding-bottom: 48px;
-  background: #fafafa;
+  background: transparent;
   border-top: 1px solid #eaeaea;
 }
 
@@ -4319,7 +4485,7 @@ body[data-page="service-real-estate"] .real-estate-trust-card__year {
 
 body[data-page="service-real-estate"] .section--real-estate-cta {
   border-top: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+  background-color: var(--bg);
 }
 
 body[data-page="service-real-estate"] .section--real-estate-cta .cta-banner--situations {
@@ -4489,7 +4655,7 @@ body[data-page="service-notary-inheritance"] .intro-card--notary-inheritance .ch
 body[data-page="service-notary-inheritance"] .section--notary-inheritance-property {
   padding-top: clamp(56px, 10vw, 88px);
   padding-bottom: clamp(64px, 12vw, 104px);
-  background: #fafafa;
+  background: transparent;
 }
 
 body[data-page="service-notary-inheritance"] .section-head--notary-inheritance .eyebrow {
@@ -4547,7 +4713,7 @@ body[data-page="service-notary-inheritance"] .service-offer-card__price-sub {
 body[data-page="service-notary-inheritance"] .section--notary-inheritance-trust {
   padding-top: 48px;
   padding-bottom: 48px;
-  background: #fafafa;
+  background: transparent;
   border-top: 1px solid #eaeaea;
 }
 
@@ -4603,7 +4769,7 @@ body[data-page="service-notary-inheritance"] .real-estate-trust-card__year {
 
 body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta {
   border-top: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+  background-color: var(--bg);
 }
 
 body[data-page="service-notary-inheritance"] #lead-form .field input[type="text"],
@@ -4799,7 +4965,7 @@ body[data-page="service-business-valuation"] .section--business-valuation-scenar
 body[data-page="service-commercial-property"] .section--commercial-property-formats {
   padding-top: clamp(56px, 10vw, 88px);
   padding-bottom: clamp(64px, 12vw, 104px);
-  background: #fafafa;
+  background: transparent;
 }
 
 body[data-page="service-court-valuation"] .section-head--court-valuation .eyebrow,
@@ -4934,7 +5100,7 @@ body[data-page="service-business-valuation"] .section--business-valuation-trust,
 body[data-page="service-commercial-property"] .section--commercial-property-trust {
   padding-top: 48px;
   padding-bottom: 48px;
-  background: #fafafa;
+  background: transparent;
   border-top: 1px solid #eaeaea;
 }
 
@@ -5038,7 +5204,7 @@ body[data-page="service-equipment-transport"] .section--equipment-transport-cta,
 body[data-page="service-business-valuation"] .section--business-valuation-cta,
 body[data-page="service-commercial-property"] .section--commercial-property-cta {
   border-top: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+  background-color: var(--bg);
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .cta-banner--cases,
@@ -5393,20 +5559,20 @@ body[data-page="service-real-estate"] .intro-card__list--real-estate-ref li::bef
 body[data-page="service-real-estate"] .section--court-valuation-formats {
   padding-top: 64px;
   padding-bottom: 64px;
-  background: #fafafa;
+  background: transparent;
 }
 
 body[data-page="service-real-estate"] .section--court-valuation-trust {
   padding-top: 64px;
   padding-bottom: 64px;
-  background: #fafafa;
+  background: transparent;
   border-top: 1px solid #eaeaea;
 }
 
 body[data-page="service-real-estate"] .section--court-valuation-cta.section-tight {
   padding: 64px 0;
   border-top: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(241, 237, 230, 0.35) 0%, var(--bg) 48%);
+  background-color: var(--bg);
 }
 
 body[data-page="service-real-estate"] .section--court-valuation-formats .section-head {
@@ -5758,7 +5924,7 @@ body[data-page="service-notary"] #lead-form .form-urgency-note {
 
 /* ── Team Section ──────────────────────────────────────────── */
 .team-section {
-  background: #fafafa;
+  background: transparent;
   padding: 96px 0;
 }
 
@@ -5790,6 +5956,10 @@ body[data-page="service-notary"] #lead-form .form-urgency-note {
   object-position: center top;
   border-radius: 16px;
   display: block;
+}
+
+.team-card--kristina .team-card__photo img {
+  object-position: center 28%;
 }
 
 .team-card__photo::after {
@@ -5881,6 +6051,7 @@ body[data-page="service-notary"] #lead-form .form-urgency-note {
 }
 
 body {
+  background-color: var(--bg);
   opacity: 0;
   filter: blur(8px);
   transition: opacity 0.3s ease, filter 0.3s ease;
