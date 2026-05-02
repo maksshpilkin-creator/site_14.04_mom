@@ -155,6 +155,13 @@ h1 {
   font-size: clamp(3rem, 8vw, 5.8rem);
 }
 
+h1[data-text-effect-static] {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+  font-size: clamp(1.6rem, 5.5vw, 5.8rem);
+}
+
 h2 {
   font-size: clamp(2.2rem, 5vw, 3.6rem);
 }
@@ -446,6 +453,22 @@ ul {
   color: var(--text);
 }
 
+.header-phone {
+  display: none;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--motion-micro) ease;
+}
+
+.header-phone:hover,
+.header-phone:focus-visible {
+  color: var(--accent);
+}
+
 .nav-actions {
   display: none;
 }
@@ -480,8 +503,9 @@ ul {
   z-index: 1;
 }
 
+/* TODO: Generate /assets/img/hero-about.jpg (premium office interior with valuation team at work). */
 .hero-about {
-  background-image: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80");
+  background-image: url("/assets/img/hero-about.jpg");
 }
 
 .hero-documents {
@@ -1573,6 +1597,12 @@ body[data-page="contacts"] .hero-contacts .page-trust {
   margin-top: 12px;
 }
 
+@media (max-width: 767.98px) {
+  body[data-page="contacts"] .hero-contacts .intro-card {
+    margin-top: 16px;
+  }
+}
+
 body[data-page="about"] .hero-about .page-trust {
   margin-top: 12px;
 }
@@ -1589,12 +1619,24 @@ body[data-page="about"] .hero-about .page-trust {
   box-shadow: var(--shadow-card-strong);
 }
 
-.media-card img,
-.document-card img,
-.review-card img {
+.media-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.review-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.document-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .section-about {
@@ -1707,11 +1749,6 @@ body[data-page="about"] .hero-about .page-trust {
 .review-card figure {
   background: var(--surface);
   border: 1px solid var(--border);
-}
-
-.document-card img,
-.review-card img {
-  aspect-ratio: 4 / 3;
 }
 
 body[data-page="reviews"] .review-card figure {
@@ -2394,6 +2431,10 @@ html.js-reveal .reveal.is-visible {
     min-height: auto;
   }
 
+  .header-phone {
+    min-height: auto;
+  }
+
   .nav-actions {
     display: flex;
   }
@@ -2411,6 +2452,12 @@ html.js-reveal .reveal.is-visible {
   .audience-grid,
   .stats-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .header-phone {
+    display: inline-flex;
   }
 }
 
@@ -3252,7 +3299,7 @@ body[data-page="home"] .hero.hero--split .hero-copy {
 }
 
 body[data-page="home"] .hero.hero--split .hero-copy h1 {
-  font-size: clamp(28px, 3vw, 44px);
+  font-size: clamp(32px, 3.6vw, 52px);
   line-height: 1.15;
   text-align: left;
   max-width: none;
@@ -3717,10 +3764,14 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
   .hero-visual {
     position: relative;
     width: 100%;
-    height: min(56vw, 420px);
+    height: min(100vw, 480px);
     right: auto;
     top: auto;
     order: 2;
+  }
+
+  .hero.hero--split .hero-visual {
+    display: none;
   }
 
   body[data-page="home"] .hero-portrait {
@@ -4800,7 +4851,7 @@ body[data-page="service-real-estate"] #lead-form .form-urgency-note {
   }
 
   body[data-page="service-real-estate"] .page-hero__copy {
-    padding-top: clamp(64px, 8.5vw, 120px);
+    padding-top: clamp(16px, 2.5vw, 32px);
   }
 
   body[data-page="service-real-estate"] .page-hero-grid--real-estate {
@@ -5009,6 +5060,10 @@ body[data-page="service-notary-inheritance"] #lead-form .form-urgency-note {
   body[data-page="service-notary-inheritance"] .real-estate-trust-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
+  }
+
+  body[data-page="service-notary-inheritance"] .page-hero__copy {
+    padding-top: clamp(16px, 2.5vw, 32px);
   }
 
   body[data-page="service-notary-inheritance"] .page-hero-grid--notary-inheritance {
@@ -5618,23 +5673,23 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
   }
 
   body[data-page="service-equipment-transport"] .page-hero__copy {
-    padding-top: clamp(72px, 10vw, 140px);
+    padding-top: clamp(16px, 2.5vw, 32px);
   }
 
   body[data-page="service-business-valuation"] .page-hero__copy {
-    padding-top: clamp(48px, 6.8vw, 92px);
+    padding-top: clamp(16px, 2.5vw, 28px);
   }
 
   body[data-page="service-commercial-property"] .page-hero__copy {
-    padding-top: clamp(64px, 8.5vw, 120px);
+    padding-top: clamp(16px, 2.5vw, 32px);
   }
 
   body[data-page="service-court-valuation"] .page-hero__copy {
-    padding-top: clamp(48px, 6.8vw, 92px);
+    padding-top: clamp(16px, 2.5vw, 28px);
   }
 
   body[data-page="service-damage-valuation"] .page-hero__copy {
-    padding-top: clamp(32px, 5.4vw, 72px);
+    padding-top: clamp(12px, 2vw, 24px);
   }
 
   /* Equal-height offer cards: override global align-items:start on this grid */
@@ -5680,6 +5735,18 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta.
 /* Real estate: align to court-valuation service template */
 body[data-page="service-real-estate"] .page-hero {
   padding: clamp(8px, 1.4vw, 16px) 0 clamp(48px, 8vw, 72px);
+}
+
+@media (max-width: 767.98px) {
+  body[data-page="service-real-estate"] .page-hero,
+  body[data-page="service-business-valuation"] .page-hero,
+  body[data-page="service-commercial-property"] .page-hero,
+  body[data-page="service-court-valuation"] .page-hero,
+  body[data-page="service-damage-valuation"] .page-hero,
+  body[data-page="service-equipment-transport"] .page-hero,
+  body[data-page="service-notary-inheritance"] .page-hero {
+    padding-top: 0;
+  }
 }
 
 body[data-page="service-real-estate"] .page-hero-grid--court-valuation {
@@ -6259,6 +6326,16 @@ body[data-page="service-notary"] #lead-form .form-urgency-note {
   body[data-page^="service-"] .page-hero {
     padding-top: 96px;
   }
+
+  body[data-page="service-real-estate"] .page-hero,
+  body[data-page="service-business-valuation"] .page-hero,
+  body[data-page="service-commercial-property"] .page-hero,
+  body[data-page="service-court-valuation"] .page-hero,
+  body[data-page="service-damage-valuation"] .page-hero,
+  body[data-page="service-equipment-transport"] .page-hero,
+  body[data-page="service-notary-inheritance"] .page-hero {
+    padding-top: 0;
+  }
 }
 
 body {
@@ -6457,5 +6534,27 @@ body[data-page="text-effect"] .text-effect-hero .page-hero-grid {
   .text-effect-panel,
   .text-effect-preview {
     padding: 24px;
+  }
+}
+
+@media (max-width: 899px) {
+  body[data-page="home"] .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body[data-page="home"] .hero-portrait {
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
+  body[data-page="home"] .hero-portrait img {
+    width: 100% !important;
+    border-radius: 16px !important;
+  }
+  body[data-page="home"] .hero-rating {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: max-content !important;
+    max-width: 90% !important;
   }
 }
