@@ -16,7 +16,6 @@ const NAV_ITEMS = [
   { href: "/documents/", label: "Документы", key: "documents" },
   { href: "/reviews/", label: "Отзывы", key: "reviews" },
   { href: "/contacts/", label: "Контакты", key: "contacts" },
-  { href: "/text-effect/", label: "Text Effect", key: "text-effect" },
 ];
 
 const QUIZ_RULES = {
@@ -111,7 +110,11 @@ const QUIZ_RULES = {
 function createHeader(page) {
   const links = NAV_ITEMS.map((item) => {
     const isActive = page === item.key || (page.startsWith("service-") && item.key === "services");
-    return `<a href="${item.href}" class="${isActive ? "active" : ""}">${item.label}</a>`;
+    const navLink = `<a href="${item.href}" class="${isActive ? "active" : ""}">${item.label}</a>`;
+    if (item.key === "contacts") {
+      return `${navLink}<a class="header-phone" href="tel:+78126404446">+7 812 640 44 46</a>`;
+    }
+    return navLink;
   }).join("");
 
   return `
@@ -1016,7 +1019,7 @@ function getTextEffectSegments(text, per) {
 function getTextEffectStagger(per) {
   if (per === "char") return 30;
   if (per === "line") return 100;
-  return 50;
+  return 90;
 }
 
 function animateStaticTextEffect(node) {
@@ -1041,10 +1044,14 @@ function animateStaticTextEffect(node) {
     segmentNode.className = `text-effect-segment ${segmentClassName}`;
     segmentNode.dataset.preset = preset;
     segmentNode.textContent = segment;
+    const noWrapWords = ["суде", "и", "у", "нотариуса.", "Срок", "—", "от", "1", "дня."];
+    if (noWrapWords.includes(segment)) {
+      segmentNode.style.whiteSpace = "nowrap";
+    }
     segmentNode.setAttribute("aria-hidden", "true");
     segmentNode.style.transition = isHeroPremium
       ? "opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms cubic-bezier(0.22, 1, 0.36, 1)"
-      : "opacity 220ms ease, transform 260ms ease, filter 260ms ease";
+      : "opacity 420ms ease, transform 540ms ease, filter 540ms ease";
     segmentNode.style.transitionDelay = `${delayMs + index * staggerMs}ms`;
     node.appendChild(segmentNode);
   });
