@@ -376,7 +376,6 @@
               data-quiz-form
               data-reset-on-success="false"
               data-success-message-text="Спасибо. Мы получили запрос и вернемся с подробностями в рабочее время."
-              data-webhook="YOUR_N8N_WEBHOOK_URL"
             >
               <input type="hidden" name="object_type" required />
               <input type="hidden" name="valuation_purpose" required />
@@ -586,29 +585,27 @@
                   </div>
 
                   <hr class="quiz-result-divider" />
-
-                  <div class="partial-email-form" id="partial-email-form">
-                    <p class="quiz-email-gate-title">Оставьте email, чтобы получить подтверждение и связаться со специалистом</p>
-                    <div class="field">
-                      <input id="partial-email-input" type="email" placeholder="Ваш email" required />
-                      <p class="error-message" id="partial-email-error">Введите корректный email</p>
-                    </div>
-                    <button class="btn" type="button" id="btn-get-full-result">Связаться со специалистом</button>
-                  </div>
-
-                  <div id="full-result-success" class="quiz-email-success" hidden>
-                    <span class="quiz-email-success__icon" aria-hidden="true">✓</span>
-                    <p class="quiz-email-success__text"></p>
-                  </div>
                 </div>
 
-                <div class="quiz-contact quiz-result-hidden" id="full-result-contact">
+                <div class="quiz-contact" id="full-result-contact">
+                  <p class="quiz-email-gate-title">Оставьте email и при желании телефон — мы свяжемся со специалистом</p>
+                  <div class="field">
+                    <label for="hero-quiz-email">Email</label>
+                    <input
+                      id="hero-quiz-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="Ваш email"
+                      required
+                    />
+                    <p class="error-message"></p>
+                  </div>
                   <div class="field">
                     <label for="hero-quiz-phone">Телефон для консультации (опционально)</label>
                     <input id="hero-quiz-phone" name="phone" type="tel" autocomplete="tel" />
                     <p class="error-message"></p>
                   </div>
-                  <input type="hidden" id="hero-quiz-email" name="email" />
 
                   <div class="field field--privacy">
                     <div class="field-checkbox">
@@ -1146,7 +1143,7 @@
             </aside>
             <div class="contact-form reveal" id="lead-form">
               <h3>Короткая заявка</h3>
-              <form class="field-stack" data-lead-form data-webhook="YOUR_N8N_WEBHOOK_URL">
+              <form class="field-stack" data-lead-form>
                 <div class="field">
                   <label for="contact-name">Имя</label>
                   <input id="contact-name" name="name" type="text" autocomplete="name" required />
@@ -1241,70 +1238,6 @@
 
         // Ensure other reveal blocks hit the observer
         document.querySelectorAll('.reveal').forEach(el => generalObserver.observe(el));
-
-        // Partial/Full Result email workflow
-        const partialForm = document.getElementById('partial-email-form');
-        const partialInput = document.getElementById('partial-email-input');
-        const partialBtn = document.getElementById('btn-get-full-result');
-        const partialError = document.getElementById('partial-email-error');
-        const successMsg = document.getElementById('full-result-success');
-        const fullContent = document.getElementById('full-result-content');
-        const fullContact = document.getElementById('full-result-contact');
-        const hiddenEmailInput = document.getElementById('hero-quiz-email');
-        
-        if (partialBtn) {
-          partialBtn.addEventListener('click', () => {
-            const email = partialInput.value.trim();
-            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!email || !emailRe.test(email)) {
-              partialError.classList.add('is-visible');
-              return;
-            }
-            partialError.classList.remove('is-visible');
-            
-            // Gather quiz answers
-            const q1 = document.querySelector('input[name="object_type"]')?.value || '';
-            const q2 = document.querySelector('input[name="valuation_purpose"]')?.value || '';
-            const q3 = document.querySelector('input[name="region_scope"]')?.value || '';
-            
-            // Button loading
-            const originalBtnText = partialBtn.textContent;
-            partialBtn.textContent = 'Отправляем...';
-            partialBtn.disabled = true;
-            
-            fetch('https://primary-production-f7ad.up.railway.app/webhook/764e3ba2-d92d-4b23-a7de-aa8f9ed1b696', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                email: email,
-                object_type: q1,
-                purpose: q2,
-                region: q3,
-                timestamp: new Date().toISOString()
-              })
-            }).then(() => {
-              // Success Path
-              if (hiddenEmailInput) hiddenEmailInput.value = email;
-              
-              partialForm.hidden = true;
-              successMsg.hidden = false;
-              successMsg.classList.add('is-visible');
-              const successTextEl = successMsg.querySelector('.quiz-email-success__text');
-              if (successTextEl) {
-                successTextEl.textContent = `Отправлено на ${email}`;
-              }
-              
-              fullContact.classList.remove('quiz-result-hidden');
-              fullContact.classList.add('quiz-result-visible');
-            }).catch(e => {
-              partialBtn.textContent = originalBtnText;
-              partialBtn.disabled = false;
-              partialError.textContent = 'Произошла ошибка. Попробуйте еще раз.';
-              partialError.classList.add('is-visible');
-            });
-          });
-        }
       });
     </script>
   </body>

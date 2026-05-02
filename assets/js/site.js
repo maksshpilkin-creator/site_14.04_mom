@@ -1,5 +1,5 @@
 const SITE_CONFIG = {
-  webhookUrl: "YOUR_N8N_WEBHOOK_URL",
+  webhookUrl: "https://quimagueradib.beget.app/webhook/764e3ba2-d92d-4b23-a7de-aa8f9ed1b696",
   phoneDisplay: "+7 (812) 640-44-46",
   phoneHref: "+78126404446",
   whatsappHref: "https://wa.me/78126404446",
