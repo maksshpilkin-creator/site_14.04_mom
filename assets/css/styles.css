@@ -1038,18 +1038,19 @@ ul {
 }
 
 .field--privacy .field-checkbox {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  align-items: start;
   gap: 10px;
 }
 
 .field--privacy .field-checkbox input[type="checkbox"] {
-  width: auto;
-  min-height: auto;
+  display: block;
+  width: 16px;
+  height: 16px;
+  min-height: unset !important;
   margin: 0;
-  flex-shrink: 0;
-  align-self: flex-start;
-  transform: translateY(-6px);
+  padding: 0;
   accent-color: var(--accent);
 }
 
