@@ -1,5 +1,5 @@
 :root {
-  --bg: #f7f5f0;
+  --bg: #f4f0e8;
   --surface: #ffffff;
   --surface-soft: #f1ede6;
   --text: #1f2a37;
@@ -19,7 +19,7 @@
   --surface-overlay: rgba(255, 255, 255, 0.97);
   --surface-chip: rgba(255, 255, 255, 0.12);
   --surface-chip-border: rgba(255, 255, 255, 0.14);
-  --header-scrolled-bg: rgba(247, 245, 240, 0.88);
+  --header-scrolled-bg: rgba(244, 240, 232, 0.88);
   --header-accent-border: rgba(182, 138, 69, 0.35);
   --text-inverse: #ffffff;
   --text-inverse-muted: rgba(255, 255, 255, 0.84);
@@ -2677,7 +2677,7 @@ html.js-reveal .reveal.is-visible {
   --accent-gold: rgba(212, 175, 55, 0.9);
 
   /* Applying via existing CSS variables */
-  --bg: #f7f5f0;
+  --bg: #f4f0e8;
   --surface: var(--white);
   --surface-soft: #eaecef;
   --text: var(--neutral-900);
