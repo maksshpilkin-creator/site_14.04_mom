@@ -1,5 +1,5 @@
 :root {
-  --bg: #f4f0e8;
+  --bg: #f5f5f0;
   --surface: #ffffff;
   --surface-soft: #f1ede6;
   --text: #1f2a37;
@@ -19,7 +19,7 @@
   --surface-overlay: rgba(255, 255, 255, 0.97);
   --surface-chip: rgba(255, 255, 255, 0.12);
   --surface-chip-border: rgba(255, 255, 255, 0.14);
-  --header-scrolled-bg: rgba(244, 240, 232, 0.88);
+  --header-scrolled-bg: rgba(245, 245, 240, 0.88);
   --header-accent-border: rgba(182, 138, 69, 0.35);
   --text-inverse: #ffffff;
   --text-inverse-muted: rgba(255, 255, 255, 0.84);
@@ -405,29 +405,173 @@ ul {
   font-size: 0.8rem;
 }
 
+@keyframes nav-toggle-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  40% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
 .nav-toggle {
+  --nav-toggle-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --nav-toggle-morph: 280ms var(--nav-toggle-ease);
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 50%;
+  isolation: isolate;
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--motion-micro) ease,
+    border-color var(--motion-micro) ease;
 }
 
-.nav-toggle span {
+.nav-toggle:hover {
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  border-color: var(--header-accent-border);
+}
+
+.nav-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent);
+}
+
+.nav-toggle:active {
+  transform: scale(0.92);
+  transition: transform 80ms ease-out, background-color var(--motion-micro) ease, border-color var(--motion-micro) ease;
+}
+
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--accent) 55%, transparent) 0%,
+    transparent 62%
+  );
+}
+
+.nav-toggle[data-ripple-x]::after {
+  background: radial-gradient(
+    circle at calc(attr(data-ripple-x number, 50) * 1%) calc(attr(data-ripple-y number, 50) * 1%),
+    color-mix(in srgb, var(--accent) 55%, transparent) 0%,
+    transparent 62%
+  );
+}
+
+.nav-toggle.nav-toggle--ripple::after {
+  animation: nav-toggle-ripple 450ms ease-out forwards;
+}
+
+.nav-toggle-icon {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 18px;
+  height: 14px;
+}
+
+.nav-toggle-line {
+  position: absolute;
+  left: 0;
+  width: 18px;
   height: 2px;
+  border-radius: 1px;
   background: var(--text);
-  box-shadow: 0 6px 0 var(--text), 0 -6px 0 var(--text);
+  transform-origin: center;
+  transition: transform var(--nav-toggle-morph), opacity var(--nav-toggle-morph);
+}
+
+.nav-toggle-line:nth-child(1) {
+  top: 0;
+}
+
+.nav-toggle-line:nth-child(2) {
+  top: 6px;
+  transform: scaleX(1);
+}
+
+.nav-toggle-line:nth-child(3) {
+  bottom: 0;
+  top: auto;
+}
+
+.nav-toggle.is-open .nav-toggle-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle.is-open .nav-toggle-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle {
+    transition: background-color var(--motion-micro) ease, border-color var(--motion-micro) ease;
+  }
+
+  .nav-toggle:active {
+    transform: none;
+    transition: background-color var(--motion-micro) ease, border-color var(--motion-micro) ease;
+  }
+
+  .nav-toggle::after,
+  .nav-toggle.nav-toggle--ripple::after {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+
+  .nav-toggle-line {
+    transition: none;
+  }
+
+  .nav-toggle.is-open .nav-toggle-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav-toggle.is-open .nav-toggle-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
 }
 
 .nav-links {
   position: fixed;
   inset: calc(var(--header-height) + 8px) 24px auto;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 18px;
@@ -435,10 +579,26 @@ ul {
   border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: var(--shadow-card-strong);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--motion-reveal) cubic-bezier(0.65, 0, 0.35, 1),
+    visibility 0s linear var(--motion-reveal);
 }
 
 .nav-links.is-open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--motion-reveal) cubic-bezier(0.65, 0, 0.35, 1),
+    visibility 0s linear 0s;
+}
+
+@media (max-width: 1199.98px) and (prefers-reduced-motion: reduce) {
+  .nav-links,
+  .nav-links.is-open {
+    transition: none;
+  }
 }
 
 .nav-links a {
@@ -2428,6 +2588,10 @@ html.js-reveal .reveal.is-visible {
     background: transparent;
     border: 0;
     box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
   }
 
   .nav-links a {
@@ -2680,7 +2844,7 @@ html.js-reveal .reveal.is-visible {
   --accent-gold: rgba(212, 175, 55, 0.9);
 
   /* Applying via existing CSS variables */
-  --bg: #f4f0e8;
+  --bg: #f5f5f0;
   --surface: var(--white);
   --surface-soft: #eaecef;
   --text: var(--neutral-900);

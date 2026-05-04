@@ -126,7 +126,11 @@ function createHeader(page) {
             <span class="brand-note">Отчеты для банка, суда, нотариуса и бизнеса</span>
           </a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-            <span aria-hidden="true"></span>
+            <span class="nav-toggle-icon" aria-hidden="true">
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+              <span class="nav-toggle-line"></span>
+            </span>
           </button>
           <nav class="nav-links" id="site-nav" aria-label="Основная навигация" data-nav>
             ${links}
@@ -213,6 +217,7 @@ function setupNavigation() {
 
   function closeNav() {
     nav.classList.remove("is-open");
+    toggle.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("nav-open");
   }
@@ -223,8 +228,29 @@ function setupNavigation() {
 
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
+    toggle.classList.toggle("is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
     document.body.classList.toggle("nav-open", isOpen);
+  });
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function setRippleOrigin(e) {
+    if (reducedMotion.matches) return;
+    const r = toggle.getBoundingClientRect();
+    const x = Math.round(((e.clientX - r.left) / r.width) * 100);
+    const y = Math.round(((e.clientY - r.top) / r.height) * 100);
+    toggle.setAttribute("data-ripple-x", String(x));
+    toggle.setAttribute("data-ripple-y", String(y));
+    toggle.classList.add("nav-toggle--ripple");
+  }
+
+  toggle.addEventListener("pointerdown", setRippleOrigin);
+
+  toggle.addEventListener("animationend", (e) => {
+    if (e.animationName !== "nav-toggle-ripple") return;
+    toggle.classList.remove("nav-toggle--ripple");
+    toggle.removeAttribute("data-ripple-x");
+    toggle.removeAttribute("data-ripple-y");
   });
 
   nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
