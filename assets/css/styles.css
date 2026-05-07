@@ -1,5 +1,5 @@
 :root {
-  --bg: #f5f5f0;
+  --bg: #f4f0e8;
   --surface: #ffffff;
   --surface-soft: #f1ede6;
   --text: #1f2a37;
@@ -19,7 +19,7 @@
   --surface-overlay: rgba(255, 255, 255, 0.97);
   --surface-chip: rgba(255, 255, 255, 0.12);
   --surface-chip-border: rgba(255, 255, 255, 0.14);
-  --header-scrolled-bg: rgba(245, 245, 240, 0.88);
+  --header-scrolled-bg: rgba(244, 240, 232, 0.88);
   --header-accent-border: rgba(182, 138, 69, 0.35);
   --text-inverse: #ffffff;
   --text-inverse-muted: rgba(255, 255, 255, 0.84);
@@ -1732,6 +1732,10 @@ body[data-page="service-real-estate"] .intro-card--real-estate .intro-card__list
   font-weight: 500;
 }
 
+body[data-page="documents"] .hero-documents.page-hero {
+  padding-top: 24px;
+}
+
 body[data-page="documents"] .hero-documents .page-hero-grid > .reveal > p {
   margin-bottom: 18px;
 }
@@ -1872,7 +1876,7 @@ body[data-page="about"] .hero-about .page-trust {
 .about-features {
   display: flex;
   flex-direction: column;
-  gap: clamp(18px, 2.8vw, 26px);
+  gap: clamp(12px, 1.6vw, 16px);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1882,6 +1886,9 @@ body[data-page="about"] .hero-about .page-trust {
   display: flex;
   align-items: center;
   gap: clamp(14px, 2.2vw, 20px);
+  padding: clamp(20px, 2.4vw, 26px);
+  background: #FAF7F1;
+  border-radius: 12px;
 }
 
 .about-feature-icon {
@@ -1889,12 +1896,12 @@ body[data-page="about"] .hero-about .page-trust {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
-  background: #F5F0E8;
+  background: #FFFFFF;
   color: var(--accent-dark);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  box-shadow: inset 0 0 0 1px rgba(182, 138, 69, 0.16);
 }
 
 .about-feature-icon svg {
@@ -1904,7 +1911,8 @@ body[data-page="about"] .hero-about .page-trust {
 
 .about-feature-text {
   font-size: clamp(0.98rem, 1.05vw, 1.05rem);
-  line-height: 1.58;
+  line-height: 1.5;
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -2844,7 +2852,7 @@ html.js-reveal .reveal.is-visible {
   --accent-gold: rgba(212, 175, 55, 0.9);
 
   /* Applying via existing CSS variables */
-  --bg: #f5f5f0;
+  --bg: #f4f0e8;
   --surface: var(--white);
   --surface-soft: #eaecef;
   --text: var(--neutral-900);
