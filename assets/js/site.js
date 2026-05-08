@@ -1,5 +1,5 @@
 const SITE_CONFIG = {
-  webhookUrl: "https://quimagueradib.beget.app/webhook/764e3ba2-d92d-4b23-a7de-aa8f9ed1b696",
+  webhookUrl: "https://timocekaluy.beget.app/webhook/764e3ba2-d92d-4b23-a7de-aa8f9ed1b696",
   phoneDisplay: "+7 (812) 640-44-46",
   phoneHref: "+78126404446",
   whatsappHref: "https://wa.me/78126404446",
@@ -9,6 +9,9 @@ const SITE_CONFIG = {
   inn: "ИНН 7802596912",
   ogrn: "ОГРН 1167847399895",
 };
+
+const SUBMIT_COOLDOWN_MS = 30_000;
+const SUBMIT_STORAGE_KEY = "ocenka_last_submit";
 
 const NAV_ITEMS = [
   { href: "/#services", label: "Услуги", key: "services" },
@@ -571,6 +574,13 @@ function renderQuizRecommendation(form, recommendation) {
   if (messageField) messageField.value = recommendation.message;
 }
 
+function scrollQuizIntoView(quiz) {
+  if (!quiz) return;
+  const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-height"), 10) || 62;
+  const top = quiz.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
 function setupQuiz() {
   const quizzes = document.querySelectorAll("[data-quiz]");
   if (!quizzes.length) return;
@@ -732,6 +742,7 @@ function setupQuiz() {
       button.addEventListener("click", () => {
         resetQuizMessages();
         setStep(activeStepIndex === 3 ? 2 : activeStepIndex - 1);
+        scrollQuizIntoView(quiz);
       });
     });
 
@@ -822,6 +833,14 @@ function setupForms() {
       setFormMessage(successBox, "", true);
       setFormMessage(errorBox, "", false);
 
+      const lastSubmit = Number(localStorage.getItem(SUBMIT_STORAGE_KEY) || 0);
+      const elapsed = Date.now() - lastSubmit;
+      if (elapsed < SUBMIT_COOLDOWN_MS) {
+        const secsLeft = Math.ceil((SUBMIT_COOLDOWN_MS - elapsed) / 1000);
+        setFormMessage(errorBox, `Заявка уже отправлена. Повторите через ${secsLeft} сек.`, false);
+        return;
+      }
+
       let hasError = false;
       const requiredFields = form.querySelectorAll("[required]");
       requiredFields.forEach((field) => {
@@ -860,6 +879,7 @@ function setupForms() {
 
       try {
         await submitLeadForm(form);
+        localStorage.setItem(SUBMIT_STORAGE_KEY, String(Date.now()));
         if (shouldReset) form.reset();
         setFormMessage(successBox, successMessage, true);
       } catch (error) {
@@ -974,6 +994,37 @@ function setupFaqAccordion() {
   if (!root) return;
 
   const items = Array.from(root.querySelectorAll("[data-faq-item]"));
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function setPanelOpenState(panel, open) {
+    if (prefersReducedMotion.matches) {
+      panel.style.maxHeight = open ? "none" : "0px";
+      panel.setAttribute("aria-hidden", open ? "false" : "true");
+      return;
+    }
+
+    if (open) {
+      panel.style.maxHeight = `${panel.scrollHeight}px`;
+      panel.setAttribute("aria-hidden", "false");
+      // After transition, set to none to allow for resize
+      const onEnd = (e) => {
+        if (e.propertyName === "max-height") {
+          panel.style.maxHeight = "none";
+          panel.removeEventListener("transitionend", onEnd);
+        }
+      };
+      panel.addEventListener("transitionend", onEnd);
+    } else {
+      // If none, set to scrollHeight first to allow transition
+      if (panel.style.maxHeight === "none") {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        // Force reflow
+        panel.offsetHeight;
+      }
+      panel.style.maxHeight = "0px";
+      panel.setAttribute("aria-hidden", "true");
+    }
+  }
 
   items.forEach((item, index) => {
     const trigger = item.querySelector("[data-faq-trigger]");
@@ -987,7 +1038,9 @@ function setupFaqAccordion() {
     trigger.setAttribute("aria-controls", panel.id);
     panel.setAttribute("aria-labelledby", trigger.id);
     panel.setAttribute("role", "region");
-    panel.hidden = true;
+    panel.hidden = false;
+    panel.style.maxHeight = "0px";
+    panel.setAttribute("aria-hidden", "true");
 
     trigger.addEventListener("click", () => {
       const willOpen = trigger.getAttribute("aria-expanded") !== "true";
@@ -997,7 +1050,7 @@ function setupFaqAccordion() {
         if (!t || !p) return;
         const open = other === item ? willOpen : false;
         t.setAttribute("aria-expanded", open ? "true" : "false");
-        p.hidden = !open;
+        setPanelOpenState(p, open);
         other.classList.toggle("is-open", open);
       });
     });
@@ -1163,6 +1216,51 @@ function setupTextEffectDemo() {
   renderAndAnimate();
 }
 
+function setupCookieBanner() {
+  const banner = document.createElement("div");
+  banner.id = "cookie-banner";
+  banner.className = "cookie-banner";
+  banner.setAttribute("role", "region");
+  banner.setAttribute("aria-label", "Уведомление об использовании cookie");
+
+  banner.innerHTML = `
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__body">
+        <svg class="cookie-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-9.29-9 .5.5 0 0 1 .5.5 3 3 0 0 0 3 3 .5.5 0 0 1 .5.5 3 3 0 0 0 3 3 .5.5 0 0 1 .29.5"/>
+          <circle cx="7.5" cy="10.5" r="0.75" fill="currentColor" stroke="none"/>
+          <circle cx="11" cy="14.5" r="0.75" fill="currentColor" stroke="none"/>
+          <circle cx="14.5" cy="9.5" r="0.75" fill="currentColor" stroke="none"/>
+        </svg>
+        <p>Сайт использует cookie для работы виджетов Яндекс.Карт и шрифтов Google. Продолжая использование сайта, вы соглашаетесь с нашей <a href="/privacy/">политикой конфиденциальности</a>.</p>
+      </div>
+      <button class="cookie-banner__btn" type="button">Понятно</button>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+  document.body.classList.add("cookie-banner-visible");
+
+  const updateHeight = () => {
+    document.documentElement.style.setProperty("--cookie-banner-h", banner.offsetHeight + "px");
+  };
+  updateHeight();
+
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(updateHeight).observe(banner);
+  }
+
+  banner.querySelector(".cookie-banner__btn").addEventListener("click", () => {
+    localStorage.setItem("cookie_consent", "1");
+    banner.classList.add("is-hiding");
+    document.body.classList.remove("cookie-banner-visible");
+    setTimeout(() => {
+      banner.remove();
+      document.documentElement.style.removeProperty("--cookie-banner-h");
+    }, 340);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   mountShell();
   setupFloatingCtaBar();
@@ -1179,6 +1277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFaqAccordion();
   setupTextEffectDemo();
   setupStaticTextEffects();
+  setupCookieBanner();
 });
 
 document.addEventListener("DOMContentLoaded", () => {

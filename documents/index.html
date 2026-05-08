@@ -141,8 +141,12 @@
     <a class="floating-call" data-phone-href data-phone-display></a>
     <script>
       document.querySelectorAll('.document-card figure img').forEach((img) => {
+        if (img.dataset.previewBound === 'true') return;
+        img.dataset.previewBound = 'true';
         img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => {
+        img.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
           window.open(img.src, '_blank');
         });
       });
