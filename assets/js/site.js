@@ -265,6 +265,16 @@ function setupNavigation() {
 }
 
 function setupReveal() {
+  const cardSelectors = ".card, .stat-card, .trust-card, .step-card, .document-card, .review-card, .contact-card";
+  const grids = document.querySelectorAll('[class$="-grid"], .form-row, .process-track');
+  grids.forEach((grid) => {
+    const cards = Array.from(grid.querySelectorAll(cardSelectors));
+    cards.forEach((card, index) => {
+      if (!card.classList.contains("reveal")) card.classList.add("reveal");
+      card.dataset.revealIndex = String(Math.min(index, 3));
+    });
+  });
+
   const items = document.querySelectorAll(".reveal");
   if (!items.length) return;
 

@@ -1212,33 +1212,5 @@
 
     <div data-site-footer></div>
     <a class="floating-call" data-phone-href data-phone-display></a>
-    
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Fix #5: Stagger delay for cards and fade-in
-        const generalObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px 140px 0px' });
-
-        const grids = document.querySelectorAll('[class$="-grid"], .form-row, .process-track');
-        grids.forEach(grid => {
-          const cards = Array.from(grid.querySelectorAll('.card, .stat-card, .trust-card, .step-card, .document-card, .review-card, .contact-card'));
-          cards.forEach((card, index) => {
-            if(!card.classList.contains('reveal')) {
-              card.classList.add('reveal');
-            }
-            card.style.transitionDelay = `${Math.min(index * 40, 100)}ms`;
-            generalObserver.observe(card);
-          });
-        });
-
-        // Ensure other reveal blocks hit the observer
-        document.querySelectorAll('.reveal').forEach(el => generalObserver.observe(el));
-      });
-    </script>
   </body>
 </html>
