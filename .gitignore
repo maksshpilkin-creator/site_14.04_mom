@@ -1,1 +1,5 @@
 node_modules
+
+# Local tooling (not deployed with the static site)
+.claude/worktrees/
+superpower-mcp/
