@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Express Ocenka logo</title>
+  <desc id="desc">Monogram logo for Express Ocenka</desc>
+  <rect width="512" height="512" rx="96" fill="#23314e"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#c5a880" stroke-width="24"/>
+  <path d="M154 184h204v44H207v36h121v42H207v38h156v44H154V184Z" fill="#ffffff"/>
+</svg>

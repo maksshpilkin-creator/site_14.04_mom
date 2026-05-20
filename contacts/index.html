@@ -17,13 +17,13 @@
     <meta property="og:title" content="Контакты — Экспресс Оценка | Санкт-Петербург" />
     <meta property="og:description" content="Адрес: СПб, пр. Энгельса, 33, БЦ Светлановский, оф. 502А. Телефон: +7 (812) 640-44-46. Работаем пн–пт 9:00–18:00." />
     <meta property="og:url" content="https://ocenka-group.ru/contacts/" />
-    <meta property="og:image" content="https://ocenka-group.ru/assets/img/og.jpg" />
+    <meta property="og:image" content="https://ocenka-group.ru/assets/img/hero-about.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Контакты | Экспресс Оценка" />
     <meta name="twitter:description" content="Контакты Экспресс Оценка: телефон, адрес, форма заявки и карта офиса." />
-    <meta name="twitter:image" content="https://ocenka-group.ru/assets/images/logo.png" />
+    <meta name="twitter:image" content="https://ocenka-group.ru/assets/img/hero-about.jpg" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <script>document.documentElement.classList.add("js-reveal");</script>
     <script src="/assets/js/site.js" defer></script>
@@ -32,7 +32,6 @@
     </script>
   </head>
   <body data-page="contacts">
-    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
     <div data-site-header></div>
     <main id="main-content">
       <section class="page-hero hero-contacts">
@@ -107,7 +106,7 @@
           </div>
           <div class="contact-form reveal" id="lead-form">
             <h3>Форма заявки</h3>
-            <form class="field-stack" data-lead-form>
+            <form id="contacts-lead-form" name="contacts-lead-form" class="field-stack" data-lead-form>
               <div class="field">
                 <label for="lead-name">Имя</label>
                 <input id="lead-name" name="name" type="text" autocomplete="name" required />
@@ -185,6 +184,6 @@
       </section>
     </main>
     <div data-site-footer></div>
-    <a class="floating-call" data-phone-href data-phone-display></a>
+    <a class="floating-call" href="tel:+78126404446" data-phone-href data-phone-display>+7 (812) 640-44-46</a>
   </body>
 </html>

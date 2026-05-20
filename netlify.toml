@@ -1,0 +1,51 @@
+[build]
+  publish = "."
+
+# Кэширование статических файлов
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML не кэшируем (чтобы обновления применялись сразу)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Безопасность
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Редирект HTTP → HTTPS
+[[redirects]]
+  from = "http://твойдомен.ru/*"
+  to = "https://твойдомен.ru/:splat"
+  status = 301
+  force = true
+
+# Редирект www → без www
+[[redirects]]
+  from = "https://www.твойдомен.ru/*"
+  to = "https://твойдомен.ru/:splat"
+  status = 301
+  force = true

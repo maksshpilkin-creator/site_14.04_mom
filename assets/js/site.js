@@ -12,9 +12,10 @@ const SITE_CONFIG = {
 
 const SUBMIT_COOLDOWN_MS = 30_000;
 const SUBMIT_STORAGE_KEY = "ocenka_last_submit";
+const COOKIE_STORAGE_KEY = "cookie_consent";
 
 const NAV_ITEMS = [
-  { href: "/#services", label: "Услуги", key: "services" },
+  { href: "/services/", label: "Услуги", key: "services" },
   { href: "/about/", label: "О компании", key: "about" },
   { href: "/documents/", label: "Документы", key: "documents" },
   { href: "/reviews/", label: "Отзывы", key: "reviews" },
@@ -999,6 +1000,33 @@ function setupPreviewLightbox() {
   });
 }
 
+function setupPreviewFallback() {
+  if (document.getElementById("doc-lightbox")) return;
+
+  const cards = Array.from(document.querySelectorAll("[data-preview-card]"));
+  if (!cards.length) return;
+
+  function openCardImage(card) {
+    const image = card.querySelector("figure img");
+    const src = image ? image.getAttribute("src") : "";
+    if (src) window.open(src, "_blank", "noopener");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (target && target.closest("a, button")) return;
+      openCardImage(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openCardImage(card);
+    });
+  });
+}
+
 function setupFaqAccordion() {
   const root = document.querySelector("[data-faq-accordion]");
   if (!root) return;
@@ -1092,9 +1120,11 @@ function setupHeroPrefill() {
         quizEl.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
-      if (quizAnswer) {
-        window.setTimeout(() => quizAnswer.click(), 400);
-      }
+      window.setTimeout(() => {
+        if (quizAnswer) quizAnswer.click();
+        isPrefillLocked = false;
+        pills.forEach((p) => p.removeAttribute("aria-disabled"));
+      }, 400);
     });
   });
 }
@@ -1227,6 +1257,12 @@ function setupTextEffectDemo() {
 }
 
 function setupCookieBanner() {
+  try {
+    if (localStorage.getItem(COOKIE_STORAGE_KEY) === "1") return;
+  } catch (error) {
+    return;
+  }
+
   const banner = document.createElement("div");
   banner.id = "cookie-banner";
   banner.className = "cookie-banner";
@@ -1261,7 +1297,11 @@ function setupCookieBanner() {
   }
 
   banner.querySelector(".cookie-banner__btn").addEventListener("click", () => {
-    localStorage.setItem("cookie_consent", "1");
+    try {
+      localStorage.setItem(COOKIE_STORAGE_KEY, "1");
+    } catch (error) {
+      // Consent storage is best-effort; the UI should still close.
+    }
     banner.classList.add("is-hiding");
     document.body.classList.remove("cookie-banner-visible");
     setTimeout(() => {
@@ -1284,6 +1324,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHeroPrefill();
   setupForms();
   setupPreviewLightbox();
+  setupPreviewFallback();
   setupFaqAccordion();
   setupTextEffectDemo();
   setupStaticTextEffects();
