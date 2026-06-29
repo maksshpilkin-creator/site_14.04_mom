@@ -808,40 +808,6 @@ ul {
   gap: 12px;
 }
 
-.hero-trust {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hero-trust__label {
-  font-size: 10px;
-  font-weight: 600;
-  color: #c5a880;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.hero-trust__logos {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px 20px;
-}
-
-.hero-trust__logos img {
-  height: 20px;
-  width: auto;
-  opacity: 0.9;
-}
-
-.hero-trust__more {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.58);
-  white-space: normal;
-  line-height: 1.45;
-}
-
 .hero-prefill {
   display: flex;
   flex-direction: column;
@@ -978,7 +944,6 @@ ul {
   line-height: 1.4;
 }
 
-.hero-trust,
 .page-trust {
   display: flex;
   flex-wrap: wrap;
@@ -1143,31 +1108,6 @@ ul {
   gap: 12px;
 }
 
-.quiz-result-grid--spaced {
-  margin-top: 24px;
-}
-
-.quiz-result-hidden {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.quiz-contact.quiz-result-hidden {
-  display: none;
-}
-
-.quiz-result-visible {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.quiz-contact.quiz-result-visible {
-  display: grid;
-}
-
 .quiz-result-card {
   display: grid;
   gap: 8px;
@@ -1311,6 +1251,8 @@ ul {
 .field select,
 .field textarea {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 52px;
   padding: 0 16px;
   background: var(--surface);
@@ -1325,13 +1267,6 @@ ul {
   min-height: 132px;
   padding: 14px 16px;
   resize: vertical;
-}
-
-.field input,
-.field select,
-.field textarea {
-  min-width: 0;
-  max-width: 100%;
 }
 
 .field input:focus,
@@ -1694,18 +1629,6 @@ ul {
   gap: 16px;
 }
 
-.step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  background: var(--surface-soft);
-  color: var(--accent-dark);
-  border-radius: 50%;
-  font-weight: 700;
-}
-
 .process-step.is-sequence-active {
   outline-color: var(--accent);
   outline-offset: 3px;
@@ -1999,27 +1922,6 @@ body[data-page="reviews"] .review-card figure img {
   height: auto;
   flex: 0 0 auto;
   min-height: 0;
-}
-
-body[data-page="reviews"] .review-photo-download {
-  flex-shrink: 0;
-  margin-top: -1px;
-  padding: 10px 14px 12px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent-dark);
-  text-align: center;
-  border-top: 1px solid var(--border);
-  background: var(--surface-soft);
-}
-
-body[data-page="reviews"] .review-photo-download:hover {
-  color: var(--accent);
-}
-
-body[data-page="reviews"] .review-photo-download:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus);
 }
 
 body[data-page="reviews"] .section-tight--cases {
@@ -2405,11 +2307,6 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
 .footer-legal:focus-visible {
   color: var(--text-inverse);
   border-bottom-color: rgba(255, 255, 255, 0.28);
-}
-
-.footer-note {
-  color: var(--text-footer-note);
-  font-size: 0.92rem;
 }
 
 .floating-cta-bar {
@@ -2909,13 +2806,6 @@ html.js-reveal .reveal[data-reveal-index="3"]:not(.is-visible) {
 
 .service-offer-card__section {
   margin: 0;
-}
-
-.service-offer-card__docs {
-  margin: 0;
-  padding-left: 1.15rem;
-  display: grid;
-  gap: 6px;
 }
 
 .service-offer-card__timeline {
@@ -3565,10 +3455,12 @@ body[data-page="home"] .hero-visual {
   position: relative;
   right: auto;
   top: auto;
+  display: flex;
   flex: 0 0 40%;
   width: 40%;
   height: auto;
-  align-self: flex-start;
+  align-self: center;
+  justify-content: center;
   background: transparent;
   backdrop-filter: none;
   border-radius: 0;
@@ -3621,12 +3513,14 @@ body[data-page="home"] .hero-portrait img {
 }
 
 body[data-page="home"] .hero.hero--split .hero-portrait {
+  aspect-ratio: 656 / 1280;
   border-radius: 16px;
   overflow: hidden;
-  margin: 0;
+  margin: 0 auto;
   position: relative;
-  align-self: flex-start;
-  height: clamp(400px, 68dvh, 620px);
+  align-self: center;
+  height: auto;
+  max-width: 360px;
   width: 100%;
   border: 0;
   outline: 0;
@@ -3640,8 +3534,8 @@ body[data-page="home"] .hero.hero--split .hero-portrait {
 body[data-page="home"] .hero.hero--split .hero-portrait img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 8%;
+  object-fit: contain;
+  object-position: center top;
   display: block;
   border: 0;
   outline: 0;
@@ -3729,7 +3623,9 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
 
 .hero.hero--split .btn,
 .hero.hero--split .btn-secondary {
+  align-items: center;
   border-radius: 10px;
+  text-align: center;
 }
 
 .hero.hero--split .hero-actions .btn {
@@ -3861,8 +3757,19 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
     display: none;
   }
 
+  body[data-page="home"] .hero.hero--split .hero-visual {
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0 24px 28px;
+    justify-content: center;
+  }
+
   body[data-page="home"] .hero-portrait {
     width: 85% !important;
+    max-width: 340px;
+    height: auto;
     align-items: center;
     justify-content: center;
     margin: 0 auto !important;
@@ -3874,7 +3781,8 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
     height: 100%;
     max-height: 100%;
     border-radius: 16px !important;
-    object-position: center 4%;
+    object-fit: contain;
+    object-position: center top;
     transform: translateZ(0);
   }
 
