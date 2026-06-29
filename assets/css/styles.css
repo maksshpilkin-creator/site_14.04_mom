@@ -245,8 +245,18 @@ ul {
 
 .section-head {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   margin-bottom: 28px;
+  min-width: 0;
+}
+
+.section-head > * {
+  min-width: 0;
+}
+
+.section-head h2 {
+  overflow-wrap: anywhere;
 }
 
 .eyebrow {
@@ -306,7 +316,7 @@ ul {
 .btn-secondary,
 .btn-text {
   display: inline-flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   gap: 10px;
   min-height: 52px;
@@ -318,10 +328,15 @@ ul {
 }
 
 .btn {
-  height: 56px;
+  align-items: center;
+  height: auto;
+  min-height: 56px;
+  padding-block: 14px;
   background: var(--primary);
   color: var(--accent-gold);
   box-shadow: var(--shadow-accent);
+  line-height: 1.35;
+  text-align: center;
 }
 
 .btn:hover,
@@ -392,6 +407,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   gap: 16px;
   min-height: 62px;
   padding: 0 18px;
@@ -405,11 +421,13 @@ ul {
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .brand-mark {
   font-size: 1.7rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .brand-note {
@@ -606,7 +624,7 @@ ul {
     visibility 0s linear 0s;
 }
 
-@media (max-width: 1199.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1239.98px) and (prefers-reduced-motion: reduce) {
   .nav-links,
   .nav-links.is-open {
     transition: none;
@@ -750,7 +768,28 @@ ul {
 .cta-grid,
 .form-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
+}
+
+.hero-grid > *,
+.page-hero-grid > *,
+.service-grid > *,
+.review-grid > *,
+.documents-grid > *,
+.trust-grid > *,
+.audience-grid > *,
+.stats-grid > *,
+.steps-grid > *,
+.contact-grid > *,
+.story-grid > *,
+.detail-grid > *,
+.service-offer-grid > *,
+.case-grid > *,
+.two-column > *,
+.cta-grid > *,
+.form-grid > * {
+  min-width: 0;
 }
 
 .hero-copy {
@@ -1189,7 +1228,24 @@ ul {
 .field-stack,
 .form-row {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.quiz-card,
+.contact-form,
+.inline-form,
+.cta-banner,
+.service-detail,
+.contacts-aside,
+.contacts-meta,
+.contacts-minimap,
+.contacts-minimap__frame,
+.field {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .form-submit-hint {
@@ -1201,36 +1257,42 @@ ul {
 
 .field--privacy .field-checkbox {
   display: grid;
-  grid-template-columns: 20px 1fr;
-  align-items: center;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
   gap: 10px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .field--privacy .field-checkbox input[type="checkbox"] {
   display: block;
   width: 20px;
-  height: 20px;
+  min-width: 20px;
+  height: 20px !important;
   min-height: unset !important;
-  margin: 0;
+  margin: 12px 0 0;
   padding: 0;
   accent-color: var(--accent);
 }
 
 .field--privacy .field-checkbox label {
-  display: flex;
-  align-items: center;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
   min-height: 44px;
   margin: 0;
   font-weight: 600;
   font-size: 0.92rem;
   line-height: 1.45;
   color: var(--text);
+  overflow-wrap: anywhere;
 }
 
 .field--privacy .field-checkbox a {
   color: var(--accent-dark);
   text-decoration: underline;
   text-underline-offset: 2px;
+  overflow-wrap: anywhere;
 }
 
 .field--privacy .field-checkbox a:hover {
@@ -1263,6 +1325,13 @@ ul {
   min-height: 132px;
   padding: 14px 16px;
   resize: vertical;
+}
+
+.field input,
+.field select,
+.field textarea {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .field input:focus,
@@ -2393,6 +2462,7 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
     flex-direction: row;
     align-items: stretch;
     gap: 10px;
+    width: auto;
     max-width: none;
   }
 
@@ -2402,7 +2472,9 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
     justify-content: center;
     flex: 1 1 52%;
     min-height: 52px;
-    padding: 0 14px;
+    height: auto;
+    min-width: 0;
+    padding: 10px 14px;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-floating);
     text-decoration: none;
@@ -2426,12 +2498,13 @@ body[data-page="documents"] .document-card:has(> a.btn) .btn:active {
   .floating-call {
     flex: 1 1 42%;
     min-width: 0;
-    padding: 0 12px;
+    height: auto;
+    padding: 10px 12px;
     font-size: 0.8rem;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
   }
 }
 
@@ -2589,7 +2662,7 @@ html.js-reveal .reveal[data-reveal-index="3"]:not(.is-visible) {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1240px) {
   .nav-toggle {
     display: none;
   }
@@ -3206,7 +3279,8 @@ textarea:focus {
 .contacts-layout {
   display: grid;
   gap: 32px;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -3225,6 +3299,7 @@ textarea:focus {
 
 .contacts-aside {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -3257,6 +3332,7 @@ textarea:focus {
   font-size: 1rem;
   line-height: 1.55;
   color: var(--text);
+  overflow-wrap: anywhere;
 }
 
 .contacts-meta__value a {
@@ -3303,6 +3379,8 @@ textarea:focus {
 
 .contacts-minimap__frame {
   position: relative;
+  width: 100%;
+  max-width: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -3923,8 +4001,9 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
 #hero-quiz[data-quiz] .quiz-step {
   display: none;
   opacity: 0;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
+  min-width: 0;
 }
 
 #hero-quiz[data-quiz] .quiz-step.is-active {
@@ -4005,8 +4084,9 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
 
 #hero-quiz[data-quiz] .quiz-options {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -4029,6 +4109,7 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
   align-items: center;
   gap: 16px;
   width: 100%;
+  min-width: 0;
   margin: 0;
   padding: 20px 44px 20px 20px;
   text-align: left;
@@ -6164,17 +6245,31 @@ body[data-page="text-effect"] .text-effect-hero .page-hero-grid {
 @media (max-width: 767px) {
   .cookie-banner__inner {
     padding: 12px 16px;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
     gap: 10px;
   }
 
   .cookie-banner__body {
+    flex-basis: auto;
     gap: 9px;
+    min-width: 0;
+  }
+
+  .cookie-banner__icon {
+    display: none;
+  }
+
+  .cookie-banner__body p {
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
   .cookie-banner__btn {
-    width: 100%;
+    width: auto;
     min-height: 44px;
+    margin-left: 0;
+    padding-inline: 16px;
     font-size: 0.85rem;
   }
 
@@ -6184,5 +6279,20 @@ body[data-page="text-effect"] .text-effect-hero .page-hero-grid {
 
   .cookie-banner-visible .floating-cta-bar {
     bottom: calc(var(--cookie-banner-h, 90px) + max(12px, env(safe-area-inset-bottom, 0px)));
+  }
+}
+
+@media (max-width: 359.98px) {
+  .nav-shell {
+    gap: 10px;
+    padding-inline: 12px;
+  }
+
+  .brand-mark {
+    font-size: 1.35rem;
+  }
+
+  .brand-note {
+    display: none;
   }
 }

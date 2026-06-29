@@ -777,6 +777,15 @@ function getFormPayload(form) {
 
   if (payload.phone) payload.phone = normalizePhone(payload.phone);
   payload.timestamp = new Date().toISOString();
+  payload.personalDataConsent = Boolean(form.elements.personalDataConsent?.checked);
+  payload.marketingConsent = Boolean(form.elements.marketingConsent?.checked);
+  payload.consentTimestamp = new Date().toISOString();
+  payload.consentSource = window.location.href;
+  payload.consentDocuments = {
+    privacyPolicy: "/privacy-policy",
+    personalDataConsent: "/personal-data-consent",
+    marketingConsent: "/marketing-consent",
+  };
   return payload;
 }
 
@@ -827,6 +836,7 @@ function setupForms() {
   if (!forms.length) return;
 
   forms.forEach((form) => {
+    form.noValidate = true;
     const submitButton = form.querySelector("button[type='submit']");
     const successBox = form.querySelector("[data-success-message]");
     const errorBox = form.querySelector("[data-form-error]");
@@ -862,8 +872,8 @@ function setupForms() {
           hasError = true;
           setFieldError(
             field,
-            field.type === "checkbox"
-              ? "Подтвердите согласие с политикой конфиденциальности"
+            field.name === "personalDataConsent"
+              ? "Необходимо дать согласие на обработку персональных данных."
               : "Заполните поле",
           );
         }

@@ -216,8 +216,15 @@
               </div>
               <div class="field field--privacy">
                 <div class="field-checkbox">
-                  <input id="re-privacy" name="privacy_consent" type="checkbox" value="yes" required />
-                  <label for="re-privacy">Согласен на обработку персональных данных в соответствии с <a href="/privacy/">политикой конфиденциальности</a></label>
+                  <input id="re-personal-data-consent" name="personalDataConsent" type="checkbox" value="true" required />
+                  <label for="re-personal-data-consent">Я даю <a href="/personal-data-consent" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> в соответствии с <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a></label>
+                </div>
+                <p class="error-message"></p>
+              </div>
+              <div class="field field--privacy">
+                <div class="field-checkbox">
+                  <input id="re-marketing-consent" name="marketingConsent" type="checkbox" value="true" />
+                  <label for="re-marketing-consent">Я согласен на <a href="/marketing-consent" target="_blank" rel="noopener noreferrer">получение информационных и рекламных рассылок</a></label>
                 </div>
                 <p class="error-message"></p>
               </div>
