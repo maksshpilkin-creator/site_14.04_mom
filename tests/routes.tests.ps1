@@ -8,7 +8,6 @@ $routes = @(
   "/services/commercial-property/",
   "/services/court-valuation/",
   "/services/damage-valuation/",
-  "/services/equipment-transport/",
   "/reviews/",
   "/personal-data-consent",
   "/privacy-policy",

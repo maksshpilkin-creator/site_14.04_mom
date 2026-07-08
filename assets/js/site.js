@@ -1341,14 +1341,29 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCookieBanner();
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+function restorePageTransitionState({ deferReady = false } = {}) {
   const curtain = document.getElementById("page-curtain");
   if (curtain) curtain.remove();
 
   document.body.classList.remove("page-exit");
-  window.setTimeout(() => {
+  const markReady = () => {
     document.body.classList.add("page-ready");
-  }, 10);
+  };
+
+  if (deferReady) {
+    window.setTimeout(markReady, 10);
+  } else {
+    markReady();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  restorePageTransitionState({ deferReady: true });
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  restorePageTransitionState();
 });
 
 document.addEventListener("click", (event) => {

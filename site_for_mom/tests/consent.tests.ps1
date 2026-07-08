@@ -32,7 +32,6 @@ $formPages = @(
   "services/commercial-property/index.html",
   "services/court-valuation/index.html",
   "services/damage-valuation/index.html",
-  "services/equipment-transport/index.html",
   "services/notary-inheritance/index.html",
   "services/real-estate/index.html"
 )

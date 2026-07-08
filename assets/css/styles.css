@@ -746,10 +746,6 @@ ul {
   background-image: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80");
 }
 
-.hero-equipment-transport {
-  background-image: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80");
-}
-
 .hero-grid,
 .page-hero-grid,
 .service-grid,
@@ -1751,13 +1747,150 @@ body[data-page="contacts"] .hero-contacts .page-trust {
   margin-top: 12px;
 }
 
-@media (max-width: 767.98px) {
-  body[data-page="contacts"] .hero-contacts .intro-card {
-    margin-top: 16px;
-  }
+body[data-page="contacts"] .hero-contacts {
+  background-position: center 42%;
+}
 
-  body[data-page="reviews"] .hero-reviews .intro-card {
-    margin-top: 24px;
+body[data-page="contacts"] .hero-contacts::before {
+  background: linear-gradient(135deg, rgba(12, 21, 34, 0.94) 0%, rgba(12, 21, 34, 0.76) 48%, rgba(12, 21, 34, 0.48) 100%);
+}
+
+body[data-page="contacts"] .hero-contacts .page-hero-grid {
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+body[data-page="contacts"] .hero-contacts .page-hero-grid > .reveal:first-child {
+  display: grid;
+  gap: 18px;
+  max-width: 720px;
+}
+
+body[data-page="contacts"] .hero-contacts h1 {
+  text-wrap: balance;
+}
+
+body[data-page="contacts"] .hero-contacts .page-hero-grid > .reveal:first-child > p {
+  max-width: 58ch;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+body[data-page="contacts"] .hero-contacts .chip {
+  min-height: 38px;
+  border-color: rgba(212, 175, 55, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body[data-page="contacts"] .hero-contacts .intro-card {
+  margin-top: 0;
+  padding: clamp(22px, 3vw, 30px);
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 54px rgba(12, 21, 34, 0.22);
+}
+
+body[data-page="contacts"] .hero-contacts .intro-card::before {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--accent-gold);
+}
+
+body[data-page="about"] .hero-about,
+body[data-page="reviews"] .hero-reviews,
+body[data-page="documents"] .hero-documents,
+body[data-page="services"] .hero-real-estate {
+  background-position: center 42%;
+}
+
+body[data-page="about"] .hero-about::before,
+body[data-page="reviews"] .hero-reviews::before,
+body[data-page="documents"] .hero-documents::before,
+body[data-page="services"] .hero-real-estate::before {
+  background: linear-gradient(135deg, rgba(12, 21, 34, 0.94) 0%, rgba(12, 21, 34, 0.76) 48%, rgba(12, 21, 34, 0.48) 100%);
+}
+
+body[data-page="about"] .page-hero-grid,
+body[data-page="reviews"] .page-hero-grid,
+body[data-page="documents"] .page-hero-grid,
+body[data-page="services"] .page-hero-grid {
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+body[data-page="about"] .page-hero-grid > .reveal:first-child,
+body[data-page="reviews"] .page-hero-grid > .reveal:first-child,
+body[data-page="documents"] .page-hero-grid > .reveal:first-child,
+body[data-page="services"] .page-hero-grid > .reveal:first-child {
+  display: grid;
+  gap: 18px;
+  max-width: 720px;
+}
+
+body[data-page="about"] .page-hero h1,
+body[data-page="reviews"] .page-hero h1,
+body[data-page="documents"] .page-hero h1,
+body[data-page="services"] .page-hero h1 {
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+body[data-page="about"] .page-hero-grid > .reveal:first-child > p,
+body[data-page="reviews"] .page-hero-grid > .reveal:first-child > p,
+body[data-page="documents"] .page-hero-grid > .reveal:first-child > p,
+body[data-page="services"] .page-hero-grid > .reveal:first-child > p {
+  max-width: 58ch;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+body[data-page="about"] .page-hero .chip,
+body[data-page="reviews"] .page-hero .chip,
+body[data-page="documents"] .page-hero .chip,
+body[data-page="services"] .page-hero .chip {
+  min-height: 38px;
+  border-color: rgba(212, 175, 55, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body[data-page="about"] .page-hero .intro-card,
+body[data-page="reviews"] .page-hero .intro-card,
+body[data-page="documents"] .page-hero .intro-card,
+body[data-page="services"] .page-hero .intro-card {
+  margin-top: 0;
+  padding: clamp(22px, 3vw, 30px);
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 54px rgba(12, 21, 34, 0.22);
+}
+
+body[data-page="about"] .page-hero .intro-card::before,
+body[data-page="reviews"] .page-hero .intro-card::before,
+body[data-page="documents"] .page-hero .intro-card::before,
+body[data-page="services"] .page-hero .intro-card::before {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--accent-gold);
+}
+
+@media (max-width: 767.98px) {
+  body[data-page="contacts"] .hero-contacts .intro-card,
+  body[data-page="about"] .page-hero .intro-card,
+  body[data-page="reviews"] .page-hero .intro-card,
+  body[data-page="documents"] .page-hero .intro-card,
+  body[data-page="services"] .page-hero .intro-card {
+    margin-top: 8px;
   }
 }
 
@@ -4466,7 +4599,7 @@ body[data-page="home"] .hero.hero--split .hero-portrait .hero-rating {
 
 /* Notary & inheritance service page: same layout pattern as real-estate */
 body[data-page="service-notary-inheritance"] .page-hero {
-  padding: clamp(104px, 18vw, 148px) 0 clamp(56px, 10vw, 80px);
+  padding: clamp(8px, 1.4vw, 16px) 0 clamp(48px, 8vw, 72px);
 }
 
 body[data-page="service-notary-inheritance"] .page-hero-grid--notary-inheritance {
@@ -4665,21 +4798,24 @@ body[data-page="service-notary-inheritance"] #lead-form .form-urgency-note {
   }
 
   body[data-page="service-notary-inheritance"] .page-hero__copy {
-    padding-top: clamp(16px, 2.5vw, 32px);
+    padding-top: 0;
   }
 
-  body[data-page="service-notary-inheritance"] .page-hero-grid--notary-inheritance {
+  body[data-page="service-notary-inheritance"] .page-hero .page-hero-grid--notary-inheritance {
     grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
-    align-items: center;
+    align-items: start;
     gap: clamp(24px, 4vw, 48px);
-    min-height: min(520px, calc(70dvh - 80px));
+    min-height: auto;
+  }
+
+  body[data-page="service-notary-inheritance"] .page-hero__aside {
+    align-self: end;
   }
 }
 
-/* Court, damage, equipment-transport, business valuation, commercial property: shared service hero and intro card */
+/* Court, damage, business valuation, commercial property: shared service hero and intro card */
 body[data-page="service-court-valuation"] .page-hero,
 body[data-page="service-damage-valuation"] .page-hero,
-body[data-page="service-equipment-transport"] .page-hero,
 body[data-page="service-business-valuation"] .page-hero,
 body[data-page="service-commercial-property"] .page-hero {
   padding: clamp(8px, 1.4vw, 16px) 0 clamp(48px, 8vw, 72px);
@@ -4687,7 +4823,6 @@ body[data-page="service-commercial-property"] .page-hero {
 
 body[data-page="service-court-valuation"] .page-hero-grid--court-valuation,
 body[data-page="service-damage-valuation"] .page-hero-grid--damage-valuation,
-body[data-page="service-equipment-transport"] .page-hero-grid--equipment-transport,
 body[data-page="service-business-valuation"] .page-hero-grid--business-valuation,
 body[data-page="service-commercial-property"] .page-hero-grid--commercial-property {
   align-items: stretch;
@@ -4695,15 +4830,10 @@ body[data-page="service-commercial-property"] .page-hero-grid--commercial-proper
 
 body[data-page="service-court-valuation"] .page-hero__copy,
 body[data-page="service-damage-valuation"] .page-hero__copy,
-body[data-page="service-equipment-transport"] .page-hero__copy,
 body[data-page="service-business-valuation"] .page-hero__copy,
 body[data-page="service-commercial-property"] .page-hero__copy {
   display: grid;
   gap: clamp(16px, 3vw, 24px);
-}
-
-body[data-page="service-equipment-transport"] .page-hero__copy {
-  padding-top: clamp(12px, 2.4vw, 28px);
 }
 
 body[data-page="service-business-valuation"] .page-hero__copy {
@@ -4728,7 +4858,6 @@ body[data-page="service-damage-valuation"] .page-hero .breadcrumbs {
 
 body[data-page="service-court-valuation"] .page-hero__lead,
 body[data-page="service-damage-valuation"] .page-hero__lead,
-body[data-page="service-equipment-transport"] .page-hero__lead,
 body[data-page="service-business-valuation"] .page-hero__lead,
 body[data-page="service-commercial-property"] .page-hero__lead {
   max-width: 54ch;
@@ -4739,7 +4868,6 @@ body[data-page="service-commercial-property"] .page-hero__lead {
 
 body[data-page="service-court-valuation"] .page-hero__aside,
 body[data-page="service-damage-valuation"] .page-hero__aside,
-body[data-page="service-equipment-transport"] .page-hero__aside,
 body[data-page="service-business-valuation"] .page-hero__aside,
 body[data-page="service-commercial-property"] .page-hero__aside {
   display: flex;
@@ -4748,7 +4876,6 @@ body[data-page="service-commercial-property"] .page-hero__aside {
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport,
 body[data-page="service-business-valuation"] .intro-card--business-valuation,
 body[data-page="service-commercial-property"] .intro-card--commercial-property {
   width: 100%;
@@ -4765,7 +4892,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property {
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation .intro-card__kicker,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation .intro-card__kicker,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport .intro-card__kicker,
 body[data-page="service-business-valuation"] .intro-card--business-valuation .intro-card__kicker,
 body[data-page="service-commercial-property"] .intro-card--commercial-property .intro-card__kicker {
   display: inline-flex;
@@ -4783,7 +4909,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property .
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation h3,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation h3,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport h3,
 body[data-page="service-business-valuation"] .intro-card--business-valuation h3,
 body[data-page="service-commercial-property"] .intro-card--commercial-property h3 {
   margin: 0;
@@ -4797,7 +4922,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property h
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation .intro-card__list,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation .intro-card__list,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport .intro-card__list,
 body[data-page="service-business-valuation"] .intro-card--business-valuation .intro-card__list,
 body[data-page="service-commercial-property"] .intro-card--commercial-property .intro-card__list {
   gap: 10px;
@@ -4805,7 +4929,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property .
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation .intro-card__list li,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation .intro-card__list li,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport .intro-card__list li,
 body[data-page="service-business-valuation"] .intro-card--business-valuation .intro-card__list li,
 body[data-page="service-commercial-property"] .intro-card--commercial-property .intro-card__list li {
   padding: 12px 14px;
@@ -4819,7 +4942,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property .
 
 body[data-page="service-court-valuation"] .intro-card--court-valuation .intro-card__list li::before,
 body[data-page="service-damage-valuation"] .intro-card--damage-valuation .intro-card__list li::before,
-body[data-page="service-equipment-transport"] .intro-card--equipment-transport .intro-card__list li::before,
 body[data-page="service-business-valuation"] .intro-card--business-valuation .intro-card__list li::before,
 body[data-page="service-commercial-property"] .intro-card--commercial-property .intro-card__list li::before {
   top: 50%;
@@ -4828,7 +4950,6 @@ body[data-page="service-commercial-property"] .intro-card--commercial-property .
 
 body[data-page="service-court-valuation"] .section--court-valuation-formats,
 body[data-page="service-damage-valuation"] .section--damage-valuation-formats,
-body[data-page="service-equipment-transport"] .section--equipment-transport-scenarios,
 body[data-page="service-business-valuation"] .section--business-valuation-scenarios,
 body[data-page="service-commercial-property"] .section--commercial-property-formats {
   padding-top: clamp(56px, 10vw, 88px);
@@ -4838,7 +4959,6 @@ body[data-page="service-commercial-property"] .section--commercial-property-form
 
 body[data-page="service-court-valuation"] .section-head--court-valuation .eyebrow,
 body[data-page="service-damage-valuation"] .section-head--damage-valuation .eyebrow,
-body[data-page="service-equipment-transport"] .section-head--equipment-transport .eyebrow,
 body[data-page="service-business-valuation"] .section-head--business-valuation .eyebrow,
 body[data-page="service-commercial-property"] .section-head--commercial-property .eyebrow {
   color: var(--muted);
@@ -4846,10 +4966,6 @@ body[data-page="service-commercial-property"] .section-head--commercial-property
 }
 
 body[data-page="service-damage-valuation"] .section-head--damage-valuation {
-  margin-bottom: 32px;
-}
-
-body[data-page="service-equipment-transport"] .section-head--equipment-transport {
   margin-bottom: 32px;
 }
 
@@ -4883,13 +4999,6 @@ body[data-page="service-damage-valuation"] .service-offer-card h3,
 body[data-page="service-damage-valuation"] .contact-form h3,
 body[data-page="service-damage-valuation"] .cta-banner h3,
 body[data-page="service-damage-valuation"] .real-estate-trust-card__org,
-body[data-page="service-equipment-transport"] .page-hero h1,
-body[data-page="service-equipment-transport"] .section-head--equipment-transport h2,
-body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust h2,
-body[data-page="service-equipment-transport"] .service-offer-card h3,
-body[data-page="service-equipment-transport"] .contact-form h3,
-body[data-page="service-equipment-transport"] .cta-banner h3,
-body[data-page="service-equipment-transport"] .real-estate-trust-card__org,
 body[data-page="service-business-valuation"] .page-hero h1,
 body[data-page="service-business-valuation"] .section-head--business-valuation h2,
 body[data-page="service-business-valuation"] .section-head--business-valuation-trust h2,
@@ -4905,7 +5014,6 @@ body[data-page="service-business-valuation"] .real-estate-trust-card__org {
 
 body[data-page="service-court-valuation"] .page-hero h1,
 body[data-page="service-damage-valuation"] .page-hero h1,
-body[data-page="service-equipment-transport"] .page-hero h1,
 body[data-page="service-business-valuation"] .page-hero h1,
 body[data-page="service-commercial-property"] .page-hero h1 {
   font-size: clamp(2.7rem, 7.5vw, 4.8rem);
@@ -4922,7 +5030,6 @@ body[data-page="service-business-valuation"] .page-hero h1 {
 
 body[data-page="service-court-valuation"] .service-offer-card,
 body[data-page="service-damage-valuation"] .service-offer-card,
-body[data-page="service-equipment-transport"] .service-offer-card,
 body[data-page="service-business-valuation"] .service-offer-card,
 body[data-page="service-commercial-property"] .service-offer-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-left-color 0.3s ease;
@@ -4930,7 +5037,6 @@ body[data-page="service-commercial-property"] .service-offer-card {
 
 body[data-page="service-court-valuation"] .service-offer-card:hover,
 body[data-page="service-damage-valuation"] .service-offer-card:hover,
-body[data-page="service-equipment-transport"] .service-offer-card:hover,
 body[data-page="service-business-valuation"] .service-offer-card:hover,
 body[data-page="service-commercial-property"] .service-offer-card:hover {
   transform: translateY(-4px);
@@ -4939,7 +5045,6 @@ body[data-page="service-commercial-property"] .service-offer-card:hover {
 
 body[data-page="service-court-valuation"] .service-offer-card__price-row,
 body[data-page="service-damage-valuation"] .service-offer-card__price-row,
-body[data-page="service-equipment-transport"] .service-offer-card__price-row,
 body[data-page="service-business-valuation"] .service-offer-card__price-row,
 body[data-page="service-commercial-property"] .service-offer-card__price-row {
   margin-top: auto;
@@ -4950,7 +5055,6 @@ body[data-page="service-commercial-property"] .service-offer-card__price-row {
 
 body[data-page="service-court-valuation"] .service-offer-card__price-main,
 body[data-page="service-damage-valuation"] .service-offer-card__price-main,
-body[data-page="service-equipment-transport"] .service-offer-card__price-main,
 body[data-page="service-business-valuation"] .service-offer-card__price-main,
 body[data-page="service-commercial-property"] .service-offer-card__price-main {
   margin: 0;
@@ -4963,7 +5067,6 @@ body[data-page="service-commercial-property"] .service-offer-card__price-main {
 
 body[data-page="service-court-valuation"] .section--court-valuation-trust,
 body[data-page="service-damage-valuation"] .section--damage-valuation-trust,
-body[data-page="service-equipment-transport"] .section--equipment-transport-trust,
 body[data-page="service-business-valuation"] .section--business-valuation-trust,
 body[data-page="service-commercial-property"] .section--commercial-property-trust {
   padding-top: 48px;
@@ -4980,17 +5083,12 @@ body[data-page="service-damage-valuation"] .section-head--damage-valuation-trust
   margin-bottom: 24px;
 }
 
-body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust {
-  margin-bottom: 32px;
-}
-
 body[data-page="service-commercial-property"] .section-head--commercial-property-trust {
   margin-bottom: 24px;
 }
 
 body[data-page="service-court-valuation"] .section-head--court-valuation-trust h2,
 body[data-page="service-damage-valuation"] .section-head--damage-valuation-trust h2,
-body[data-page="service-equipment-transport"] .section-head--equipment-transport-trust h2,
 body[data-page="service-business-valuation"] .section-head--business-valuation-trust h2,
 body[data-page="service-commercial-property"] .section-head--commercial-property-trust h2 {
   margin: 0;
@@ -4999,7 +5097,6 @@ body[data-page="service-commercial-property"] .section-head--commercial-property
 
 body[data-page="service-court-valuation"] .real-estate-trust-grid,
 body[data-page="service-damage-valuation"] .real-estate-trust-grid,
-body[data-page="service-equipment-transport"] .real-estate-trust-grid,
 body[data-page="service-business-valuation"] .real-estate-trust-grid,
 body[data-page="service-commercial-property"] .real-estate-trust-grid {
   display: grid;
@@ -5008,7 +5105,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-grid {
 
 body[data-page="service-court-valuation"] .real-estate-trust-card,
 body[data-page="service-damage-valuation"] .real-estate-trust-card,
-body[data-page="service-equipment-transport"] .real-estate-trust-card,
 body[data-page="service-business-valuation"] .real-estate-trust-card,
 body[data-page="service-commercial-property"] .real-estate-trust-card {
   margin: 0;
@@ -5023,7 +5119,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-card {
 
 body[data-page="service-court-valuation"] .real-estate-trust-card:hover,
 body[data-page="service-damage-valuation"] .real-estate-trust-card:hover,
-body[data-page="service-equipment-transport"] .real-estate-trust-card:hover,
 body[data-page="service-business-valuation"] .real-estate-trust-card:hover,
 body[data-page="service-commercial-property"] .real-estate-trust-card:hover {
   transform: translateY(-4px);
@@ -5032,7 +5127,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-card:hover {
 
 body[data-page="service-court-valuation"] .real-estate-trust-card__org,
 body[data-page="service-damage-valuation"] .real-estate-trust-card__org,
-body[data-page="service-equipment-transport"] .real-estate-trust-card__org,
 body[data-page="service-business-valuation"] .real-estate-trust-card__org,
 body[data-page="service-commercial-property"] .real-estate-trust-card__org {
   margin: 0;
@@ -5042,7 +5136,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-card__org {
 
 body[data-page="service-court-valuation"] .real-estate-trust-card__quote,
 body[data-page="service-damage-valuation"] .real-estate-trust-card__quote,
-body[data-page="service-equipment-transport"] .real-estate-trust-card__quote,
 body[data-page="service-business-valuation"] .real-estate-trust-card__quote,
 body[data-page="service-commercial-property"] .real-estate-trust-card__quote {
   margin: 0;
@@ -5053,7 +5146,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-card__quote {
 
 body[data-page="service-court-valuation"] .real-estate-trust-card__year,
 body[data-page="service-damage-valuation"] .real-estate-trust-card__year,
-body[data-page="service-equipment-transport"] .real-estate-trust-card__year,
 body[data-page="service-business-valuation"] .real-estate-trust-card__year,
 body[data-page="service-commercial-property"] .real-estate-trust-card__year {
   margin: 0;
@@ -5064,7 +5156,6 @@ body[data-page="service-commercial-property"] .real-estate-trust-card__year {
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta,
 body[data-page="service-business-valuation"] .section--business-valuation-cta,
 body[data-page="service-commercial-property"] .section--commercial-property-cta {
   border-top: 1px solid var(--border);
@@ -5072,8 +5163,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .cta-banner--cases,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .cta-banner--cases,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .cta-banner--cases,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .cta-banner--cases,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .cta-banner--cases,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .cta-banner--cases {
   position: relative;
@@ -5093,8 +5184,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .cta-banner__eyebrow,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .cta-banner__eyebrow,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .cta-banner__eyebrow,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .cta-banner__eyebrow,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .cta-banner__eyebrow,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .cta-banner__eyebrow {
   margin: 0;
@@ -5107,8 +5198,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .cta-banner--cases h3,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .cta-banner--cases h3,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .cta-banner--cases h3,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .cta-banner--cases h3,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .cta-banner--cases h3,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .cta-banner--cases h3 {
   margin: 0;
@@ -5121,8 +5212,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips {
   list-style: none;
@@ -5135,8 +5226,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 
 @media (min-width: 480px) {
   body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips,
+  body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips,
   body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips,
-  body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips,
   body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips,
   body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5144,8 +5235,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips li,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips li,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips li,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips li,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips li,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips li {
   position: relative;
@@ -5162,8 +5253,8 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips li::before,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips li::before,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips li::before,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips li::before,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips li::before,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips li::before {
   content: "";
@@ -5179,16 +5270,21 @@ body[data-page="service-commercial-property"] .section--commercial-property-cta 
 }
 
 body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips li:nth-child(5),
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips li:nth-child(5),
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips li:nth-child(5),
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips li:nth-child(5),
 body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips li:nth-child(5),
 body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips li:nth-child(5) {
   grid-column: 1 / -1;
 }
 
+body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips li:first-child {
+  display: flex;
+  align-items: center;
+}
+
 body[data-page="service-court-valuation"] .section--court-valuation-cta .court-case-chips li:hover,
+body[data-page="service-notary-inheritance"] .section--notary-inheritance-cta .court-case-chips li:hover,
 body[data-page="service-damage-valuation"] .section--damage-valuation-cta .court-case-chips li:hover,
-body[data-page="service-equipment-transport"] .section--equipment-transport-cta .court-case-chips li:hover,
 body[data-page="service-business-valuation"] .section--business-valuation-cta .court-case-chips li:hover,
 body[data-page="service-commercial-property"] .section--commercial-property-cta .court-case-chips li:hover {
   border-color: rgba(182, 138, 69, 0.38);
@@ -5200,8 +5296,6 @@ body[data-page="service-court-valuation"] #lead-form .field input[type="text"],
 body[data-page="service-court-valuation"] #lead-form .field input[type="tel"],
 body[data-page="service-damage-valuation"] #lead-form .field input[type="text"],
 body[data-page="service-damage-valuation"] #lead-form .field input[type="tel"],
-body[data-page="service-equipment-transport"] #lead-form .field input[type="text"],
-body[data-page="service-equipment-transport"] #lead-form .field input[type="tel"],
 body[data-page="service-business-valuation"] #lead-form .field input[type="text"],
 body[data-page="service-business-valuation"] #lead-form .field input[type="tel"],
 body[data-page="service-commercial-property"] #lead-form .field input[type="text"],
@@ -5215,9 +5309,6 @@ body[data-page="service-court-valuation"] #lead-form .field textarea:focus,
 body[data-page="service-damage-valuation"] #lead-form .field input[type="text"]:focus,
 body[data-page="service-damage-valuation"] #lead-form .field input[type="tel"]:focus,
 body[data-page="service-damage-valuation"] #lead-form .field textarea:focus,
-body[data-page="service-equipment-transport"] #lead-form .field input[type="text"]:focus,
-body[data-page="service-equipment-transport"] #lead-form .field input[type="tel"]:focus,
-body[data-page="service-equipment-transport"] #lead-form .field textarea:focus,
 body[data-page="service-business-valuation"] #lead-form .field input[type="text"]:focus,
 body[data-page="service-business-valuation"] #lead-form .field input[type="tel"]:focus,
 body[data-page="service-business-valuation"] #lead-form .field textarea:focus,
@@ -5232,7 +5323,6 @@ body[data-page="service-commercial-property"] #lead-form .field textarea:focus {
 
 body[data-page="service-court-valuation"] #lead-form .form-urgency-note,
 body[data-page="service-damage-valuation"] #lead-form .form-urgency-note,
-body[data-page="service-equipment-transport"] #lead-form .form-urgency-note,
 body[data-page="service-business-valuation"] #lead-form .form-urgency-note,
 body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
   margin: 16px 0 0;
@@ -5245,7 +5335,6 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
 @media (min-width: 768px) {
   body[data-page="service-court-valuation"] .real-estate-trust-grid,
   body[data-page="service-damage-valuation"] .real-estate-trust-grid,
-  body[data-page="service-equipment-transport"] .real-estate-trust-grid,
   body[data-page="service-business-valuation"] .real-estate-trust-grid,
   body[data-page="service-commercial-property"] .real-estate-trust-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5254,7 +5343,6 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
 
   body[data-page="service-court-valuation"] .page-hero-grid--court-valuation,
   body[data-page="service-damage-valuation"] .page-hero-grid--damage-valuation,
-  body[data-page="service-equipment-transport"] .page-hero-grid--equipment-transport,
   body[data-page="service-business-valuation"] .page-hero-grid--business-valuation,
   body[data-page="service-commercial-property"] .page-hero-grid--commercial-property {
     grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
@@ -5264,14 +5352,9 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
 
   body[data-page="service-court-valuation"] .page-hero__aside,
   body[data-page="service-damage-valuation"] .page-hero__aside,
-  body[data-page="service-equipment-transport"] .page-hero__aside,
   body[data-page="service-business-valuation"] .page-hero__aside,
   body[data-page="service-commercial-property"] .page-hero__aside {
     align-self: end;
-  }
-
-  body[data-page="service-equipment-transport"] .page-hero__copy {
-    padding-top: clamp(16px, 2.5vw, 32px);
   }
 
   body[data-page="service-business-valuation"] .page-hero__copy {
@@ -5293,7 +5376,6 @@ body[data-page="service-commercial-property"] #lead-form .form-urgency-note {
   /* Equal-height offer cards: override global align-items:start on this grid */
   body[data-page="service-court-valuation"] .section--court-valuation-formats .service-offer-grid,
   body[data-page="service-damage-valuation"] .section--damage-valuation-formats .service-offer-grid,
-  body[data-page="service-equipment-transport"] .section--equipment-transport-scenarios .service-offer-grid,
   body[data-page="service-business-valuation"] .section--business-valuation-scenarios .service-offer-grid,
   body[data-page="service-commercial-property"] .section--commercial-property-formats .service-offer-grid {
     align-items: stretch;
@@ -5341,7 +5423,6 @@ body[data-page="service-real-estate"] .page-hero {
   body[data-page="service-commercial-property"] .page-hero,
   body[data-page="service-court-valuation"] .page-hero,
   body[data-page="service-damage-valuation"] .page-hero,
-  body[data-page="service-equipment-transport"] .page-hero,
   body[data-page="service-notary-inheritance"] .page-hero {
     padding-top: 0;
   }
@@ -5430,6 +5511,90 @@ body[data-page="service-real-estate"] .intro-card__list--real-estate-ref li::bef
   top: 50%;
   transform: translateY(-50%);
   background: #2c4d73;
+}
+
+body[data-page="service-real-estate"] .hero-real-estate,
+body[data-page="service-commercial-property"] .hero-commercial,
+body[data-page="service-business-valuation"] .hero-business,
+body[data-page="service-court-valuation"] .hero-court,
+body[data-page="service-notary-inheritance"] .hero-notary-inheritance,
+body[data-page="service-damage-valuation"] .hero-damage-valuation {
+  background-position: center 42%;
+}
+
+body[data-page="service-real-estate"] .hero-real-estate::before,
+body[data-page="service-commercial-property"] .hero-commercial::before,
+body[data-page="service-business-valuation"] .hero-business::before,
+body[data-page="service-court-valuation"] .hero-court::before,
+body[data-page="service-notary-inheritance"] .hero-notary-inheritance::before,
+body[data-page="service-damage-valuation"] .hero-damage-valuation::before {
+  background: linear-gradient(135deg, rgba(12, 21, 34, 0.94) 0%, rgba(12, 21, 34, 0.76) 48%, rgba(12, 21, 34, 0.48) 100%);
+}
+
+body[data-page="service-real-estate"] .page-hero-grid,
+body[data-page="service-commercial-property"] .page-hero-grid,
+body[data-page="service-business-valuation"] .page-hero-grid,
+body[data-page="service-court-valuation"] .page-hero-grid,
+body[data-page="service-notary-inheritance"] .page-hero-grid,
+body[data-page="service-damage-valuation"] .page-hero-grid {
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+body[data-page="service-real-estate"] .page-hero__copy,
+body[data-page="service-commercial-property"] .page-hero__copy,
+body[data-page="service-business-valuation"] .page-hero__copy,
+body[data-page="service-court-valuation"] .page-hero__copy,
+body[data-page="service-notary-inheritance"] .page-hero__copy,
+body[data-page="service-damage-valuation"] .page-hero__copy {
+  max-width: 720px;
+}
+
+body[data-page="service-real-estate"] .page-hero h1,
+body[data-page="service-commercial-property"] .page-hero h1,
+body[data-page="service-business-valuation"] .page-hero h1,
+body[data-page="service-court-valuation"] .page-hero h1,
+body[data-page="service-notary-inheritance"] .page-hero h1,
+body[data-page="service-damage-valuation"] .page-hero h1 {
+  text-wrap: balance;
+}
+
+body[data-page="service-real-estate"] .page-hero__lead,
+body[data-page="service-commercial-property"] .page-hero__lead,
+body[data-page="service-business-valuation"] .page-hero__lead,
+body[data-page="service-court-valuation"] .page-hero__lead,
+body[data-page="service-notary-inheritance"] .page-hero__lead,
+body[data-page="service-damage-valuation"] .page-hero__lead {
+  max-width: 58ch;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+body[data-page="service-real-estate"] .page-hero .intro-card,
+body[data-page="service-commercial-property"] .page-hero .intro-card,
+body[data-page="service-business-valuation"] .page-hero .intro-card,
+body[data-page="service-court-valuation"] .page-hero .intro-card,
+body[data-page="service-notary-inheritance"] .page-hero .intro-card,
+body[data-page="service-damage-valuation"] .page-hero .intro-card {
+  margin-top: 0;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 54px rgba(12, 21, 34, 0.22);
+}
+
+body[data-page="service-real-estate"] .page-hero .intro-card::before,
+body[data-page="service-commercial-property"] .page-hero .intro-card::before,
+body[data-page="service-business-valuation"] .page-hero .intro-card::before,
+body[data-page="service-court-valuation"] .page-hero .intro-card::before,
+body[data-page="service-notary-inheritance"] .page-hero .intro-card::before,
+body[data-page="service-damage-valuation"] .page-hero .intro-card::before {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--accent-gold);
 }
 
 body[data-page="service-real-estate"] .section--court-valuation-formats {
@@ -5825,7 +5990,6 @@ body[data-page="service-real-estate"] #lead-form .form-urgency-note {
   body[data-page="service-commercial-property"] .page-hero,
   body[data-page="service-court-valuation"] .page-hero,
   body[data-page="service-damage-valuation"] .page-hero,
-  body[data-page="service-equipment-transport"] .page-hero,
   body[data-page="service-notary-inheritance"] .page-hero {
     padding-top: 0;
   }

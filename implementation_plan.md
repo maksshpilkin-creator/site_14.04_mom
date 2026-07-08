@@ -44,7 +44,6 @@ The homepage presents the company as a federal valuation partner for private cli
 | 5 | Court valuation | `/services/court-valuation/` |
 | 6 | Notary / inheritance valuation | `/services/notary-inheritance/` |
 | 7 | Damage valuation | `/services/damage-valuation/` |
-| 8 | Equipment / transport valuation | `/services/equipment-transport/` |
 | 9 | About company | `/about/` |
 | 10 | Documents and certificates | `/documents/` |
 | 11 | Reviews / cases | `/reviews/` |
