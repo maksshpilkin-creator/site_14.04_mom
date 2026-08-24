@@ -16,6 +16,7 @@ const COOKIE_STORAGE_KEY = "cookie_consent";
 
 const NAV_ITEMS = [
   { href: "/services/", label: "Услуги", key: "services" },
+  { href: "/knowledge/", label: "Статьи", key: "knowledge" },
   { href: "/about/", label: "О компании", key: "about" },
   { href: "/documents/", label: "Документы", key: "documents" },
   { href: "/reviews/", label: "Отзывы", key: "reviews" },
