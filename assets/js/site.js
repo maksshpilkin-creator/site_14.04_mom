@@ -260,7 +260,7 @@ function setupNavigation() {
 
   nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
   window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1200) closeNav();
+    if (window.innerWidth >= 1180) closeNav();
   });
   window.addEventListener("scroll", syncHeader, { passive: true });
   syncHeader();
