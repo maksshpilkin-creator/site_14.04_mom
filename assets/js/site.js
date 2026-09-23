@@ -3,7 +3,7 @@ const SITE_CONFIG = {
   phoneDisplay: "+7 (812) 640-44-46",
   phoneHref: "+78126404446",
   whatsappHref: "https://wa.me/78126404446",
-  email: "info@ocenka-group.ru",
+  email: "akn@ocenka-group.ru",
   address: "Санкт-Петербург, пр. Энгельса, д. 33, БЦ «Светлановский», оф. 502А",
   legalName: "ООО «Экспресс Оценка»",
   inn: "ИНН 7802596912",

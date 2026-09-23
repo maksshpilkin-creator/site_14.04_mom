@@ -25,6 +25,8 @@
 - P2: cached shared assets could preserve the old layout — resolved with a versioned asset URL on knowledge pages.
 - P3: the text and arrow in the “Читать статьи” button sat against the top edge — centered on one visual line.
 - P3: the “Пройти короткий квиз” label sat against the top edge — centered vertically in the button.
+- P1: the mobile homepage repeated the same conversion action with two adjacent buttons — the duplicate secondary CTA was removed.
+- P1: the shared footer showed `info@ocenka-group.ru` instead of `akn@ocenka-group.ru` — corrected in the global site configuration.
 
 ## Result
 
